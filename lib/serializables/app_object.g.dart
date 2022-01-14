@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'nsObject.dart';
+part of 'app_object.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NsObject _$NsObjectFromJson(Map<String, dynamic> json) => NsObject(
+NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject(
       id: json['id'] as int?,
       code: json['code'] as String?,
       name: json['name'] as String?,
@@ -15,7 +15,8 @@ NsObject _$NsObjectFromJson(Map<String, dynamic> json) => NsObject(
       typeId: json['typeId'] as int?,
     )..imageUrl = json['imageUrl'] as String?;
 
-Map<String, dynamic> _$NsObjectToJson(NsObject instance) => <String, dynamic>{
+Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'code': instance.code,
       'name': instance.name,

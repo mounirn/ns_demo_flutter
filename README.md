@@ -25,6 +25,8 @@ See <https://pub.dev/packages/json_serializable/install>
 
 dart pub add json_serializable
 
+flutter pub run build_runner build
+
 ### State Management - Provider
 
 flutter pub add provider

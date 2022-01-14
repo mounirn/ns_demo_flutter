@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 // import 'nsProperty.dart';
 
-part 'nsObject.g.dart';
+part 'app_object.g.dart';
 
 
 @JsonSerializable(explicitToJson: true)
 // Defines data for data entry
-class NsObject {
+class NsAppObject {
   int? id;
   String? code;
   String? name;
@@ -16,9 +16,11 @@ class NsObject {
   int? typeId;
 //  Map<String, String> options; 
 //  List<NsProperty>? props; 
-  NsObject({this.id, this.code, this.name, this.description, this.classId, this.typeId});
+  NsAppObject({this.id, this.code, this.name, this.description, this.classId, this.typeId});
 
-  factory NsObject.fromJson(Map<String, dynamic> json) =>
-      _$NsObjectFromJson(json);
+  factory NsAppObject.fromJson(Map<String, dynamic> json) =>
+      _$NsAppObjectFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NsAppObjectToJson(this);
   
 }

@@ -1,15 +1,22 @@
+import '../serializables/app_status.dart';
+import 'result.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'appService.dart';
-import '../serializables/nsAppStatus.dart';
-import 'result.dart';
 
+/// Defines an abstrac app service checker
+abstract class IAppService{
+  Future<Result<NsAppStatus>> getStatus();
+
+  dynamic get lastError;
+  dynamic get lastResponse;
+}
 /// Provides functions checking the app status
 class NsAppService implements IAppService{
   final String rootUrl;
+
   dynamic _lastError;
-  dynamic lastResponse; 
+  dynamic _lastResponse; 
   
 
   /// Constructor with the root server api
@@ -18,7 +25,7 @@ class NsAppService implements IAppService{
     rootUrl = settings.objectsApiUrl, 
     sessionId=settings.sessionId;
 */
-   /// Login using the given user is and password  
+   /// Get App Status  
   @override
   Future<Result<NsAppStatus>> getStatus() async  {
 
@@ -32,30 +39,35 @@ class NsAppService implements IAppService{
         }  
       );
 
-      lastResponse = response;
+      _lastResponse = response;
     
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
         // then parse the JSON.
 
         var data = NsAppStatus.fromJson(json.decode(response.body));
-        return Result(data: data, status: 0);
+        return Result(status: 0,  data: data);
       } else {
         return Result(status: response.statusCode, error: response.reasonPhrase );
       }
     } catch (e) {
       _lastError = e;
     }
-    return Result();
+    return Result(status: 1);
   }
 
   @override
-  String get lastError { 
-    return _lastError ? _lastError.toString() : '';
+  dynamic get lastError { 
+    return _lastError;
+  }
+
+  @override
+  dynamic get lastResponse { 
+    return _lastResponse;
   }
 
   String getSessionId() {
-    return '';
+    return 'test';
   }
 }
 

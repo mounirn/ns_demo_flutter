@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'loginInfo.dart';
+import '../serializables/login_info.dart';
 // https://codelabs.developers.google.com/codelabs/mdc-101-flutter#4
 
 class LoginScreen extends StatefulWidget {

@@ -1,4 +1,5 @@
 {
     "id": 1,
-    "name": "A name"
+    "name": "A name",
+    "nsObjectsUrl": "https://myOnlineObjects.com" 
 }
