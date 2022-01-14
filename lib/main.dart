@@ -4,13 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'account/login.dart';
+import 'app/settings.dart';
 import 'models/cart.dart';
 import 'models/catalog.dart';
 import 'sample/cart.dart';
 import 'sample/catalog.dart';
 import 'sample/counter.dart';
 import 'app/home.dart';
+import 'sample/counter_provider.dart';
 import 'utils/theme.dart';
+import 'providers/counter.dart';
 
 void main() {
   runApp(const MyAppWithProviders());
@@ -28,11 +31,12 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomeScreen(),
         '/sample/counter' : (context) => const CounterScreen(title:'Counter'),
+        '/sample/counter/provider' : (context) => const CounterWithProviderScreen(),
         '/details': (context) => const DetailScreen(),
         '/account/login': (context) => const LoginScreen(),
-        '/sample/catalog': (context) => const CatalogScreen(),
-        '/sample/cart': (context) => const CartScreen(),
-        '/app/settings' : (context) => const CounterScreen(title:'Settings'),
+        '/catalog': (context) => const CatalogScreen(),
+        '/cart': (context) => const CartScreen(),
+        '/app/settings' : (context) => const SettingsScreen(),
       },
       title: 'M@URI Solutions Flutter Demo',
       theme: _appTheme,
@@ -64,6 +68,12 @@ class MyAppWithProviders extends StatelessWidget {
             cart.catalog = catalog;
             return cart;
           },
+        ),
+        ChangeNotifierProvider(
+          // Initialize the model in the builder. That way, Provider
+          // can own Counter's lifecycle, making sure to call `dispose`
+          // when not needed anymore.
+          create: (context) => Counter(),
         ),
       ],
       child: MyApp()

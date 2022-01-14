@@ -24,7 +24,10 @@ Drawer buildAppDrawer(BuildContext context)  {
           leading: const Icon(Icons.home),
           title: Text('Home'),
           onTap: () {
-            Navigator.pop(context);
+             Navigator.pushNamed(
+              context,
+                '/',
+            );
           },
         ),
         ListTile(
@@ -38,12 +41,22 @@ Drawer buildAppDrawer(BuildContext context)  {
           },
         ),
         ListTile(
+          leading: Icon(Icons.message),
+          title: Text('Counter Provider'),
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+                '/sample/counter/provider',
+            );
+          },
+        ),
+        ListTile(
           leading: Icon(Icons.shop),
           title: Text('Products'),
           onTap: () {
             Navigator.pushNamed(
               context,
-                '/sample/catalog',
+                '/catalog',
             );
           },
         ),
@@ -53,7 +66,7 @@ Drawer buildAppDrawer(BuildContext context)  {
           onTap: () {
             Navigator.pushNamed(
               context,
-                '/sample/cart',
+                '/cart',
             );
           },
         ),ListTile(

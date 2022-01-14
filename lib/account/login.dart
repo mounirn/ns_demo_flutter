@@ -21,10 +21,10 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             const SizedBox(height: 80.0),
             Column(
-              children: <Widget>[
-                Image.asset('logo.png'),
-                const SizedBox(height: 16.0),
-                const Text('N@URI Solutions'),
+              children: const <Widget>[
+                Image(image: AssetImage('/image/logo.png') ),
+                SizedBox(height: 16.0),
+                Text('N@URI Solutions'),
               ],
             ),
             const SizedBox(height: 120.0),

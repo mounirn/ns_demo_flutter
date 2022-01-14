@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart.dart';
 import '../models/catalog.dart';
+import '../utils/drawer.dart';
 
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class CatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: buildAppDrawer(context),
       body: CustomScrollView(
         slivers: [
           _MyAppBar(),
@@ -71,7 +73,7 @@ class _MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: Text('Catalog', style: Theme.of(context).textTheme.headline1),
+      title: const Text('Catalog' /*, style: Theme.of(context).textTheme.headline1 */) ,
       floating: true,
       actions: [
         IconButton(
