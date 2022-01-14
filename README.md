@@ -14,13 +14,26 @@ See <https://gallery.flutter.dev/#/>
 
 - 
 
-## Widgets Used
+## Components and Widgets Used
 
+### JSON Annotation
 
+See <https://github.com/google/json_serializable.dart/tree/master/example>
 
+### JSON Serialization
 
+flutter pub add json_serializable
+See <https://pub.dev/packages/json_serializable/install>
+
+dart pub add json_serializable
+
+### State Management - Provider
+
+flutter pub add provider
+See <https://docs.flutter.dev/development/data-and-backend/state-mgmt/simple>
+
+- BuildContext
 - Stateful and Stateless widgets
-
 - Scaffold
 
 See <https://api.flutter.dev/flutter/material/FlatButton-class.html>
@@ -43,13 +56,14 @@ https://api.flutter.dev/flutter/material
   - Navigator
 
 
-
 ### Navigation & Routing
 
 See <https://medium.com/flutter/learning-flutters-new-navigation-and-routing-system-7c9068155ade>
 
 
 Drawer - <https://api.flutter.dev/flutter/material/Drawer-class.html>
+  --> https://stackoverflow.com/questions/63287282/how-can-i-use-flutter-drawer-menu-in-page-routing
+
 Right Drawer - https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html
 
 

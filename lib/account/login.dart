@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'loginInfo.dart';
 // https://codelabs.developers.google.com/codelabs/mdc-101-flutter#4
 
 class LoginScreen extends StatefulWidget {
@@ -10,6 +10,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  LoginInfo formData = LoginInfo(); 
   // TODO: Add text editing controllers (101)
   @override
   Widget build(BuildContext context) {
@@ -28,38 +29,43 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 120.0),
             // TODO: Wrap Username with AccentColorOverride (103)
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Username',
               ),
+              onChanged: (value) {
+                formData.email = value;
+              },
             ),
             const SizedBox(height: 12.0),
 
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Password',
               ),
               obscureText: true,
+              onChanged: (value) {
+                formData.password = value;
+              },
             ),
 
-            // TODO: Add TextField widgets (101)
-            // TODO: Add button bar (101)
             ButtonBar(
               children: <Widget>[
                 TextButton(
-                  child: Text('CANCEL'),
+                  child: const Text('CANCEL'),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
                 ElevatedButton(
-                  child: Text('NEXT'),
+                  child: const Text('NEXT'),
                   onPressed: () {
-                    Navigator.pop(context);
+                     // 
+                     
                   },
                 ),
               ],

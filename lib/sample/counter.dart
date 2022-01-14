@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/drawer.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({Key? key, required this.title}) : super(key: key);
@@ -46,6 +47,7 @@ class _CounterScreenState extends State<CounterScreen> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      drawer: buildAppDrawer(context),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.

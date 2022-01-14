@@ -26,4 +26,17 @@ ThemeData buildAppTheme() {
     // TODO: Add the icon themes (103)
     // TODO: Decorate the inputs (103)
   );
+  
 }
+
+final nsAppThemeYellow = ThemeData(
+  primarySwatch: Colors.yellow,
+  textTheme: const TextTheme(
+    headline1: TextStyle(
+      fontFamily: 'Corben',
+      fontWeight: FontWeight.w700,
+      fontSize: 24,
+      color: Colors.black,
+    ),
+  ),
+);
