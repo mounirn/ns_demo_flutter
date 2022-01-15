@@ -98,7 +98,16 @@ Drawer buildAppDrawer(BuildContext context)  {
                 '/app/settings',
             );
           },
-        ),
+        ), ListTile(
+          leading: Icon(Icons.settings),
+          title: Text('Status'),
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+                '/app/status',
+            );
+          },
+        )
       ],
     ),
   );

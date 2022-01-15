@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'account/login.dart';
 import 'app/settings.dart';
+import 'app/status.dart';
 import 'models/cart.dart';
 import 'models/catalog.dart';
 import 'sample/cart.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/catalog': (context) => const CatalogScreen(),
         '/cart': (context) => const CartScreen(),
         '/app/settings' : (context) => const SettingsScreen(),
+        '/app/status' : (context) => const AppStatusScreen(title:'App Server Status'),
       },
       title: 'M@URI Solutions Flutter Demo',
       theme: _appTheme,
