@@ -21,8 +21,12 @@ class NsAppClient extends NsAppObject {
   factory NsAppClient.fromJson(Map<String, dynamic> json) =>
       _$NsAppClientFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$NsAppClientToJson(this);
   
+  @override toString() {
+    return '$id $clientId $name $url $phoneNumber $emailAddress';
+  }
 }
 /* Sample data 
 {"classesCount":0,

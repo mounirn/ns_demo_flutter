@@ -1,9 +1,6 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:ns_demo/services/user_service.dart';
-// import 'package:ns_demo/services/user_service.dart';
 
 void main() {
 
@@ -33,7 +30,7 @@ void main() {
     print(session.sessionId);
 
     // refresh the token
-    var loggedOutSession = await service.checkSession(session.sessionId as String);
+    var loggedOutSession = await service.checkSession(session.sessionId);
     print("Afterlogging out");
     assert (loggedOutSession!= null, true);
     print (loggedOutSession);

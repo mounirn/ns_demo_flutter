@@ -68,12 +68,22 @@ Right Drawer - https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html
 ### Misc
 
 - Equatable <https://pub.dev/packages/equatable>
+- Shared Preferences <https://pub.dev/packages/shared_preference>
+  an alternative to this is: get_storage
 
 ## Issues
 
 ### Deployment to simulator takes too long
 
 See QuickFix tool <https://docs.flutter.dev/development/tools/flutter-fix>
+
+### network images are not showing on the web
+
+- See <https://stackoverflow.com/questions/65653801/flutter-web-cant-load-network-image-from-another-domain>
+
+- flutter run -d chrome --web-renderer html // to run the app
+
+- flutter build web --web-renderer html --release // to generate a production build
 
 ## Flutter commands
 
