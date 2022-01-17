@@ -7,18 +7,18 @@ part of 'app_config.dart';
 // **************************************************************************
 
 NsAppConfig _$NsAppConfigFromJson(Map<String, dynamic> json) => NsAppConfig(
+      serverRootUrl: json['serverRootUrl'],
       id: json['id'] as int?,
       code: json['code'] as String?,
       name: json['name'] as String?,
       description: json['description'] as String?,
     )
-      ..serveRootUrl = json['serveRootUrl'] as String?
       ..clientId = json['clientId'] as int?
       ..imageUrl = json['imageUrl'] as String?;
 
 Map<String, dynamic> _$NsAppConfigToJson(NsAppConfig instance) =>
     <String, dynamic>{
-      'serveRootUrl': instance.serveRootUrl,
+      'serverRootUrl': instance.serverRootUrl,
       'id': instance.id,
       'clientId': instance.clientId,
       'code': instance.code,

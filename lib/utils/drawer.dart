@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:ns_demo/providers/user.dart';
+import 'package:provider/provider.dart';
 
 // Provides helper function to build an app drawer 
 Drawer buildAppDrawer(BuildContext context)  {
@@ -8,17 +10,27 @@ Drawer buildAppDrawer(BuildContext context)  {
     child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        const DrawerHeader(
+        DrawerHeader(
           decoration: BoxDecoration(
             color: Colors.blue,
           ),
-          child: Text(
-            'Drawer Header',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          ),
+          child: Consumer<UserModel>(
+            builder: (context, model, child) =>
+            Column(
+              children: [
+                Text(
+                  model.isLoggedIn() ? 'Welcome ${model.session?.fullName}': 'Welcome Guest',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+                model.isLoggedIn() && model.validImageUrl() ? 
+                  Image.network(model.session?.imageUrl as String, height: 80, width:80) :
+                  Container()
+              ]
+            )
+          )
         ),
         ListTile(
           leading: const Icon(Icons.home),
@@ -51,6 +63,15 @@ Drawer buildAppDrawer(BuildContext context)  {
           },
         ),
         ListTile(
+          leading: Icon(Icons.photo_album),
+          title: Text('Photos'),
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+                '/sample/photos',
+            );
+          },
+        ),ListTile(
           leading: Icon(Icons.shop),
           title: Text('Products'),
           onTap: () {
@@ -79,15 +100,26 @@ Drawer buildAppDrawer(BuildContext context)  {
             );
           },
         ),
-        ListTile(
-          leading: Icon(Icons.lock),
-          title: Text('Login'),
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-                '/account/login',
-            );
-          },
+        Consumer<UserModel>(
+          builder: (context, model, child) => Container(
+            child: model.isLoggedIn() ? ListTile(
+              leading: Icon(Icons.lock),
+              title: Text('Logout'),
+              onTap: () {
+                model.logout();
+              }
+            )
+            : ListTile(
+              leading: Icon(Icons.lock),
+              title: Text('Login'),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                    '/account/login',
+                );
+              }
+            )
+          )
         ),
         ListTile(
           leading: Icon(Icons.settings),

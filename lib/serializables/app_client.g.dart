@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_object.dart';
+part of 'app_client.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject()
+NsAppClient _$NsAppClientFromJson(Map<String, dynamic> json) => NsAppClient()
   ..id = json['id'] as int?
   ..clientId = json['clientId'] as int?
   ..code = json['code'] as String?
@@ -30,9 +30,14 @@ NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject()
       ? null
       : DateTime.parse(json['lastEditOn'] as String)
   ..lastEditFrom = json['lastEditFrom'] as String?
-  ..displayOrder = json['displayOrder'] as int?;
+  ..displayOrder = json['displayOrder'] as int?
+  ..phoneNumber = json['phoneNumber'] as String?
+  ..emailAddress = json['emailAddress'] as String?
+  ..subDomain = json['subDomain'] as String?
+  ..url = json['url'] as String?
+  ..fax = json['fax'] as String?;
 
-Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
+Map<String, dynamic> _$NsAppClientToJson(NsAppClient instance) =>
     <String, dynamic>{
       'id': instance.id,
       'clientId': instance.clientId,
@@ -54,4 +59,9 @@ Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
       'lastEditOn': instance.lastEditOn?.toIso8601String(),
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
+      'phoneNumber': instance.phoneNumber,
+      'emailAddress': instance.emailAddress,
+      'subDomain': instance.subDomain,
+      'url': instance.url,
+      'fax': instance.fax,
     };

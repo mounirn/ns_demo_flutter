@@ -6,7 +6,7 @@ part 'app_config.g.dart';
 @JsonSerializable(explicitToJson: true)
 // Defines data for data entry
 class NsAppConfig {
-  String? serveRootUrl = "https://myOnlineObject.com";  
+  String? serverRootUrl = "https://myOnlineObject.com";  
   int? id;
   int? clientId;
   String? code;

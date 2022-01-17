@@ -8,15 +8,27 @@ part 'app_object.g.dart';
 // Defines data for data entry
 class NsAppObject {
   int? id;
+  int? clientId;
   String? code;
   String? name;
   String? description;
   String? imageUrl;
   int? classId;
   int? typeId;
-//  Map<String, String> options; 
-//  List<NsProperty>? props; 
-  NsAppObject({this.id, this.code, this.name, this.description, this.classId, this.typeId});
+  int? managerId;
+  int? isAssignedTo;
+  int? status;
+  bool? isActive;
+  bool? isPublic;
+  bool? isRequired;
+  DateTime? createdOn;
+  int? createdBy;
+  int? lastEditBy;
+  DateTime? lastEditOn;
+  String? lastEditFrom;
+  int? displayOrder;
+
+  NsAppObject();
 
   factory NsAppObject.fromJson(Map<String, dynamic> json) =>
       _$NsAppObjectFromJson(json);

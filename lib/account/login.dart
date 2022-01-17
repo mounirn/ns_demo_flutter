@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../serializables/login_info.dart';
+import '../providers/user.dart';
+
 // https://codelabs.developers.google.com/codelabs/mdc-101-flutter#4
 
 class LoginScreen extends StatefulWidget {
@@ -11,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   LoginInfo formData = LoginInfo(); 
+
   // TODO: Add text editing controllers (101)
   @override
   Widget build(BuildContext context) {
@@ -35,13 +39,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: 'Username',
               ),
               onChanged: (value) {
-                formData.email = value;
+                formData.username = value;
               },
             ),
             const SizedBox(height: 12.0),
-
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
             TextField(
               decoration: const InputDecoration(
                 filled: true,
@@ -63,11 +64,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                   child: const Text('NEXT'),
-                  onPressed: () {
+                  onPressed: () async {
                      // 
-                     
+                    var userModel = context.read<UserModel>();
+                    await userModel.login(formData.username!, formData.password!);
+                    if (userModel.session != null && userModel.isLoggedIn()){
+                      Navigator.pop(context);
+                    }
                   },
                 ),
+                Consumer<UserModel>(
+                  builder: (context, model, child) => Text(
+                    model.invalidLoginInfo? "Invalid Login Info": "",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                )
               ],
             ),
 

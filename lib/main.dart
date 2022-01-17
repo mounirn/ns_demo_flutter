@@ -8,11 +8,13 @@ import 'app/settings.dart';
 import 'app/status.dart';
 import 'models/cart.dart';
 import 'models/catalog.dart';
+import 'providers/user.dart';
 import 'sample/cart.dart';
 import 'sample/catalog.dart';
 import 'sample/counter.dart';
 import 'app/home.dart';
 import 'sample/counter_provider.dart';
+import 'sample/photo.dart';
 import 'utils/theme.dart';
 import 'providers/counter.dart';
 
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomeScreen(),
         '/sample/counter' : (context) => const CounterScreen(title:'Counter'),
         '/sample/counter/provider' : (context) => const CounterWithProviderScreen(),
+         '/sample/photos' : (context) => const PhotosScreen(title: 'Fetches and Parse data using an Isolate'),
         '/details': (context) => const DetailScreen(),
         '/account/login': (context) => const LoginScreen(),
         '/catalog': (context) => const CatalogScreen(),
@@ -76,6 +79,9 @@ class MyAppWithProviders extends StatelessWidget {
           // can own Counter's lifecycle, making sure to call `dispose`
           // when not needed anymore.
           create: (context) => Counter(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserModel(),
         ),
       ],
       child: MyApp()

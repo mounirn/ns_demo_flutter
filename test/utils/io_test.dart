@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:ns_demo/serializables/app_config.dart';
 
 main(){
    test('Read text file', () async {
@@ -41,7 +42,7 @@ main(){
       Stream<List<int>> inputStream = config.openRead();
 
       var lines =
-          utf8.decoder.bind(inputStream).transform(LineSplitter());
+          utf8.decoder.bind(inputStream).transform(const LineSplitter());
       try {
         await for (var line in lines) {
           print('Got ${line.length} characters from stream');
@@ -51,7 +52,26 @@ main(){
         print(e);
       }
   });
+ 
+  test('load json Config file', () async {
+    // NOTE: Be sure to use double quotes ("),
+    // not single quotes ('), inside the JSON string.
+    // This string is JSON, not Dart.
+    print(Directory.current);
+    var configFile = File('assets/config.json');
+    try {
+      var contents = await configFile.readAsString();
+      print(contents);
+      var jsonObject = json.decode(contents);
+      var config = NsAppConfig.fromJson(jsonObject);  
+      print (config);
+    } catch (e) {
+      print(e);
+    }
+    
 
+
+  });
   test('writing file contents', () async {
     var logFile = File('logs/log.txt');
     var sink = logFile.openWrite();

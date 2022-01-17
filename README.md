@@ -10,7 +10,8 @@ See <https://gallery.flutter.dev/#/>
 
 ## Functions
 
-- 
+- Code the various flutter tutorials and samples for learning purpose
+- Basic app navigation: drawer, tab, and stack
 
 ## Components and Widgets Used
 
@@ -64,14 +65,15 @@ Drawer - <https://api.flutter.dev/flutter/material/Drawer-class.html>
 
 Right Drawer - https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html
 
+### Misc
+
+- Equatable <https://pub.dev/packages/equatable>
 
 ## Issues
 
 ### Deployment to simulator takes too long
 
-
 See QuickFix tool <https://docs.flutter.dev/development/tools/flutter-fix>
-
 
 ## Flutter commands
 
@@ -98,7 +100,6 @@ Examples:
 -- flutter run -d chrome (run on chrome)
     --> OK
 
-    
 ## Getting Started with flutter
 
 This project is a starting point for a Flutter application.

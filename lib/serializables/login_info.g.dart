@@ -7,11 +7,11 @@ part of 'login_info.dart';
 // **************************************************************************
 
 LoginInfo _$LoginInfoFromJson(Map<String, dynamic> json) => LoginInfo(
-      email: json['email'] as String?,
+      username: json['username'] as String?,
       password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$LoginInfoToJson(LoginInfo instance) => <String, dynamic>{
-      'email': instance.email,
+      'username': instance.username,
       'password': instance.password,
     };
