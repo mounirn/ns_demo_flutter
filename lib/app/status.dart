@@ -24,10 +24,18 @@ class AppStatusScreen extends StatefulWidget {
 
 class _AppStatusScreenState extends State<AppStatusScreen> {
   Result<NsAppStatus> _statusResult = Result<NsAppStatus>(status:-1);
+  var service = NsAppService(rootUrl: "https://myOnlineObjects.com/api/" );
 
+  @override void initState() {
+    service.getStatus().then((r){
+      _statusResult = r;
+      setState(() { 
+      });
+    });
+    super.initState();
+  }
   void _checkStatus() async {
-    String rootUrl = "https://myOnlineObjects.com/api/";
-    var service = NsAppService(rootUrl: rootUrl );
+   
     _statusResult = await service.getStatus();
 
     setState(() {
