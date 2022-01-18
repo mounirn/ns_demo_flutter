@@ -8,6 +8,7 @@ import 'app/settings.dart';
 import 'app/status.dart';
 import 'models/cart.dart';
 import 'models/catalog.dart';
+import 'providers/settings_data.dart';
 import 'providers/user.dart';
 import 'sample/cart.dart';
 import 'sample/catalog.dart';
@@ -24,15 +25,17 @@ void main() {
 
 final ThemeData _appTheme = buildAppTheme();
 
+/// This is a Material App 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+   
     return MaterialApp(
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/home': (context) => const HomeScreen(),
         '/sample/counter' : (context) => const CounterScreen(title:'Counter'),
         '/sample/counter/provider' : (context) => const CounterWithProviderScreen(),
          '/sample/photos' : (context) => const PhotosScreen(title: 'Fetches and Parse data using an Isolate'),
@@ -45,13 +48,50 @@ class MyApp extends StatelessWidget {
       },
       title: 'M@URI Solutions Flutter Demo',
       theme: _appTheme,
-      
+      home: MyAppStartup()
       ///home: const MyHomePage(title: 'Welcome'),
     );
   }
 }
 
+/// This is the app stratup that will initialize the providers
+/// See https://yapb.dev/line-of-business-apps-async-initialization-of-services-during-startup
+class MyAppStartup extends StatefulWidget {
+  const MyAppStartup({Key? key}) : super(key: key);
 
+  @override
+  _AppStartupState createState() => _AppStartupState();
+}
+
+class _AppStartupState extends State<MyAppStartup> {
+  bool loaded = false;
+  @override
+  initState()  {
+    super.initState();
+    var model = context.read<NsAppSettingsData>();
+    if (loaded) {
+       Navigator.pushNamed(context, '/home');
+    } else {
+      model.load().then( (ok) { 
+        loaded = ok;
+        Navigator.pushNamed(context, '/home');
+      });
+    }
+ 
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var model = context.watch<NsAppSettingsData>();
+    if (model.isLoading) {
+      return Text("Loading...");
+    } else {
+      return Container();
+    }
+  }
+}
+
+/// This is the app with the defined providers
 class MyAppWithProviders extends StatelessWidget {
   const MyAppWithProviders({Key? key}) : super(key: key);
 
@@ -60,6 +100,9 @@ class MyAppWithProviders extends StatelessWidget {
     // Using MultiProvider is convenient when providing multiple objects.
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (context) => NsAppSettingsData(),
+        ),
         // In this sample app, CatalogModel never changes, so a simple Provider
         // is sufficient.
         Provider(create: (context) => CatalogModel()),

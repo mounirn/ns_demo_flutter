@@ -35,4 +35,14 @@ class NsAppObject {
 
   Map<String, dynamic> toJson() => _$NsAppObjectToJson(this);
   
+
+  @override
+  int get hashCode => id!;
+
+  @override
+  bool operator ==(Object other) => other is NsAppObject && other.id == id;
+
+  @override toString() {
+    return 'manager Id: $managerId $clientId.$id $name ($code) ${isActive == true? "Active": "Inactive"}';
+  }
 }

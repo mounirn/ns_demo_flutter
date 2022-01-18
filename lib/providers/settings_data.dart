@@ -13,18 +13,28 @@ class NsAppSettingsData with ChangeNotifier {
   int selectedClientId = 0;
   String serverRootUrl = "https://myOnlineObjects.com";
   String sessionId = '';
+  bool isLoading = true;
+  Map<String, dynamic> _settingsData = Map<String,dynamic>();
 
   List<NsAppClient> participatingClients = [];
   bool ladedClients = false;
+  NsAppClient? selectedClient;
 
-  /// load data from shared preferences
-  /// also loads 
+  /// Load user preferences from shared preferences
+  /// Also loads the app participating clients from network (API call)
   Future<bool> load() async {
+    isLoading = true;
     var prefs = await _prefs;
     selectedClientId = prefs.getInt(selectedClientIdKey) ?? 1;
     serverRootUrl = prefs.getString(serverRootUrlKey) ?? 'https://myOnlineObjects.com';
     sessionId  = prefs.getString(userSessionIdKey) ?? '';
     var ok = await loadClients();
+    // 
+    var list = participatingClients.where((item)=>item.id == selectedClientId);
+    if (list.isNotEmpty){
+      selectedClient = list.first;
+    }
+    isLoading = false;
     notifyListeners();
     return ok;
   }
@@ -67,6 +77,45 @@ class NsAppSettingsData with ChangeNotifier {
      }
   }
 
+  /// sets the current selected client 
+  setSelectedClient(NsAppClient client) {
+    selectedClient = client;
+    
+    saveSelectedClientId(client.id!).then((ok) {
+      notifyListeners();
+    });
+    
+    
+  }
+
+  /// finds a client with the given id
+  NsAppClient? getClientById(int clientId) {
+    var result = participatingClients.where((item) => item.id== clientId);
+    if (result.isNotEmpty){
+      return result.first;
+    } else {
+      return null;
+    }
+
+  }
+
+  /// Get client by the list index 
+  NsAppClient getClientByIndex(int index) {
+    return participatingClients[index];
+  }
+
+
+  /// Reads a setting from the store
+  dynamic getSetting(String itemId, dynamic value){
+    if (_settingsData.containsKey(itemId)){
+      return _settingsData[itemId];
+    } else {
+      _settingsData[itemId] = value;
+      return _settingsData[itemId];
+    }
+  }
+
+  /// returns the App Server root api url
   getApiRootUrl() {
     return '$serverRootUrl/api/';
   }

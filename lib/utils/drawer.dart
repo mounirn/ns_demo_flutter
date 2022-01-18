@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:ns_demo/providers/settings_data.dart';
 import 'package:ns_demo/providers/user.dart';
 import 'package:provider/provider.dart';
 
 // Provides helper function to build an app drawer 
 Drawer buildAppDrawer(BuildContext context)  {
+  var settingsData = context.watch<NsAppSettingsData>();
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -14,19 +16,20 @@ Drawer buildAppDrawer(BuildContext context)  {
           decoration: BoxDecoration(
             color: Colors.blue,
           ),
-          child: Consumer<UserModel>(
+          child: Consumer<NsAppSettingsData>(
             builder: (context, model, child) =>
             Column(
               children: [
                 Text(
-                  model.isLoggedIn() ? 'Welcome ${model.session?.fullName}': 'Welcome Guest',
+                  model.selectedClient!=null ? ' ${model.selectedClient?.name}': 'Client not selected',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                   ),
                 ),
-                model.isLoggedIn() && model.validImageUrl() ? 
-                  Image.network(model.session?.imageUrl as String, height: 80, width:80) :
+                model.selectedClient!=null && model.selectedClient?.imageUrl?.isNotEmpty == true ? 
+                  Image.network(model.selectedClient?.imageUrl as String, height: 80, width:80) 
+                  :
                   Container()
               ]
             )
@@ -38,7 +41,7 @@ Drawer buildAppDrawer(BuildContext context)  {
           onTap: () {
              Navigator.pushNamed(
               context,
-                '/',
+                '/home',
             );
           },
         ),

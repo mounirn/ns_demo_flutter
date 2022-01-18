@@ -8,6 +8,8 @@ See <https://api.flutter.dev/index.html>
 
 See <https://gallery.flutter.dev/#/>
 
+See <https://medium.com/flutter-community/11-things-to-remember-for-your-next-flutter-project-1c7c380895ca>
+
 ## Functions
 
 - Code the various flutter tutorials and samples for learning purpose
@@ -70,6 +72,7 @@ Right Drawer - https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html
 - Equatable <https://pub.dev/packages/equatable>
 - Shared Preferences <https://pub.dev/packages/shared_preference>
   an alternative to this is: get_storage
+- See <https://medium.com/flutter-community/15-useful-libraries-for-flutter-development-productivity-updated-2021-15bcafe205f3>
 
 ## Issues
 
@@ -84,6 +87,12 @@ See QuickFix tool <https://docs.flutter.dev/development/tools/flutter-fix>
 - flutter run -d chrome --web-renderer html // to run the app
 
 - flutter build web --web-renderer html --release // to generate a production build
+
+### Initializing providers on app startup
+
+- See <https://stackoverflow.com/questions/63520079/how-to-fetch-initial-data-using-provider-in-flutter-effectievly>
+
+- Use Service Locator: <https://pub.dev/packages/get_it>
 
 ## Flutter commands
 
