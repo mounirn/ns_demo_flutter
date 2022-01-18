@@ -1,29 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_object.dart';
+part of 'app_info.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NsAppObjectProperty _$NsAppObjectPropertyFromJson(Map<String, dynamic> json) =>
-    NsAppObjectProperty(
-      json['id'] as int,
-      json['appObjectId'] as int,
-      json['propertyId'] as int,
-      json['value'] as String,
-    );
-
-Map<String, dynamic> _$NsAppObjectPropertyToJson(
-        NsAppObjectProperty instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'appObjectId': instance.appObjectId,
-      'propertyId': instance.propertyId,
-      'value': instance.value,
-    };
-
-NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject()
+NsAppInfo _$NsAppInfoFromJson(Map<String, dynamic> json) => NsAppInfo()
   ..id = json['id'] as int?
   ..clientId = json['clientId'] as int?
   ..code = json['code'] as String?
@@ -50,10 +33,11 @@ NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject()
   ..displayOrder = json['displayOrder'] as int?
   ..properties = (json['properties'] as List<dynamic>?)
       ?.map((e) => NsAppObjectProperty.fromJson(e as Map<String, dynamic>))
-      .toList();
+      .toList()
+  ..subDomain = json['subDomain'] as String?
+  ..url = json['url'] as String?;
 
-Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$NsAppInfoToJson(NsAppInfo instance) => <String, dynamic>{
       'id': instance.id,
       'clientId': instance.clientId,
       'code': instance.code,
@@ -75,23 +59,6 @@ Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
       'properties': instance.properties?.map((e) => e.toJson()).toList(),
-    };
-
-NsAppObjectsQuery _$NsAppObjectsQueryFromJson(Map<String, dynamic> json) =>
-    NsAppObjectsQuery()
-      ..ownerId = json['ownerId'] as int?
-      ..hasClassId = json['hasClassId'] as int?
-      ..hasBuiltInTypeId = json['hasBuiltInTypeId'] as int?
-      ..hasManagerId = json['hasManagerId'] as int?
-      ..hasCode = json['hasCode'] as String?
-      ..nameContains = json['nameContains'] as String?;
-
-Map<String, dynamic> _$NsAppObjectsQueryToJson(NsAppObjectsQuery instance) =>
-    <String, dynamic>{
-      'ownerId': instance.ownerId,
-      'hasClassId': instance.hasClassId,
-      'hasBuiltInTypeId': instance.hasBuiltInTypeId,
-      'hasManagerId': instance.hasManagerId,
-      'hasCode': instance.hasCode,
-      'nameContains': instance.nameContains,
+      'subDomain': instance.subDomain,
+      'url': instance.url,
     };

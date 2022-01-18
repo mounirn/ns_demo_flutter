@@ -31,6 +31,9 @@ NsAppClient _$NsAppClientFromJson(Map<String, dynamic> json) => NsAppClient()
       : DateTime.parse(json['lastEditOn'] as String)
   ..lastEditFrom = json['lastEditFrom'] as String?
   ..displayOrder = json['displayOrder'] as int?
+  ..properties = (json['properties'] as List<dynamic>?)
+      ?.map((e) => NsAppObjectProperty.fromJson(e as Map<String, dynamic>))
+      .toList()
   ..phoneNumber = json['phoneNumber'] as String?
   ..emailAddress = json['emailAddress'] as String?
   ..subDomain = json['subDomain'] as String?
@@ -59,6 +62,7 @@ Map<String, dynamic> _$NsAppClientToJson(NsAppClient instance) =>
       'lastEditOn': instance.lastEditOn?.toIso8601String(),
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
+      'properties': instance.properties?.map((e) => e.toJson()).toList(),
       'phoneNumber': instance.phoneNumber,
       'emailAddress': instance.emailAddress,
       'subDomain': instance.subDomain,

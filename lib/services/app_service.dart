@@ -1,4 +1,5 @@
 import '../serializables/app_status.dart';
+import '../serializables/app_info.dart';
 import 'result.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -7,6 +8,7 @@ import 'package:http/http.dart' as http;
 /// Defines an abstrac app service checker
 abstract class IAppService{
   Future<Result<NsAppStatus>> getStatus();
+  Future<Result<NsAppInfo>> getInfo();
 
   dynamic get lastError;
   dynamic get lastResponse;
@@ -55,6 +57,37 @@ class NsAppService implements IAppService{
     }
     return Result(status: 1);
   }
+
+  @override
+  Future<Result<NsAppInfo>> getInfo() async  {
+
+    String url = rootUrl +  "app/info";
+
+    try {
+      final response = await http.get(Uri.parse(url), 
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          '_nssid' : getSessionId()
+        }  
+      );
+
+      _lastResponse = response;
+    
+      if (response.statusCode == 200) {
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
+
+        var data = NsAppInfo.fromJson(json.decode(response.body));
+        return Result(status: 0,  data: data);
+      } else {
+        return Result(status: response.statusCode, error: response.reasonPhrase );
+      }
+    } catch (e) {
+      _lastError = e;
+    }
+    return Result(status: 1);
+  }
+  
 
   @override
   dynamic get lastError { 

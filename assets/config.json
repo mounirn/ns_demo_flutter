@@ -1,5 +1,22 @@
 {
-    "id": 1,
-    "name": "A name",
-    "nsObjectsUrl": "https://myOnlineObjects.com" 
+    "apiUrlDev": "http://localhost/dev/MyOnlineObjects/api",
+    "apiUrl": "https://MyOnlineObjects.com/api",
+    "apiUrlDebug": "http://localhost:23121/api",
+    "appServerChoices" : [ 
+        { "name": "Development", "url": "http://localhost/dev/MyOnlineObjects/api" } , 
+        { "name": "Test","url" : "http://api.kharbga.com/api" },
+        { "name": "Production", "url": "https://MyOnlineObjects.com/api" },
+        { "name": "Debug", "url": "http://localhost:23121/api" }
+    ] ,
+    "teams": [],
+    "countries": [{ "id":1, "name":"Tunisia"}, {"id": 2, "name": "USA"} ],
+    "industries": [{ "id":100, "name": "Education"} ], 
+    "appName": "Online Objects",
+    "appId" : 1,
+    "appDeveloperSystemId" : "99d1727a-964c-4285-9ae2-87b8bcafd338",
+    "apiAuthToken" : "{YOUR TOKEN HERE -- Created in the My Online Objects System API Subscription Module}",
+    "appClientId" : 1, 
+    "appClientSystemId" : "99d1727a-964c-4285-9ae2-87b8bcafd338",
+    "appObjectId" : 123, 
+    "appObjectSystemId" : "99d1727a-964c-4285-9ae2-87b8bcafd338"
 }

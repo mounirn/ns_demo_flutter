@@ -21,7 +21,24 @@ void main() {
     print (result.data);
     
   });
+  test('get app info', () async {
+    print("Testing /app/info:");
+    String rootUrl = "https://myOnlineObjects.com/api/";
+    var service = NsAppService(rootUrl: rootUrl );
+    var result = await service.getInfo();
 
+    if (result.status != 0) {
+      print ("*>>Last Error:");
+      print (service.lastError);
+      print ("*>>Last Responsone:");
+      print (service.lastResponse);
+
+    }
+    expect(result.status, 0);
+    print (result.data);
+    expect(result.data?.name?.isNotEmpty, true);
+    expect(result.data?.properties?.isNotEmpty, true);
+  });
 
   
 
