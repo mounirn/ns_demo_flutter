@@ -68,3 +68,15 @@ Nouri Solutions is a software engineering company specializing in the developmen
 
 "}
 */
+
+@JsonSerializable(explicitToJson: true)
+class NsAppClientDetails extends NsAppClient {
+  int ? classesCount;
+  
+  NsAppClientDetails();
+  factory NsAppClientDetails.fromJson(Map<String, dynamic> json) =>
+      _$NsAppClientDetailsFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$NsAppClientDetailsToJson(this);
+}

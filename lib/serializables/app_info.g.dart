@@ -34,6 +34,15 @@ NsAppInfo _$NsAppInfoFromJson(Map<String, dynamic> json) => NsAppInfo()
   ..properties = (json['properties'] as List<dynamic>?)
       ?.map((e) => NsAppObjectProperty.fromJson(e as Map<String, dynamic>))
       .toList()
+  ..preferences = (json['preferences'] as List<dynamic>?)
+      ?.map((e) => NsAppObjectPreference.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..colors = json['colors'] == null
+      ? null
+      : NsAppObjectColors.fromJson(json['colors'] as Map<String, dynamic>)
+  ..address = json['address'] == null
+      ? null
+      : NsAppObjectAddress.fromJson(json['address'] as Map<String, dynamic>)
   ..subDomain = json['subDomain'] as String?
   ..url = json['url'] as String?;
 
@@ -59,6 +68,9 @@ Map<String, dynamic> _$NsAppInfoToJson(NsAppInfo instance) => <String, dynamic>{
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
       'properties': instance.properties?.map((e) => e.toJson()).toList(),
+      'preferences': instance.preferences?.map((e) => e.toJson()).toList(),
+      'colors': instance.colors?.toJson(),
+      'address': instance.address?.toJson(),
       'subDomain': instance.subDomain,
       'url': instance.url,
     };

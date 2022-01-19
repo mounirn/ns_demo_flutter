@@ -11,3 +11,13 @@ class Result<T> {
 
   Result({required this.status, this.data,  this.error});
 }
+
+/// Defines an action error condition
+/// related to an API call
+enum ErrorCode {
+  none,
+  processingError,
+  invalidInput,
+  objectNotFound,
+  networkNotAvailable,
+}

@@ -23,6 +23,74 @@ Map<String, dynamic> _$NsAppObjectPropertyToJson(
       'value': instance.value,
     };
 
+NsAppObjectPreference _$NsAppObjectPreferenceFromJson(
+        Map<String, dynamic> json) =>
+    NsAppObjectPreference(
+      json['id'] as int,
+      json['appObjectId'] as int,
+      json['key'] as String,
+      json['value'] as String,
+      json['baseType'] as int,
+      json['htmlType'] as int,
+    );
+
+Map<String, dynamic> _$NsAppObjectPreferenceToJson(
+        NsAppObjectPreference instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'appObjectId': instance.appObjectId,
+      'key': instance.key,
+      'value': instance.value,
+      'baseType': instance.baseType,
+      'htmlType': instance.htmlType,
+    };
+
+NsAppObjectColors _$NsAppObjectColorsFromJson(Map<String, dynamic> json) =>
+    NsAppObjectColors()
+      ..color = json['color'] as String?
+      ..bkColor = json['bkColor'] as String?
+      ..headerColor = json['headerColor'] as String?
+      ..headerBKColor = json['headerBKColor'] as String?
+      ..footerColor = json['footerColor'] as String?
+      ..footerBKColor = json['footerBKColor'] as String?
+      ..borderColor = json['borderColor'] as String?
+      ..titleColor = json['titleColor'] as String?;
+
+Map<String, dynamic> _$NsAppObjectColorsToJson(NsAppObjectColors instance) =>
+    <String, dynamic>{
+      'color': instance.color,
+      'bkColor': instance.bkColor,
+      'headerColor': instance.headerColor,
+      'headerBKColor': instance.headerBKColor,
+      'footerColor': instance.footerColor,
+      'footerBKColor': instance.footerBKColor,
+      'borderColor': instance.borderColor,
+      'titleColor': instance.titleColor,
+    };
+
+NsAppObjectAddress _$NsAppObjectAddressFromJson(Map<String, dynamic> json) =>
+    NsAppObjectAddress()
+      ..id = json['id'] as String?
+      ..objectId = json['objectId'] as int?
+      ..line1 = json['line1'] as String?
+      ..line2 = json['line2'] as String?
+      ..city = json['city'] as String?
+      ..stateProvince = json['stateProvince'] as String?
+      ..zipPostalCode = json['zipPostalCode'] as String?
+      ..countryId = json['countryId'] as int?;
+
+Map<String, dynamic> _$NsAppObjectAddressToJson(NsAppObjectAddress instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'objectId': instance.objectId,
+      'line1': instance.line1,
+      'line2': instance.line2,
+      'city': instance.city,
+      'stateProvince': instance.stateProvince,
+      'zipPostalCode': instance.zipPostalCode,
+      'countryId': instance.countryId,
+    };
+
 NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject()
   ..id = json['id'] as int?
   ..clientId = json['clientId'] as int?
@@ -50,7 +118,16 @@ NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject()
   ..displayOrder = json['displayOrder'] as int?
   ..properties = (json['properties'] as List<dynamic>?)
       ?.map((e) => NsAppObjectProperty.fromJson(e as Map<String, dynamic>))
-      .toList();
+      .toList()
+  ..preferences = (json['preferences'] as List<dynamic>?)
+      ?.map((e) => NsAppObjectPreference.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..colors = json['colors'] == null
+      ? null
+      : NsAppObjectColors.fromJson(json['colors'] as Map<String, dynamic>)
+  ..address = json['address'] == null
+      ? null
+      : NsAppObjectAddress.fromJson(json['address'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
     <String, dynamic>{
@@ -75,6 +152,9 @@ Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
       'properties': instance.properties?.map((e) => e.toJson()).toList(),
+      'preferences': instance.preferences?.map((e) => e.toJson()).toList(),
+      'colors': instance.colors?.toJson(),
+      'address': instance.address?.toJson(),
     };
 
 NsAppObjectsQuery _$NsAppObjectsQueryFromJson(Map<String, dynamic> json) =>

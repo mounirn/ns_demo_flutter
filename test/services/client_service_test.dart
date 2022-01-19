@@ -28,6 +28,24 @@ void main() {
   });
 
 
-  
+  test('load client details', () async {
+    print("Testing /client/info/{id}");
+    String rootUrl = "https://myOnlineObjects.com/api/";
+    var service = NsClientService(rootUrl: rootUrl );
+    var result = await service.getDetails(1);
+
+    if (result.status != 0) {
+      print ("*>>Last Error:");
+      print (service.lastError);
+      print ("*>>Last Responsone:");
+      print (service.lastResponse);
+
+    }
+    else {
+      expect(result.status, 0);
+      assert(result.data != null);
+      print (result.data!);
+    }
+  });
 
 }
