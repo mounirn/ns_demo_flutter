@@ -2,12 +2,13 @@ import 'package:flutter/foundation.dart';
 
 import '../serializables/user_session.dart';
 import '../services/user_service.dart';
+import '../utils/app_data.dart'; 
 
 class UserModel extends ChangeNotifier {
   NsUserSession? session;
   bool invalidLoginInfo = false;
   bool unableToProcessRequest = false;
-  final NsUserService _service = NsUserService( "https://myOnlineObjects.com/api/");
+  final NsUserService _service = NsUserService(rootUrl: "https://myOnlineObjects.com/api/");
 
   Future login(String loginId, String password) async {
     
@@ -17,6 +18,7 @@ class UserModel extends ChangeNotifier {
     var result  = await _service.login2(loginId,password);
     if (result.status == 0 && result.data != null){
       session = result.data;
+      AppData.getInstance().sessionId = session?.sessionId as String;
        invalidLoginInfo = false;
     } else {
       if (result.status == 404 || result.status == 400){
@@ -52,6 +54,6 @@ class UserModel extends ChangeNotifier {
     return true;
   }
   void logout() {
-    
+    AppData.getInstance().sessionId = '';
   }
 }

@@ -1,12 +1,12 @@
 {
-    "apiUrlDev": "http://localhost/dev/MyOnlineObjects/api",
-    "apiUrl": "https://MyOnlineObjects.com/api",
-    "apiUrlDebug": "http://localhost:23121/api",
+    "apiUrlDev": "http://localhost/dev/MyOnlineObjects",
+    "apiUrl": "https://MyOnlineObjects.com",
+    "apiUrlDebug": "http://localhost:23121",
     "appServerChoices" : [ 
-        { "name": "Development", "url": "http://localhost/dev/MyOnlineObjects/api" } , 
-        { "name": "Test","url" : "http://api.kharbga.com/api" },
-        { "name": "Production", "url": "https://MyOnlineObjects.com/api" },
-        { "name": "Debug", "url": "http://localhost:23121/api" }
+        { "name": "Development", "url": "http://localhost/dev/MyOnlineObjects" } , 
+        { "name": "Test","url" : "http://api.kharbga.com" },
+        { "name": "Production", "url": "https://MyOnlineObjects.com" },
+        { "name": "Debug", "url": "http://localhost:23121" }
     ] ,
     "teams": [],
     "countries": [{ "id":1, "name":"Tunisia"}, {"id": 2, "name": "USA"} ],

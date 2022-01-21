@@ -1,8 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'account/login.dart';
 import 'app/settings.dart';
 import 'app/status.dart';
@@ -20,6 +17,7 @@ import 'utils/theme.dart';
 import 'providers/counter.dart';
 
 void main() {
+ 
   runApp(const MyAppWithProviders());
 }
 
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-   
+
     return MaterialApp(
       routes: {
         '/home': (context) => const HomeScreen(),
@@ -48,7 +46,7 @@ class MyApp extends StatelessWidget {
       },
       title: 'M@URI Solutions Flutter Demo',
       theme: _appTheme,
-      home: MyAppStartup()
+      home: const MyAppStartup()
       ///home: const MyHomePage(title: 'Welcome'),
     );
   }
@@ -84,7 +82,7 @@ class _AppStartupState extends State<MyAppStartup> {
   Widget build(BuildContext context) {
     var model = context.watch<NsAppSettingsData>();
     if (model.isLoading) {
-      return Text("Loading...");
+      return const Text("Loading...");
     } else {
       return Container();
     }
@@ -127,7 +125,7 @@ class MyAppWithProviders extends StatelessWidget {
           create: (context) => UserModel(),
         ),
       ],
-      child: MyApp()
+      child: const MyApp()
     );
   }
 }

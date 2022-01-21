@@ -2,6 +2,26 @@
 
 A demo Flutter project using the My Online Objects system backend.
 
+## Requirements
+
+Environment Setup:
+
+- Visual Studio Code version 1.63
+  - Flutter extension for debugging
+- Android Studio version 4.
+- XCode (macOS) version 13.
+- Flutter SDK version 2.8
+- Dart SDK 2.15
+
+Misc:
+
+- My Online Objects System Account <https://myOnlineObjects.com>
+
+Use the following flutter commands to check your environment:
+
+- flutter doctor
+- flutter upgrade
+
 ## References
 
 See <https://api.flutter.dev/index.html>

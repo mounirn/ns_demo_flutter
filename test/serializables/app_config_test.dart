@@ -27,11 +27,11 @@ main(){
   
   test('save json Config file', () async {
     var appConfig = NsAppConfig();
-    appConfig.clientId = 123;
+    appConfig.appClientId = 123;
     appConfig.code = "MA";
-    appConfig.name = "My App";
+    appConfig.appName = "My App";
     appConfig.description = " <p>An <b>app</b> decription in html. </p>";
-    appConfig.serverRootUrl = "https://api.kharbga.com/api/";
+    appConfig.apiUrl = "https://api.kharbga.com";
 
     var jsonData = appConfig.toJson();
     var jsonText = json.encode(jsonData);

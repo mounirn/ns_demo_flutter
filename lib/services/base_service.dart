@@ -1,8 +1,10 @@
+import '../utils/app_data.dart';
+
 class NsBaseService {
   final String rootUrl;
 
-  dynamic _lastError;
-  dynamic _lastResponse; 
+  dynamic lastError;
+  dynamic lastResponse; 
   
 
   /// Constructor with the root server api
@@ -15,15 +17,9 @@ class NsBaseService {
     };
     return headers;
   }
-  dynamic get lastError { 
-    return _lastError;
-  }
-
-  dynamic get lastResponse { 
-    return _lastResponse;
-  }
+ 
 
   String getSessionId() {
-    return 'test';
+    return AppData.getInstance().sessionId;
   }
 }

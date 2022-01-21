@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-
 import '../serializables/app_client.dart';
+import 'base_service.dart';
 import 'result.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -11,18 +11,13 @@ abstract class IClientService{
 
   Future<Result<NsAppClientDetails>> getDetails(int id);
 
-  dynamic get lastError;
-  dynamic get lastResponse;
+  Future<Result<NsAppClientDetails>> getMyTeam();
 }
 /// Provides functions checking the app status
-class NsClientService implements IClientService{
-  final String rootUrl;
+class NsClientService extends NsBaseService implements IClientService{
 
-  dynamic _lastError;
-  dynamic _lastResponse; 
-  
   /// Constructor with the root server api
-  NsClientService({required this.rootUrl});
+  NsClientService({required String rootUrl}) : super(rootUrl: rootUrl);
 
    /// Get App Participating Clients  
   @override
@@ -32,13 +27,10 @@ class NsClientService implements IClientService{
 
     try {
       final response = await http.get(Uri.parse(url), 
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          '_nssid' : getSessionId()
-        }  
+        headers: super.getHeaders()
       );
 
-      _lastResponse = response;
+      super.lastResponse = response;
     
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
@@ -50,7 +42,7 @@ class NsClientService implements IClientService{
         return Result(status: response.statusCode, error: response.reasonPhrase );
       }
     } catch (e) {
-      _lastError = e;
+      super.lastError = e;
     }
     return Result(status: 1);
   }
@@ -102,13 +94,10 @@ class NsClientService implements IClientService{
 
     try {
       final response = await http.get(Uri.parse(url), 
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          '_nssid' : getSessionId()
-        }  
+        headers: super.getHeaders()
       );
 
-      _lastResponse = response;
+      super.lastResponse = response;
     
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
@@ -120,11 +109,37 @@ class NsClientService implements IClientService{
         return Result(status: response.statusCode, error: response.reasonPhrase );
       }
     } catch (e) {
-      _lastError = e;
+      super.lastError = e;
     }
     return Result(status: 1);
   }
 
+@override
+  Future<Result<NsAppClientDetails>> getMyTeam() async  {
+
+    String url = '${rootUrl}client/my';
+
+    try {
+      final response = await http.get(Uri.parse(url), 
+        headers: super.getHeaders()
+      );
+
+      super.lastResponse = response;
+    
+      if (response.statusCode == 200) {
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
+
+        var data = NsAppClientDetails.fromJson(json.decode(response.body));
+        return Result(status: 0,  data: data);
+      } else {
+        return Result(status: response.statusCode, error: response.reasonPhrase );
+      }
+    } catch (e) {
+      super.lastError = e;
+    }
+    return Result(status: 1);
+  }
 
   // A function that converts a response body into a List<NsAppClient>.
   List<NsAppClient> parseClients(String responseBody) {
@@ -133,17 +148,4 @@ class NsClientService implements IClientService{
     return parsed.map<NsAppClient>((json) => NsAppClient.fromJson(json)).toList();
   }
 
-  @override
-  dynamic get lastError { 
-    return _lastError;
-  }
-
-  @override
-  dynamic get lastResponse { 
-    return _lastResponse;
-  }
-
-  String getSessionId() {
-    return 'test';
-  }
 }

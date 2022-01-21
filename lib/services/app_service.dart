@@ -1,32 +1,23 @@
-import '../serializables/app_status.dart';
-import '../serializables/app_info.dart';
+import 'package:http/http.dart' as http;
+import 'base_service.dart';
 import 'result.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import '../serializables/app_status.dart';
+import '../serializables/app_info.dart';
 
 
 /// Defines an abstrac app service checker
 abstract class IAppService{
   Future<Result<NsAppStatus>> getStatus();
   Future<Result<NsAppInfo>> getInfo();
-
-  dynamic get lastError;
-  dynamic get lastResponse;
 }
-/// Provides functions checking the app status
-class NsAppService implements IAppService{
-  final String rootUrl;
 
-  dynamic _lastError;
-  dynamic _lastResponse; 
-  
+/// Provides functions checking the app status
+class NsAppService extends NsBaseService implements IAppService {
 
   /// Constructor with the root server api
-  NsAppService({required this.rootUrl});
-/*  NsAppService.fromAppSettings({NsAppSettings settings}) : 
-    rootUrl = settings.objectsApiUrl, 
-    sessionId=settings.sessionId;
-*/
+  NsAppService({required String rootUrl}) : super(rootUrl: rootUrl);
+
    /// Get App Status  
   @override
   Future<Result<NsAppStatus>> getStatus() async  {
@@ -41,7 +32,7 @@ class NsAppService implements IAppService{
         }  
       );
 
-      _lastResponse = response;
+      super.lastResponse = response;
     
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
@@ -53,7 +44,7 @@ class NsAppService implements IAppService{
         return Result(status: response.statusCode, error: response.reasonPhrase );
       }
     } catch (e) {
-      _lastError = e;
+      super.lastError = e;
     }
     return Result(status: 1);
   }
@@ -71,7 +62,7 @@ class NsAppService implements IAppService{
         }  
       );
 
-      _lastResponse = response;
+      super.lastResponse = response;
     
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
@@ -83,24 +74,11 @@ class NsAppService implements IAppService{
         return Result(status: response.statusCode, error: response.reasonPhrase );
       }
     } catch (e) {
-      _lastError = e;
+      super.lastError = e;
     }
     return Result(status: 1);
   }
   
 
-  @override
-  dynamic get lastError { 
-    return _lastError;
-  }
-
-  @override
-  dynamic get lastResponse { 
-    return _lastResponse;
-  }
-
-  String getSessionId() {
-    return 'test';
-  }
 }
 

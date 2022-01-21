@@ -4,9 +4,8 @@ import 'app_object.dart';
 
 part 'app_client.g.dart';
 
-
+/// Defines a client (am organization team, department, or bunsiess unit)
 @JsonSerializable(explicitToJson: true)
-// Defines data for data entry
 class NsAppClient extends NsAppObject {
  
   String? phoneNumber;

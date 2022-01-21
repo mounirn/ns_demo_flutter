@@ -8,7 +8,7 @@ void main() {
    print("Testing Login:");
 
    String rootUrl = "https://myOnlineObjects.com/api/";
-   var service = NsUserService(rootUrl);
+   var service = NsUserService(rootUrl: rootUrl);
    var session = await service.login("nsunittest","nsunittest");
    if (session != null ){
     print (session);

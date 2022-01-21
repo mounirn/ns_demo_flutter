@@ -1,20 +1,15 @@
 
 import 'dart:convert';
-// import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import '../serializables/user_session.dart';
+import 'base_service.dart';
 import 'result.dart';
 
 /// Provides functions signing in and signing out
-class NsUserService {
-  String rootUrl = "https://myOnlineObjects.com/api/";
-  
-  dynamic lastError;
-  dynamic lastResponse; 
-  
+class NsUserService extends NsBaseService{
   /// Constructor with the root server api
-  NsUserService(this.rootUrl);
+  NsUserService({required String rootUrl}) : super(rootUrl: rootUrl);
 
 
   /// Login using the given user is and password 
@@ -25,9 +20,7 @@ class NsUserService {
     String url = rootUrl +  "user/login";
     try {
         var response  = await http.post(Uri.parse(url), 
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
+        headers: super.getHeaders(),
         body: jsonEncode(<String, String>{
           'loginId': loginId,
           'pwd': password
@@ -37,16 +30,10 @@ class NsUserService {
       lastError = null;
 
       if (response.statusCode == 200) {
-        // If the server did return a 200 OK response,
-        // then parse the JSON.
-
         var session = NsUserSession.fromJson(json.decode(lastResponse.body));
         return session;
       } else {
-        // If the server did not return a 200 OK response,
-        // then throw an exception.
-        // throw Exception('Failed to load album');
-        // log something
+
         return null;
       }
     } catch(e) {
@@ -59,9 +46,7 @@ class NsUserService {
     String url = rootUrl +  "user/login";
     try {
         var response  = await http.post(Uri.parse(url), 
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
+        headers: getHeaders(),
         body: jsonEncode(<String, String>{
           'loginId': loginId,
           'pwd': password

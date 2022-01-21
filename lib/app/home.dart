@@ -3,12 +3,16 @@ import 'package:provider/provider.dart';
 import '../utils/endDrawer.dart';
 import '../utils/drawer.dart';
 import '../providers/user.dart';
+import './client/search.dart';
+import '../providers/settings_data.dart';
+import 'object/header.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var userModel = context.watch<UserModel>();
+    var settingsModel = context.watch<NsAppSettingsData>();
 
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -67,7 +71,9 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [       
+          children: [ 
+            NsHeader(object: settingsModel.getSelectedClientDetails()),
+            const NsClientSearch(),
             userModel.isLoggedIn() == false? 
               TextButton(
                 child: const Text('Login'),
