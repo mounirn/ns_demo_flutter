@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 // Provides helper function to build an app drawer 
 Drawer buildAppDrawer(BuildContext context)  {
-  var settingsData = context.watch<NsAppSettingsData>();
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -133,13 +132,14 @@ Drawer buildAppDrawer(BuildContext context)  {
                 '/app/settings',
             );
           },
-        ), ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Status'),
+        ),
+        ListTile(
+          leading: Icon(Icons.info_outline),
+          title: Text('Info'),
           onTap: () {
             Navigator.pushNamed(
               context,
-                '/app/status',
+                '/app/info',
             );
           },
         )

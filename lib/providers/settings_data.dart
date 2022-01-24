@@ -1,11 +1,9 @@
-import 'dart:convert';
 
-import 'package:ns_demo/serializables/app_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import '../serializables/app_client.dart';
 import '../services/client_service.dart';
+import 'config_data.dart';
 
 // Manages the settings data
 class NsAppSettingsData with ChangeNotifier {
@@ -17,7 +15,7 @@ class NsAppSettingsData with ChangeNotifier {
   String serverRootUrl = "https://myOnlineObjects.com";
   String sessionId = '';
   bool isLoading = true;
-  NsAppConfig? config;
+  NsAppConfigData? configData;
   final Map<String, dynamic> _settingsData = <String,dynamic>{};
   final Map<int,NsAppClientDetails> _clientDetails = <int, NsAppClientDetails>{};
 
@@ -25,24 +23,11 @@ class NsAppSettingsData with ChangeNotifier {
   bool ladedClients = false;
   NsAppClient? selectedClient;
   
-  loadConfig() {
-    rootBundle.loadString('config.json').then((configStr) {
-      config = NsAppConfig.fromJson(json.decode(configStr));
-    });
-  }
-
-  Future<NsAppConfig?> loadConfigAsync() async {
-    var configStr = await rootBundle.loadString('config.json');
-    config = NsAppConfig.fromJson(json.decode(configStr));
-    return config;
-  }
-
   /// Load user preferences from shared preferences
   /// Also loads the app participating clients from network (API call)
   Future<bool> load() async {
 
     isLoading = true;
-    await loadConfigAsync();
     var prefs = await _prefs;
     selectedClientId = prefs.getInt(selectedClientIdKey) ?? 1;
     serverRootUrl = prefs.getString(serverRootUrlKey) ?? getServerUrlFromConfig();
@@ -55,6 +40,7 @@ class NsAppSettingsData with ChangeNotifier {
       setSelectedClient(selectedClient!);
     }
     isLoading = false;
+    _setupSettingsData();
     notifyListeners();
     return ok;
   }
@@ -87,14 +73,21 @@ class NsAppSettingsData with ChangeNotifier {
   /// Loads system particiapting clients/teams 
   /// returns true if sucessful
   Future<bool> loadClients() async {
-     var service = NsClientService(rootUrl: getApiRootUrl() );
-     var result = await service.getClients();
-     if (result.status == 0 && result.data != null) {
-        participatingClients = result.data!;
-        return true;
-     } else {
-        return false;
-     }
+    if (configData == null){
+      return false;
+    }
+    var url = configData?.getApiRootUrl();
+    if (url == null){
+      return false;
+    }
+    var service = NsClientService(rootUrl:  url);
+    var result = await service.getClients();
+    if (result.status == 0 && result.data != null) {
+      participatingClients = result.data!;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   Future<void> loadClientDetails(int id, bool refresh) async {
@@ -153,8 +146,20 @@ class NsAppSettingsData with ChangeNotifier {
     return participatingClients[index];
   }
 
+  void _setupSettingsData() {
+    
+    _settingsData.clear();
+    _settingsData["App Server URL"] = serverRootUrl;
+    _settingsData["Selected Client ID"] = selectedClientId;
+    _settingsData["User Session ID"] = sessionId;
 
-  /// Reads a setting from the store
+  }
+
+  Map<String, dynamic> getSettingsData() {
+    return _settingsData;
+  }
+
+  /// Reads a setting from the cached data
   dynamic getSetting(String itemId, dynamic value){
     if (_settingsData.containsKey(itemId)){
       return _settingsData[itemId];
@@ -164,20 +169,19 @@ class NsAppSettingsData with ChangeNotifier {
     }
   }
 
-  /// Checks the coniguration to be loaded from assets and returns 
-  /// the root server url if found. Otherwise, returns the default demo server url
   String getServerUrlFromConfig() {
-    if (config != null){
-      var str = config?.apiUrl;
-      if (str != null && str.isNotEmpty){
-        return str;
-      }
+    if (configData == null) {
+      return NsAppConfigData.defaultRootUrl;
+    } else {
+      return configData?.getServerUrlFromConfig() as String;
     }
-    
-    return 'https://myOnlineObjects.com';
   }
-  /// returns the App Server root api url
-  getApiRootUrl() {
-    return '$serverRootUrl/api/';
+
+  String getApiRootUrl() {
+    if (configData == null) {
+      return '${NsAppConfigData.defaultRootUrl}/api';
+    } else {
+      return configData?.getApiRootUrl() as String;
+    }
   }
 }

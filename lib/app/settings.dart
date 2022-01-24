@@ -38,11 +38,16 @@ class SettingsScreen extends StatelessWidget {
 }
 
 
-class _SettingItem extends StatelessWidget {
+class _SettingItem extends StatefulWidget {
   final String label;
   final dynamic value;
   const _SettingItem(this.label, this.value, {Key? key}) : super(key: key);
 
+  @override
+  State<_SettingItem> createState() => _SettingItemState();
+}
+
+class _SettingItemState extends State<_SettingItem> {
   @override
   Widget build(BuildContext context) {
     var settingStyle =
@@ -64,7 +69,7 @@ class _SettingItem extends StatelessWidget {
             //Consumer<NsAppSettingsData>(
             //    builder: (context, model, child) =>
             //        Text('${model.getSetting(label, value)}', style: settingStyle)),
-            Text(label, style: settingStyle),
+            Text(widget.label, style: settingStyle),
             const SizedBox(width: 24),
             TextButton(
               onPressed: () {
@@ -78,7 +83,7 @@ class _SettingItem extends StatelessWidget {
         ),
       ),
     ),
-    Text(value.toString()),
+    Text(widget.value.toString()),
     const Divider(height : 10, color:  Color(0xFFEAA400)),
     ]
     )

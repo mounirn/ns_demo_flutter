@@ -1,0 +1,34 @@
+import 'dart:ui';
+
+import '../serializables/app_object.dart';
+
+class NsColorUtils {
+  static const int headerDefault = 0xFF000000;
+  static const Color black = Color.fromARGB(255, 0, 0, 0);
+  static const Color white = Color.fromARGB(255, 255, 255, 255);
+  static final RegExp hexExp = RegExp(
+    r'^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$',
+    caseSensitive: false,
+  );
+
+  /// Return the header color of an object
+  /// TODO: add caching of parsed data
+  static Color getHeaderColor(NsAppObject item) {
+    if (item.colors == null){
+      return black;
+    }
+    int color = hexStringToHexInt(item.colors?.headerColor as String);
+    return Color(color);
+  }
+
+  /// parse a string in the format '#rrggbb' or '#aarrggbb' 
+  /// the string has to be of length 7 or 9 
+  /// first char must be #
+  static int hexStringToHexInt(String hex) {
+    hex = hex.replaceFirst('#', '');
+    hex = hex.length == 6 ? 'ff' + hex : hex;
+    int val = int.parse(hex, radix: 16);
+    return val;
+  }
+  // https://stackoverflow.com/questions/50381968/flutter-dart-convert-hex-color-string-to-color/50382196
+}

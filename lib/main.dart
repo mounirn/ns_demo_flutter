@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'account/login.dart';
-import 'app/settings.dart';
-import 'app/status.dart';
+
 import 'models/cart.dart';
 import 'models/catalog.dart';
+import 'providers/config_data.dart';
 import 'providers/settings_data.dart';
 import 'providers/user.dart';
-import 'sample/cart.dart';
-import 'sample/catalog.dart';
-import 'sample/counter.dart';
-import 'app/home.dart';
-import 'sample/counter_provider.dart';
-import 'sample/photo.dart';
+
+import 'utils/routes.dart';
 import 'utils/theme.dart';
 import 'providers/counter.dart';
 
@@ -32,18 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      routes: {
-        '/home': (context) => const HomeScreen(),
-        '/sample/counter' : (context) => const CounterScreen(title:'Counter'),
-        '/sample/counter/provider' : (context) => const CounterWithProviderScreen(),
-         '/sample/photos' : (context) => const PhotosScreen(title: 'Fetches and Parse data using an Isolate'),
-        '/details': (context) => const DetailScreen(),
-        '/account/login': (context) => const LoginScreen(),
-        '/catalog': (context) => const CatalogScreen(),
-        '/cart': (context) => const CartScreen(),
-        '/app/settings' : (context) => const SettingsScreen(),
-        '/app/status' : (context) => const AppStatusScreen(title:'App Server Status'),
-      },
+      routes: getAppRoutes(context),
       title: 'M@URI Solutions Flutter Demo',
       theme: _appTheme,
       home: const MyAppStartup()
@@ -66,15 +50,22 @@ class _AppStartupState extends State<MyAppStartup> {
   @override
   initState()  {
     super.initState();
-    var model = context.read<NsAppSettingsData>();
-    if (loaded) {
-       Navigator.pushNamed(context, '/home');
-    } else {
-      model.load().then( (ok) { 
-        loaded = ok;
-        Navigator.pushNamed(context, '/home');
-      });
-    }
+    var configModel = context.read<NsAppConfigData>();
+    configModel.load(true).then( (ok) {
+      if (ok == true){
+        var settingsModel = context.read<NsAppSettingsData>();
+        settingsModel.configData = configModel;
+        settingsModel.load().then( (ok) { 
+          if (ok) {
+            Navigator.pushNamed(context, '/home');
+          } else {
+            Navigator.pushNamed(context, '/error/setting');
+          }
+        });
+      } else {
+        Navigator.pushNamed(context, '/error/config');
+      }
+    });
  
   }
 
@@ -98,6 +89,9 @@ class MyAppWithProviders extends StatelessWidget {
     // Using MultiProvider is convenient when providing multiple objects.
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (context) => NsAppConfigData(),
+        ),
         ChangeNotifierProvider(
           create: (context) => NsAppSettingsData(),
         ),

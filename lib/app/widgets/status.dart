@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:ns_demo/providers/config_data.dart';
 import 'package:ns_demo/services/result.dart';
-import '../serializables/app_status.dart';
-import '../services/app_service.dart';
-import '../utils/drawer.dart';
+import 'package:provider/src/provider.dart';
+import '../../serializables/app_status.dart';
+import '../../services/app_service.dart';
 
-class AppStatusScreen extends StatefulWidget {
-  const AppStatusScreen({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class NsAppStatusWidget extends StatefulWidget { 
+  const NsAppStatusWidget({Key? key}) : super(key: key);
 
   @override
-  State<AppStatusScreen> createState() => _AppStatusScreenState();
+  State<NsAppStatusWidget> createState() => _NsAppStatusWidgetState();
 }
 
-class _AppStatusScreenState extends State<AppStatusScreen> {
+class _NsAppStatusWidgetState extends State<NsAppStatusWidget> {
   Result<NsAppStatus> _statusResult = Result<NsAppStatus>(status:-1);
-  var service = NsAppService(rootUrl: "https://myOnlineObjects.com/api/" );
+  late NsAppService service;
+ 
 
   @override void initState() {
+    var model = context.read<NsAppConfigData>();
+    service = NsAppService(rootUrl: model.getApiRootUrl() );
     service.getStatus().then((r){
       _statusResult = r;
       setState(() { 
@@ -60,14 +54,7 @@ class _AppStatusScreenState extends State<AppStatusScreen> {
     
     if (_statusResult.status == 0 && _statusResult.data != null) {
       var status = _statusResult.data as NsAppStatus;
-      return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-        ),
-        drawer: buildAppDrawer(context),
-        body: Center(
+      return Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: Column(
@@ -113,40 +100,31 @@ class _AppStatusScreenState extends State<AppStatusScreen> {
                 'Server Time ${status.currentTime}',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
+              FloatingActionButton(
+                onPressed: _checkStatus,
+                tooltip: 'Check Status',
+                child: const Icon(Icons.refresh),
+              ), // Thi,
             ],
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _checkStatus,
-          tooltip: 'Check Status',
-          child: const Icon(Icons.refresh),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
-      );
+        );  
     }
     else {
       var statusCode = _statusResult.status;
-      return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-        ),
-        drawer: buildAppDrawer(context),
-        body: Center(
+      return Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              getErrorWidget(statusCode)
+              getErrorWidget(statusCode) ,
+              FloatingActionButton(
+                onPressed: _checkStatus,
+                tooltip: 'Check Status',
+                child: const Icon(Icons.refresh),
+              )
             ],
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _checkStatus,
-          tooltip: 'Check Status',
-          child: const Icon(Icons.refresh),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
       );
     }
   }

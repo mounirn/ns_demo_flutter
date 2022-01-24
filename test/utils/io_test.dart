@@ -9,15 +9,14 @@ import 'package:ns_demo/serializables/app_config.dart';
 main(){
    test('Read text file', () async {
       var config = File('assets/config.json');
-      var contents;
 
       // Put the whole file in a single string.
-      contents = await config.readAsString();
+      var contents = await config.readAsString();
       print('The file is ${contents.length} characters long.');
 
       // Put each line of the file into its own string.
-      contents = await config.readAsLines();
-      print('The file is ${contents.length} lines long.');
+      var lines = await config.readAsLines();
+      print('The file is ${lines.length} lines long.');
   });
 
   test('Read as binary file', () async {
@@ -82,7 +81,7 @@ main(){
 
   test('append to file contents', () async {
     var logFile = File('logs/log.txt');
-    var sink = logFile.openWrite(mode: FileMode.append);;
+    var sink = logFile.openWrite(mode: FileMode.append);
     sink.write('FILE ACCESSED ${DateTime.now()}\n');
     await sink.flush();
     await sink.close();
