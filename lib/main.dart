@@ -16,7 +16,7 @@ void main() {
   runApp(const MyAppWithProviders());
 }
 
-final ThemeData _appTheme = buildAppTheme();
+//final ThemeData _appTheme = buildAppTheme();
 
 /// This is a Material App 
 class MyApp extends StatelessWidget {
@@ -25,13 +25,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
+    var model = context.watch<NsAppSettingsData>();
     return MaterialApp(
       routes: getAppRoutes(context),
       title: 'M@URI Solutions Flutter Demo',
-      theme: _appTheme,
+      theme: buildAppThemeForClient(model.getSelectedClientDetails()),
       home: const MyAppStartup()
-      ///home: const MyHomePage(title: 'Welcome'),
     );
   }
 }
@@ -51,13 +50,20 @@ class _AppStartupState extends State<MyAppStartup> {
   initState()  {
     super.initState();
     var configModel = context.read<NsAppConfigData>();
+    var settingsModel = context.read<NsAppSettingsData>();
+    if (settingsModel.configData != null) { // if already loaded
+      loaded = true;
+      Navigator.pushNamed(context, '/home');
+      return;
+    }
     configModel.load(true).then( (ok) {
-      if (ok == true){
-        var settingsModel = context.read<NsAppSettingsData>();
+      if (ok == true){    
         settingsModel.configData = configModel;
         settingsModel.load().then( (ok) { 
           if (ok) {
+            // update the them
             Navigator.pushNamed(context, '/home');
+            loaded = true;
           } else {
             Navigator.pushNamed(context, '/error/setting');
           }

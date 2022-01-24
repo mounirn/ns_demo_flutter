@@ -6,18 +6,56 @@ class NsColorUtils {
   static const int headerDefault = 0xFF000000;
   static const Color black = Color.fromARGB(255, 0, 0, 0);
   static const Color white = Color.fromARGB(255, 255, 255, 255);
+  static const Color red = Color.fromARGB(255, 255, 0, 0);
+  static const Color blue = Color.fromARGB(255, 0, 0, 255);
+
   static final RegExp hexExp = RegExp(
     r'^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$',
     caseSensitive: false,
   );
 
   /// Return the header color of an object
-  /// TODO: add caching of parsed data
   static Color getHeaderColor(NsAppObject item) {
+    if (item.colors == null){
+      return blue;
+    }
+    if (item.colors?.headerColor == null){
+      return blue;
+    }
+    int color = hexStringToHexInt(item.colors?.headerColor as String);
+    return Color(color);
+  }
+
+  static Color getColor(NsAppObject item) {
     if (item.colors == null){
       return black;
     }
-    int color = hexStringToHexInt(item.colors?.headerColor as String);
+    if (item.colors?.color == null){
+      return black;
+    }
+    int color = hexStringToHexInt(item.colors?.color as String);
+    return Color(color);
+  }
+
+   static Color getFooterColor(NsAppObject item) {
+    if (item.colors == null){
+      return black;
+    }
+    if (item.colors?.footerColor == null){
+      return black;
+    }
+    int color = hexStringToHexInt(item.colors?.footerColor as String);
+    return Color(color);
+  }
+
+  static Color getTitleColor(NsAppObject item) {
+    if (item.colors == null){
+      return red;
+    }
+    if (item.colors?.titleColor == null){
+      return red;
+    }
+    int color = hexStringToHexInt(item.colors?.titleColor as String);
     return Color(color);
   }
 
