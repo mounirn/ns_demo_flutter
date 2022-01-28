@@ -20,9 +20,7 @@ class NsAppObjectInfoWidget extends StatelessWidget {
     // var client = settings?.getSelectedClientDetails();
 
     if (data != null) {
-      return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [ 
+      return Column(children: [ 
             // NsDivider(data),
             NsLogo(data),
             NsTitle(data),  

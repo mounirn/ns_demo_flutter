@@ -55,7 +55,7 @@ class _NsAppStatusWidgetState extends State<NsAppStatusWidget> {
     
     if (_statusResult.status == 0 && _statusResult.data != null) {
       var status = _statusResult.data as NsAppStatus;
-      return Center(
+      return SingleChildScrollView (child: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
           child: Column(
@@ -108,7 +108,8 @@ class _NsAppStatusWidgetState extends State<NsAppStatusWidget> {
               ), // Thi,
             ],
           ),
-        );  
+        )
+      ); 
     }
     else {
       var statusCode = _statusResult.status;

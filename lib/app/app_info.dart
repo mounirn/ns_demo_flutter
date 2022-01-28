@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ns_demo/app/widgets/app_privacy.dart';
 import 'package:provider/provider.dart';
 
 
@@ -16,7 +17,7 @@ class NsAppInfoScreen extends StatelessWidget {
     var settingData = context.watch<NsAppSettingsData> ();
     return DefaultTabController(
       initialIndex: 0,
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('App Server Information'),
@@ -34,7 +35,9 @@ class NsAppInfoScreen extends StatelessWidget {
               Tab( text: "Configuration",
                 icon: Icon(Icons.settings_applications),
               ),              
-
+              Tab( text: "Privacy",
+                icon: Icon(Icons.privacy_tip_rounded),
+              ),     
             ],
           ),
         ),
@@ -43,6 +46,7 @@ class NsAppInfoScreen extends StatelessWidget {
             NsAppInfoWidget(settingData),           
             const NsAppStatusWidget(),
             const NsAppConfigWidget(),
+            const NsAppPrivacyWidget()
             
           ],
         ),

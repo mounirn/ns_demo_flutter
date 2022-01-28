@@ -32,11 +32,14 @@ class NsDescription extends StatelessWidget{
         ..style.color = 'black'
         ..style.textAlign = 'center'
         ..style.width = '100%'
-        ..style.height = '300px';
+        ..style.height = '100%'
+        ..style.maxHeight = '300px';
     } else {
       return html.DivElement()
         ..style.textAlign = 'center'
-        ..style.height = '300px'
+        ..style.maxHeight = '300px'
+        ..style.width = '100%'
+        ..style.height = '100%'
         ..append(
           html.HeadingElement.h1()..appendText('Edit'),
         );

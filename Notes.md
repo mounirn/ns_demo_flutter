@@ -22,10 +22,23 @@
   - Settings Info
     - Ability to select from the app participating client business/organization
 
+- Objects Views
+  - Title
+  - Logo
+  - Icon
+  - Description
+    - HTML View
+
+- Objects Lists Views
+  - DropDown Button
+
 ## Issues/TODO
 
 - Global Error handling
   - network not available case
+- Setting Screen Sliver List index error
+- Sign In, Sign Up, and Sign Out process
+- API Key usage
 
 ## Plan/TODO
 
