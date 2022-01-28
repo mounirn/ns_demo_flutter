@@ -9,6 +9,7 @@ import '../app/home.dart';
 import '../sample/counter.dart';
 import '../sample/counter_provider.dart';
 import '../app/home_tabs.dart';
+import '../account/logout.dart';
 
 getAppRoutes(BuildContext context) { 
  var ret = {
@@ -19,6 +20,7 @@ getAppRoutes(BuildContext context) {
         '/sample/photos' : (context) => const PhotosScreen(title: 'Fetches and Parse data using an Isolate'),
         '/details': (context) => const DetailScreen(),
         '/account/login': (context) => const LoginScreen(),
+        '/account/logout': (context) => const LogoutScreen(),
         '/catalog': (context) => const CatalogScreen(),
         '/cart': (context) => const CartScreen(),
         '/app/settings' : (context) => const SettingsScreen(),

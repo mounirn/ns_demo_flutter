@@ -7,7 +7,8 @@ AppBar buildAppBarWithDrawers(
   GlobalKey<ScaffoldState> scaffoldKey, 
   NsAppClientDetails? selectedClient) {
   return AppBar(
-      title : Text('Welcome - ${selectedClient?.name}'), 
+      title : selectedClient?.name == null ? const Text("Welcome") :
+        Text('Welcome - ${selectedClient?.name}'), 
       centerTitle: true,
       backgroundColor: NsColorUtils.getHeaderBackgroundColor(selectedClient),
       foregroundColor: NsColorUtils.getHeaderColor(selectedClient),

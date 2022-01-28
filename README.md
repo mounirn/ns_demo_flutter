@@ -114,6 +114,10 @@ See QuickFix tool <https://docs.flutter.dev/development/tools/flutter-fix>
 
 - Use Service Locator: <https://pub.dev/packages/get_it>
 
+### A RenderFlex overflowed by 28 pixels on the right
+
+See <https://fluttercorner.com/flutter-how-to-fix-a-renderflex-overflowed-by-pixels-error>
+
 ## Flutter commands
 
 ### flutter devices output

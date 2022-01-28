@@ -7,7 +7,7 @@ class NsIcon extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-   return  getObjectImage();
+   return  getObjectImage() ;
   }
 
   getObjectImage() {

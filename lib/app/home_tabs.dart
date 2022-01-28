@@ -38,10 +38,10 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
           widget = NsAppWelcome(settingData);
           break;
       case 1:
-          widget =  const Text(
-            'Index 1: Info',
-            style: optionStyle,
-          );
+          widget = NsClientInfoWidget(settingData?.getSelectedClientDetails());
+          break;
+      case 2:
+          widget = const NsUserInfoWidget();
           break;
       default:
          widget = Text(
@@ -87,12 +87,6 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  @override
-  void initState() {
-    // settingData = context.watch<NsAppSettingsData> ();
-    super.initState();
   }
 
   @override

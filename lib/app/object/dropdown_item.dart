@@ -12,19 +12,26 @@ class NsDropdownItem extends StatelessWidget{
    return Padding( 
      padding: const EdgeInsets.all(10), 
      child: Row(
+       mainAxisAlignment: MainAxisAlignment.start,
         children: [
-        NsIcon(object: object),
-        Text(getName(), 
-          maxLines: 1, 
-          overflow: TextOverflow.ellipsis, 
-          style: TextStyle(
-            backgroundColor: getTextBackgroundColor(), 
-            fontSize: 16,
-            fontWeight: FontWeight.normal,
-            color: getTextColor()
+          LimitedBox(
+            maxHeight: 26,
+            maxWidth: 40,
+            child: Padding (padding: const EdgeInsets.fromLTRB(0, 0, 10, 0), 
+              child: NsIcon(object: object)
+            )
           ),
-          textAlign: TextAlign.center,
-        )
+          Text(getName(), 
+            maxLines: 1, 
+            overflow: TextOverflow.ellipsis, 
+            style: TextStyle(
+              backgroundColor: getTextBackgroundColor(), 
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
+              color: getTextColor()
+            ),
+            textAlign: TextAlign.center,
+          )
       ])
    );
   }

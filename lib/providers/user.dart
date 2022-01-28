@@ -53,7 +53,14 @@ class UserModel extends ChangeNotifier {
     }
     return true;
   }
-  void logout() {
+
+  Future<bool> logout() async {
+    var result  = await _service.logout(AppData.getInstance().sessionId);
+    session = null;
     AppData.getInstance().sessionId = '';
+    if (result == true){
+      notifyListeners();
+    }
+    return result;
   }
 }

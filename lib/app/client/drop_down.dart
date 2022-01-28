@@ -24,27 +24,27 @@ class _NsClientsDropdownState extends State<NsClientsDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<NsAppClient>(
-      value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
-      elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (NsAppClient? newValue) {
-        if (newValue != null) {
-  
-          setState(() {
-            dropdownValue = newValue;
-          });
+    return  DropdownButton<NsAppClient>(
+        value: dropdownValue,
+        icon: const Icon(Icons.arrow_downward),
+        elevation: 16,
+        style: const TextStyle(color: Colors.deepPurple),
+        underline: Container(
+          height: 2,
+          color: Colors.deepPurpleAccent,
+        ),
+        onChanged: (NsAppClient? newValue) {
+          if (newValue != null) {
+    
+            setState(() {
+              dropdownValue = newValue;
+            });
 
-          widget.settings?.setSelectedClient(newValue);
-        }
-      },
-      items: getItems(),
-    );
+            widget.settings?.setSelectedClient(newValue);
+          }
+        },
+        items: getItems(),
+      );
   }
 
   List<DropdownMenuItem<NsAppClient>>? getItems() {

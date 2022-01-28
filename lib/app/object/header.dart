@@ -9,23 +9,26 @@ class NsHeader extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-   return Padding( 
-     padding: const EdgeInsets.all(10), 
-     child: Row(
-        children: [
-        NsIcon(object: object),
-        Text(getName(), 
-          maxLines: 1, 
-          overflow: TextOverflow.ellipsis, 
-          style: TextStyle(
-            backgroundColor: getHeaderBackgroundColor(), 
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-            color: getHeaderTextColor()
-          ),
-          textAlign: TextAlign.center,
+   return Container( 
+    padding: const EdgeInsets.all(10), 
+    color: getHeaderBackgroundColor(),
+    child: Row(
+       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+       children: [
+       NsIcon(object: object), 
+       Expanded(
+        child:Text(getName(), 
+         maxLines: 1, 
+         overflow: TextOverflow.ellipsis, 
+         style: TextStyle( 
+           fontSize: 36,
+           fontWeight: FontWeight.bold,
+           color: getHeaderTextColor()
+         ),
+         textAlign: TextAlign.center,
         )
-      ])
+       )
+     ])
    );
   }
 
