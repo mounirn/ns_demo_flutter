@@ -78,9 +78,7 @@ class _MyListItem extends StatelessWidget {
       (model) => model.getClientByIndex(index),
     );
     var textTheme = Theme.of(context).textTheme.headline6;
-    if (item == null){
-      return Container();
-    }
+   
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: LimitedBox(

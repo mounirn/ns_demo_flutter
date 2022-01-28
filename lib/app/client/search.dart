@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+
 import 'package:ns_demo/providers/settings_data.dart';
 import 'package:ns_demo/serializables/app_client.dart';
-import 'package:provider/src/provider.dart';
 
 class NsClientSearch extends StatefulWidget {
   const NsClientSearch({Key? key}) : super(key: key);
@@ -17,15 +18,15 @@ class _NsClientSearchState extends State<NsClientSearch> {
 
   @override
   void initState() {
-
+     var model = context.read<NsAppSettingsData>();
+    _client = model.getSelectedClientDetails()!;
     super.initState();
     _textController = TextEditingController(text: 'initial text');
   }
 
   @override
   Widget build(BuildContext context) {
-    var model = context.watch<NsAppSettingsData>();
-    _client = model.getSelectedClientDetails();
+
 
     return Column(children: [
       Text(getClientName()),

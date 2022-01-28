@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:ns_demo/app/object/logo.dart';
 import 'package:ns_demo/providers/settings_data.dart';
 import 'package:ns_demo/providers/user.dart';
 import 'package:provider/provider.dart';
@@ -11,27 +12,13 @@ Drawer buildAppDrawer(BuildContext context)  {
     child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        DrawerHeader(
-          decoration: BoxDecoration(
-            color: Colors.blue,
-          ),
-          child: Consumer<NsAppSettingsData>(
+        Consumer<NsAppSettingsData>(
             builder: (context, model, child) =>
-            Column(
-              children: [
-                Text(
-                  model.selectedClient!=null ? ' ${model.selectedClient?.name}': 'Client not selected',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
-                model.selectedClient!=null && model.selectedClient?.imageUrl?.isNotEmpty == true ? 
-                  Image.network(model.selectedClient?.imageUrl as String, height: 80, width:80) 
-                  :
-                  Container()
-              ]
-            )
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: model.getHeaderBackgroundColor(),
+            ),
+            child: NsLogo(model.selectedClient) 
           )
         ),
         ListTile(
@@ -83,25 +70,7 @@ Drawer buildAppDrawer(BuildContext context)  {
             );
           },
         ),
-        ListTile(
-          leading: Icon(Icons.shopping_cart),
-          title: Text('My Cart'),
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-                '/cart',
-            );
-          },
-        ),ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text('Profile'),
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-                '/account/profile',
-            );
-          },
-        ),
+      
         Consumer<UserModel>(
           builder: (context, model, child) => Container(
             child: model.isLoggedIn() ? ListTile(

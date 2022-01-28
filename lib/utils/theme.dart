@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ns_demo/serializables/app_client.dart';
 import 'package:ns_demo/utils/color_utils.dart';
+
 // https://codelabs.developers.google.com/codelabs/mdc-103-flutter#3
 const kShrinePink50 = Color(0xFFFEEAE6);
 const kShrinePink100 = Color(0xFFFEDBD0);
@@ -37,10 +38,12 @@ ThemeData buildAppThemeForClient(NsAppClientDetails? client) {
   if (client!= null) {
     return base.copyWith(
       colorScheme: base.colorScheme.copyWith(
+        primaryVariant: NsColorUtils.getBorderColor(client),
         primary: NsColorUtils.getHeaderColor(client),
         onPrimary: NsColorUtils.getColor(client),
         secondary: NsColorUtils.getFooterColor(client),
         error: NsColorUtils.getTitleColor(client),
+       
       ),
       // TODO: Add the text themes (103)
       // TODO: Add the icon themes (103)

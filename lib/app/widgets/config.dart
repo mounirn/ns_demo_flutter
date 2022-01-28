@@ -10,7 +10,6 @@ class NsAppConfigWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var model = context.watch<NsAppConfigData>();
    
-    
     return Column(children: [
       NsAppConfigItem("App Server Url", model.getServerUrlFromConfig(), ),
       NsAppConfigItem("Objects API Uri", model.getApiRootUrl(), ),

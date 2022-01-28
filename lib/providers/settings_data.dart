@@ -1,4 +1,5 @@
 
+import 'package:ns_demo/utils/color_utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import '../serializables/app_client.dart';
@@ -183,5 +184,11 @@ class NsAppSettingsData with ChangeNotifier {
     } else {
       return configData?.getApiRootUrl() as String;
     }
+  }
+
+  /// Identifies the current selected client and returns its background color if defined
+  /// if not found, returns the app default backround color defined in configuration
+  Color getHeaderBackgroundColor() {
+    return NsColorUtils.getHeaderBackgroundColor(getSelectedClientDetails());
   }
 }

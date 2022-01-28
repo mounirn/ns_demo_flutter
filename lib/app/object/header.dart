@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ns_demo/utils/color_utils.dart';
 import '../../serializables/app_object.dart';
 import 'icon.dart';
 
@@ -21,7 +22,7 @@ class NsHeader extends StatelessWidget{
             fontSize: 36,
             fontWeight: FontWeight.bold,
             color: getHeaderTextColor()
-            ),
+          ),
           textAlign: TextAlign.center,
         )
       ])
@@ -31,13 +32,13 @@ class NsHeader extends StatelessWidget{
   /// Identifies the object color based on its colors props
   /// If it has color props use parent client props
   Color getHeaderBackgroundColor(){
-    return Colors.deepPurple;
+    return NsColorUtils.getHeaderBackgroundColor(object);
   }
 
   /// Identifies the object text color based on its colors props
   /// If it has no color props use parent client props
   Color getHeaderTextColor(){
-    return Colors.white;
+    return NsColorUtils.getHeaderColor(object);
   }
 
   String getName(){

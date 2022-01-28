@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ns_demo/providers/config_data.dart';
-import 'package:ns_demo/services/result.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/config_data.dart';
+import '../../services/result.dart';
 import '../../serializables/app_status.dart';
 import '../../services/app_service.dart';
 

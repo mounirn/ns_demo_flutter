@@ -88,5 +88,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-// TODO: Add AccentColorOverride (103)

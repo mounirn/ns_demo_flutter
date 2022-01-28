@@ -15,7 +15,10 @@ class NsColorUtils {
   );
 
   /// Return the header color of an object
-  static Color getHeaderColor(NsAppObject item) {
+  static Color getHeaderColor(NsAppObject? item) {
+    if (item == null){
+      return blue;
+    }
     if (item.colors == null){
       return blue;
     }
@@ -25,6 +28,68 @@ class NsColorUtils {
     int color = hexStringToHexInt(item.colors?.headerColor as String);
     return Color(color);
   }
+
+  
+  /// Return the borders color of an object
+  static Color getBorderColor(NsAppObject? item) {
+    if (item == null){
+      return blue;
+    }
+    if (item.colors == null){
+      return blue;
+    }
+    if (item.colors?.borderColor == null){
+      return blue;
+    }
+    int color = hexStringToHexInt(item.colors?.borderColor as String);
+    return Color(color);
+  }
+
+  /// Return the header background color of an object
+  static Color getHeaderBackgroundColor(NsAppObject? item) {
+    if (item == null){
+      return white;
+    }
+    if (item.colors == null){
+      return white;
+    }
+    if (item.colors?.headerColor == null){
+      return white;
+    }
+    int color = hexStringToHexInt(item.colors?.headerBKColor as String);
+    return Color(color);
+  }
+
+/// Return the body color of an object
+  static Color getTextColor(NsAppObject? item) {
+    if (item == null){
+      return black;
+    }
+    if (item.colors == null){
+      return black;
+    }
+    if (item.colors?.color == null){
+      return black;
+    }
+    int color = hexStringToHexInt(item.colors?.color as String);
+    return Color(color);
+  }
+
+  /// Return the text/body background color of an object
+  static Color getTextBackgroundColor(NsAppObject? item) {
+    if (item == null){
+      return white;
+    }
+    if (item.colors == null){
+      return white;
+    }
+    if (item.colors?.bkColor == null){
+      return white;
+    }
+    int color = hexStringToHexInt(item.colors?.bkColor as String);
+    return Color(color);
+  }
+
 
   static Color getColor(NsAppObject item) {
     if (item.colors == null){
