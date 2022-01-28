@@ -5,10 +5,11 @@ import '../../providers/settings_data.dart';
 
 import '../utils/endDrawer.dart';
 import '../utils/drawer.dart';
-import './client/search.dart';
+//import './client/search.dart';
 import '../app/widgets/client_info.dart';
 import '../app/widgets/user_info.dart';
 import '../utils/app_bar.dart';
+import 'widgets/setting.dart';
 import 'widgets/welcome.dart';
 
 class NsHomeScreenWithBottomTabs extends StatefulWidget {
@@ -38,11 +39,14 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
           widget = NsAppWelcome(settingData);
           break;
       case 1:
-          widget = NsClientInfoWidget(settingData?.getSelectedClientDetails());
+          widget = NsClientInfoWidget(settingData);
           break;
       case 2:
           widget = const NsUserInfoWidget();
           break;
+      case 3: 
+        widget = NsAppSettingWidget(settingData);
+        break;
       default:
          widget = Text(
             'Index $index: Info',
