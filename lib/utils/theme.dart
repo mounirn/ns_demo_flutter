@@ -40,7 +40,7 @@ ThemeData buildAppThemeForClient(NsAppClientDetails? client) {
       colorScheme: base.colorScheme.copyWith(
         primaryVariant: NsColorUtils.getBorderColor(client),
         primary: NsColorUtils.getHeaderColor(client),
-        onPrimary: NsColorUtils.getColor(client),
+        onPrimary: NsColorUtils.getTextColor(client),
         secondary: NsColorUtils.getFooterColor(client),
         error: NsColorUtils.getTitleColor(client),
        

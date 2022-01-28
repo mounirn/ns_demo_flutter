@@ -102,17 +102,33 @@ class NsColorUtils {
     return Color(color);
   }
 
-   static Color getFooterColor(NsAppObject item) {
+  static Color getFooterColor(NsAppObject? item) {
+    if (item == null) {
+      return white;
+    }
     if (item.colors == null){
-      return black;
+      return white;
     }
     if (item.colors?.footerColor == null){
-      return black;
+      return white;
     }
     int color = hexStringToHexInt(item.colors?.footerColor as String);
     return Color(color);
   }
 
+  static Color getFooterBackgroundColor(NsAppObject? item) {
+    if (item == null) {
+      return black;
+    }
+    if (item.colors == null){
+      return black;
+    }
+    if (item.colors?.footerBKColor == null){
+      return black;
+    }
+    int color = hexStringToHexInt(item.colors?.footerBKColor as String);
+    return Color(color);
+  }
   static Color getTitleColor(NsAppObject item) {
     if (item.colors == null){
       return red;

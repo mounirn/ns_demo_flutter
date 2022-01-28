@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ns_demo/utils/color_utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/settings_data.dart';
@@ -60,32 +61,6 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
     }
   
   }
-/*  static const List<Widget> _widgetOptions = <Widget>[
-    //  NsClientSearch(),
-   Text(
-      'Index 0: Welcome',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Client Info',
-      style: optionStyle,
-    ),
-      Text(
-      'Index 1: Client Info',
-      style: optionStyle,
-    ),
-  //  NsClientInfoWidget(),
-      Text(
-      'Index 2: User Info',
-      style: optionStyle,
-    ),
-  //  NsUserInfoWidget(),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
-  ];
-*/
 
   void _onItemTapped(int index) {
     setState(() {
@@ -96,7 +71,9 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
   @override
   Widget build(BuildContext context) {
     settingData = context.watch<NsAppSettingsData> ();
-
+    var client = settingData?.getSelectedClientDetails();
+    var footerColor = NsColorUtils.getFooterColor(client );
+    var footerBackgroundColor = NsColorUtils.getFooterBackgroundColor(client );
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _scaffoldKey,
@@ -109,30 +86,30 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
         child: getWidget(context, _selectedIndex)
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: 'Home',
-            backgroundColor: Colors.red,
+            backgroundColor: footerBackgroundColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: const Icon(Icons.business),
             label: 'Business',
-            backgroundColor: Colors.green,
+            backgroundColor: footerBackgroundColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.verified_user),
+            icon: const Icon(Icons.verified_user),
             label: 'User',
-            backgroundColor: Colors.purple,
+            backgroundColor: footerBackgroundColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: Colors.pink,
+            backgroundColor: footerBackgroundColor,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: footerColor,
         onTap: _onItemTapped,
       ),
     );
