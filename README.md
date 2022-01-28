@@ -118,6 +118,36 @@ See QuickFix tool <https://docs.flutter.dev/development/tools/flutter-fix>
 
 See <https://fluttercorner.com/flutter-how-to-fix-a-renderflex-overflowed-by-pixels-error>
 
+### Web Content 
+
+C:\NouriSolutions\trunk2022\flutter\ns_demo>flutter pub add web_node
+Resolving dependencies...
+  _fe_analyzer_shared 33.0.0 (34.0.0 available)
+  analyzer 3.1.0 (3.2.0 available)
+  built_value 8.1.3 (8.1.4 available)
++ csslib 0.17.1
++ html 0.15.0
+  js 0.6.3 (0.6.4 available)
+  path 1.8.0 (1.8.1 available)
+  source_span 1.8.1 (1.8.2 available)
+  test_api 0.4.3 (0.4.9 available)
++ universal_html 2.0.8
++ universal_io 2.0.4
++ web_node 0.2.1
++ webview_flutter 2.8.0 (3.0.0 available)
++ webview_flutter_android 2.8.2
++ webview_flutter_platform_interface 1.8.1
++ webview_flutter_wkwebview 2.7.1
+  win32 2.3.5 (2.3.8 available)
+Downloading web_node 0.2.1...
+Downloading universal_html 2.0.8...
+Downloading universal_io 2.0.4...
+Downloading webview_flutter 2.8.0...
+Downloading webview_flutter_wkwebview 2.7.1...
+Downloading webview_flutter_platform_interface 1.8.1...
+Downloading webview_flutter_android 2.8.2...
+
+
 ## Flutter commands
 
 ### flutter devices output

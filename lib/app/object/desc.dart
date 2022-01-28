@@ -1,32 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:universal_html/html.dart' as html;
+import 'package:web_node/web_node.dart';
+
 import '../../serializables/app_object.dart';
 
 class NsDescription extends StatelessWidget{
   final NsAppObject? object;
-  const NsDescription({Key? key,  required this.object}) : super(key: key);
+  const NsDescription(this.object, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-   return Padding( 
-     padding: const EdgeInsets.all(10), 
-     child: Row(
-        children: [
-        getObjectImage(),
-        Text(getName(), 
-          maxLines: 1, 
-          overflow: TextOverflow.ellipsis, 
-          style: TextStyle(
-            backgroundColor: getHeaderBackgroundColor(), 
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-            color: getHeaderTextColor()
-            ),
-          textAlign: TextAlign.center,
-        )
-      ])
-   );
+   return 
+    LimitedBox( maxHeight: 300, maxWidth: 600,
+      child: Padding (
+        padding: const EdgeInsets.all(10), 
+        child: WebNode(
+          backgroundColor: Colors.lightGreen,   
+          node: getHtmlElement(),
+        ),
+      )
+      )
+   ;
   }
 
+  getHtmlElement() {
+    if (object != null && object?.description != null  )  {
+      return html.DivElement()
+        ..innerHtml = object?.description
+        ..style.backgroundColor = 'lightyellow'
+        ..style.padding = '10px'
+        ..style.color = 'black'
+        ..style.textAlign = 'center'
+        ..style.width = '100%'
+        ..style.height = '300px';
+    } else {
+      return html.DivElement()
+        ..style.textAlign = 'center'
+        ..style.height = '300px'
+        ..append(
+          html.HeadingElement.h1()..appendText('Edit'),
+        );
+    }
+  }
+  getHtmlElementSample() {
+    return html.DivElement()
+        ..style.textAlign = 'center'
+        ..append(
+          html.HeadingElement.h1()..appendText('Hello world!'),
+        )
+        ..append(html.AnchorElement()
+          ..href = 'https://dart.dev/'
+          ..appendText('A link to dart.dev'));
+          
+  }
   /// Identifies the object color based on its colors props
   /// If it has color props use parent client props
   Color getHeaderBackgroundColor(){

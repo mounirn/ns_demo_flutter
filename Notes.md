@@ -8,17 +8,19 @@
     - Monitoring API Url
     - Logging API Url
   - Status
+    - view app server version information
   - Privacy
   - Terms and Conditions
 
-- App Settings View
-  - Clients List
-- User Preferences View
-  - Selected client
-
-- Home Page View
-  - Objects Search View
-  - Login Status
+- Home Page Tabs
+  - Clients Objects Search View
+  - Client Info
+    - client header
+  - User Info
+    - View logged in status
+    - links to login and logout
+  - Settings Info
+    - Ability to select from the app participating client business/organization
 
 ## Issues/TODO
 
