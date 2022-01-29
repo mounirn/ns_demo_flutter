@@ -1,11 +1,11 @@
 {
     "name": "ns_demo",
-    "short_name": "ns_demo",
+    "short_name": "NS Demo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "N@URI Solutions Flutter Demo",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
