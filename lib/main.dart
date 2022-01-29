@@ -10,6 +10,8 @@ import 'providers/user.dart';
 import 'utils/routes.dart';
 import 'utils/theme.dart';
 import 'providers/counter.dart';
+import 'screens/loading.dart';
+import 'screens/error.dart';
 
 void main() {
  
@@ -46,6 +48,7 @@ class MyAppStartup extends StatefulWidget {
 
 class _AppStartupState extends State<MyAppStartup> {
   bool loaded = false;
+  bool configError = false;
   @override
   initState()  {
     super.initState();
@@ -57,19 +60,20 @@ class _AppStartupState extends State<MyAppStartup> {
       return;
     }
     configModel.load(true).then( (ok) {
+      configError = ok;
+      loaded = true;
       if (ok == true){    
         settingsModel.configData = configModel;
         settingsModel.load().then( (ok) { 
           if (ok) {
             // update the them
             Navigator.pushNamed(context, '/home');
-            loaded = true;
           } else {
-            Navigator.pushNamed(context, '/error/setting');
+            Navigator.pushNamed(context, '/error');
           }
         });
       } else {
-        Navigator.pushNamed(context, '/error/config');
+        Navigator.pushNamed(context, '/error');
       }
     });
  
@@ -77,10 +81,12 @@ class _AppStartupState extends State<MyAppStartup> {
 
   @override
   Widget build(BuildContext context) {
-    var model = context.watch<NsAppSettingsData>();
-    if (model.isLoading) {
-      return const Text("Loading...");
+    if (loaded) {
+      return const NsAppLoadingScreen();
     } else {
+      if (configError == true) {
+        return const NsAppErrorScreen();
+      }
       return Container();
     }
   }
