@@ -8,6 +8,7 @@ class NsConsts {
   static const String C_CompanyName = 'N@URI Solutions';
   static const String  C_ConfigFile = "assets/config.json";
   static const String C_NsLogo = "assets/image/logo.png";
+  static const String C_NsObjectNoImage = "assets/image/object-no-image.png";
 
   static const TextStyle C_RedErrorStyle = 
     TextStyle(color: Colors.red, fontWeight: FontWeight.bold);

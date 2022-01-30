@@ -47,7 +47,7 @@ class NsTitle extends StatelessWidget{
 
   String getCodeAndName(){
    
-    return '${object?.code} ${object?.name }'.trim();
+    return '${object?.code ?? ''} ${object?.name }'.trim();
   }
 
   String getName(){

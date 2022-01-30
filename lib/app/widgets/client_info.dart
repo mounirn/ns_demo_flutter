@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
-import '../../app/object/header.dart';
 
 import '../../providers/settings_data.dart';
+import '../../app/object/logo.dart';
+import '../../app/object/title.dart';
+import '../../app/object/desc.dart';
 import 'divider.dart';
 
 class NsClientInfoWidget extends StatelessWidget {
-  final NsAppSettingsData? data; 
-  const NsClientInfoWidget(this.data, {Key? key}) : super(key: key);
+  final NsAppSettingsData? settings; 
+  const NsClientInfoWidget(this.settings, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var client = data?.getSelectedClientDetails();
+    var client = settings?.getSelectedClientDetails();
 
     if (client != null) {
       return Column(
         children: [ 
-          NsDivider(data),
-          NsHeader(object: client),  
+          NsLogo(client),
+          NsTitle(client),  
+          NsDivider(settings),
+          NsDescription(client),
+          NsDivider(settings), 
         ],
       );
     } else {
