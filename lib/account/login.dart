@@ -15,7 +15,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   LoginInfo formData = LoginInfo(); 
 
-  // TODO: Add text editing controllers (101)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,13 +25,13 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 80.0),
             Column(
               children: const <Widget>[
-                Image(image: AssetImage('/image/logo.png') ),
+                Image(image: AssetImage('assets/image/logo.png') ),
                 SizedBox(height: 16.0),
                 Text('N@URI Solutions'),
               ],
             ),
             const SizedBox(height: 120.0),
-            // TODO: Wrap Username with AccentColorOverride (103)
+
             TextField(
               decoration: const InputDecoration(
                 filled: true,

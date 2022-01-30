@@ -47,7 +47,7 @@ class NsSessionView extends StatelessWidget{
           semanticLabel: object?.fullName,);
       }
     }
-    return Image(image:  const AssetImage('image/object-no-image.png'), 
+    return Image(image:  const AssetImage('assets/image/object-no-image.png'), 
       height: 80, fit: BoxFit.scaleDown, semanticLabel: object != null? object?.fullName : '');
   }
 }

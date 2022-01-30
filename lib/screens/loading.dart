@@ -17,15 +17,19 @@ class NsAppLoadingScreen extends StatelessWidget {
       body: Container(
         color: Colors.yellow,
         child: Column(
-          children: [
+          children: const <Widget>[
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(32),
+                padding: EdgeInsets.all(32),
                 
               ),
             ),
-            const Divider(height: 4, color: Colors.black),
-
+            Divider(height: 4, color: Colors.black),
+            SizedBox(height: 80.0, 
+              child:
+                Image(image: AssetImage('assets/image/logo.png') ),
+                
+            ),
           ],
         ),
       ),

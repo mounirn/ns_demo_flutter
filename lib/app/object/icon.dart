@@ -18,7 +18,7 @@ class NsIcon extends StatelessWidget{
           semanticLabel: object?.name,);
       }
     }
-    return Image(image:  const AssetImage('image/object-no-image.png'), 
+    return Image(image:  const AssetImage('assets/image/object-no-image.png'), 
       height: 40, fit: BoxFit.scaleDown, semanticLabel: object != null? object?.name : '');
   }
 }

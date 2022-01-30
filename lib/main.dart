@@ -47,44 +47,41 @@ class MyAppStartup extends StatefulWidget {
 }
 
 class _AppStartupState extends State<MyAppStartup> {
-  bool loaded = false;
-  bool configError = false;
+  bool loadingConfig = true;
+  bool loadedConfig = false;
   @override
   initState()  {
     super.initState();
-    var configModel = context.read<NsAppConfigData>();
     var settingsModel = context.read<NsAppSettingsData>();
-    if (settingsModel.configData != null) { // if already loaded
-      loaded = true;
-      Navigator.pushNamed(context, '/home');
-      return;
-    }
-    configModel.load(true).then( (ok) {
-      configError = ok;
-      loaded = true;
-      if (ok == true){    
+    // load config file 
+    DefaultAssetBundle.of(context).loadString("assets/config.json").then( (data) {
+      var configModel = context.read<NsAppConfigData>();
+      loadedConfig = configModel.setupWith(data);
+      if (loadedConfig){    
         settingsModel.configData = configModel;
         settingsModel.load().then( (ok) { 
           if (ok) {
             // update the them
             Navigator.pushNamed(context, '/home');
           } else {
-            Navigator.pushNamed(context, '/error');
+            Navigator.pushNamed(context, '/error', 
+              arguments: { "error": "Unable to load settings"});
           }
         });
       } else {
         Navigator.pushNamed(context, '/error');
       }
-    });
+    }); 
+
  
   }
 
   @override
   Widget build(BuildContext context) {
-    if (loaded) {
+    if (loadingConfig == true) {
       return const NsAppLoadingScreen();
     } else {
-      if (configError == true) {
+      if (loadedConfig == false) {
         return const NsAppErrorScreen();
       }
       return Container();

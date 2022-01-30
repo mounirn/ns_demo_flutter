@@ -11,12 +11,25 @@ class NsAppConfigData with ChangeNotifier {
   static const String defaultRootUrl = "https://myOnlineObjects.com";
   bool isLoading = true;
   NsAppConfig? config;
-
+  Object? error;
   
   loadConfig() {
     rootBundle.loadString('config.json').then((configStr) {
       config = NsAppConfig.fromJson(json.decode(configStr));
     });
+  }
+
+  /// use this method to setup the configuration from data loaded through other means
+  /// Android loading assets requires using a build context
+  bool setupWith(String configData) {
+    var ok = false;
+    try {   
+       config = NsAppConfig.fromJson(json.decode(configData));
+       ok = config!= null;
+    } catch(e ){
+      error = e;
+    }
+    return ok;
   }
 
   Future<NsAppConfig?> loadConfigAsync({bool useAssetsBundle = false}) async {
