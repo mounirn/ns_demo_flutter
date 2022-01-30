@@ -30,6 +30,11 @@ class UserModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  setInvalid(bool valid) {
+    invalidLoginInfo = valid;
+    notifyListeners();
+  }
+
   bool isLoggedIn() {
     if (session == null) {
       return false;

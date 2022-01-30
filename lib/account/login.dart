@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ns_demo/app/widgets/divider.dart';
+
+
 import 'package:provider/provider.dart';
 import '../serializables/login_info.dart';
 import '../providers/user.dart';
+import '../providers/settings_data.dart';
+import '../utils/consts.dart';
 
 // https://codelabs.developers.google.com/codelabs/mdc-101-flutter#4
 
@@ -17,6 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var settings = context.read<NsAppSettingsData>();
+    var userModel = context.read<UserModel>();
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -25,9 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 80.0),
             Column(
               children: const <Widget>[
-                Image(image: AssetImage('assets/image/logo.png') ),
+                Image(image: AssetImage(NsConsts.C_NsLogo) ),
                 SizedBox(height: 16.0),
-                Text('N@URI Solutions'),
+                Text(NsConsts.C_CompanyName),
               ],
             ),
             const SizedBox(height: 120.0),
@@ -64,23 +71,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   child: const Text('NEXT'),
                   onPressed: () async {
-                     // 
-                    var userModel = context.read<UserModel>();
+                    // 
+                    if (formData.invalid() ){
+                      userModel.setInvalid(true);
+                      return;
+                    }
+
                     await userModel.login(formData.username!, formData.password!);
                     if (userModel.session != null && userModel.isLoggedIn()){
                       Navigator.pop(context);
                     }
                   },
                 ),
-                Consumer<UserModel>(
-                  builder: (context, model, child) => Text(
-                    model.invalidLoginInfo? "Invalid Login Info": "",
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                )
+           
               ],
             ),
-
+            NsDivider(settings),
+            Consumer<UserModel>(
+                builder: (context, model, child) => Text(
+                  model.invalidLoginInfo? "Please enter valid username and password": "",
+                  style: NsConsts.C_RedErrorStyle,
+                ),
+            )
           ],
         ),
       ),

@@ -16,4 +16,15 @@ class LoginInfo {
       _$LoginInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginInfoToJson(this);
+
+  bool invalid() {
+    if (username == null || username?.isEmpty == true){
+      return true;
+    }
+   
+    if (password == null || password?.isEmpty == true){
+      return true;
+    }
+    return false;
+  }
 }

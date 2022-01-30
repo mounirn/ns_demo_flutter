@@ -8,6 +8,7 @@ import 'providers/settings_data.dart';
 import 'providers/user.dart';
 
 import 'utils/routes.dart';
+import 'utils/consts.dart';
 import 'utils/theme.dart';
 import 'providers/counter.dart';
 import 'screens/loading.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     var model = context.watch<NsAppSettingsData>();
     return MaterialApp(
       routes: getAppRoutes(context),
-      title: 'M@URI Solutions Flutter Demo',
+      title: NsConsts.C_AppName,
       theme: buildAppThemeForClient(model.getSelectedClientDetails()),
       home: const MyAppStartup()
     );
@@ -54,7 +55,7 @@ class _AppStartupState extends State<MyAppStartup> {
     super.initState();
     var settingsModel = context.read<NsAppSettingsData>();
     // load config file 
-    DefaultAssetBundle.of(context).loadString("assets/config.json").then( (data) {
+    DefaultAssetBundle.of(context).loadString(NsConsts.C_ConfigFile).then( (data) {
       var configModel = context.read<NsAppConfigData>();
       loadedConfig = configModel.setupWith(data);
       if (loadedConfig){    
