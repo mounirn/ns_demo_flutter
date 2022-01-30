@@ -10,6 +10,7 @@ import '../sample/counter.dart';
 import '../sample/counter_provider.dart';
 import '../app/home_tabs.dart';
 import '../account/logout.dart';
+import '../screens/error.dart';
 
 getAppRoutes(BuildContext context) { 
  var ret = {
@@ -24,6 +25,7 @@ getAppRoutes(BuildContext context) {
         '/catalog': (context) => const CatalogScreen(),
         '/cart': (context) => const CartScreen(),
         '/app/settings' : (context) => const SettingsScreen(),
+        '/error' : (context) => const NsAppErrorScreen(),
         '/app/info' : (context) => const NsAppInfoScreen(),
   };
   return ret;
