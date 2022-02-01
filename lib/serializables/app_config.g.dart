@@ -17,6 +17,7 @@ NsAppConfig _$NsAppConfigFromJson(Map<String, dynamic> json) => NsAppConfig()
   ..appObjectId = json['appObjectId'] as int?
   ..code = json['code'] as String?
   ..appName = json['appName'] as String?
+  ..appVersion = json['appVersion'] as String?
   ..description = json['description'] as String?
   ..imageUrl = json['imageUrl'] as String?;
 
@@ -32,6 +33,7 @@ Map<String, dynamic> _$NsAppConfigToJson(NsAppConfig instance) =>
       'appObjectId': instance.appObjectId,
       'code': instance.code,
       'appName': instance.appName,
+      'appVersion': instance.appVersion,
       'description': instance.description,
       'imageUrl': instance.imageUrl,
     };

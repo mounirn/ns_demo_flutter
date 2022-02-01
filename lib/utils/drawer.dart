@@ -6,6 +6,8 @@ import 'package:ns_demo/providers/settings_data.dart';
 import 'package:ns_demo/providers/user.dart';
 import 'package:provider/provider.dart';
 
+import 'routes.dart';
+
 // Provides helper function to build an app drawer 
 Drawer buildAppDrawer(BuildContext context)  {
   return Drawer(
@@ -27,7 +29,7 @@ Drawer buildAppDrawer(BuildContext context)  {
           onTap: () {
              Navigator.pushNamed(
               context,
-                '/home',
+                routeHome,
             );
           },
         ),
@@ -93,22 +95,22 @@ Drawer buildAppDrawer(BuildContext context)  {
           )
         ),
         ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Settings'),
+          leading: Icon(Icons.get_app),
+          title: Text('About'),
           onTap: () {
             Navigator.pushNamed(
               context,
-                '/app/settings',
+                routeAppAbout,
             );
           },
         ),
         ListTile(
           leading: Icon(Icons.info_outline),
-          title: Text('Info'),
+          title: Text('Server Info'),
           onTap: () {
             Navigator.pushNamed(
               context,
-                '/app/info',
+                routeAppInfo,
             );
           },
         )
