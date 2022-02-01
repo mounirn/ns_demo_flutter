@@ -16,6 +16,7 @@ class NsAppConfig {
   int? appObjectId;
   String? code;
   String? appName;
+  String? appVersion;
   String? description;
   String? imageUrl;
 

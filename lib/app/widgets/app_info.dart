@@ -1,4 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ns_demo/app/widgets/divider.dart';
+
+
 import 'package:provider/provider.dart';
 
 import '../../providers/settings_data.dart';
@@ -6,6 +10,10 @@ import '../../providers/config_data.dart';
 import '../../services/result.dart';
 import '../../services/app_service.dart';
 import '../../serializables/app_info.dart';
+import '../../widgets/record_item.dart';
+import '../../widgets/hyperlink.dart';
+import '../../utils/consts.dart';
+
 import 'object_info.dart';
 import 'text_error.dart';
 import 'text_info.dart';
@@ -51,6 +59,7 @@ class _NsAppInfoWidgetState extends State<NsAppInfoWidget> {
   @override
   Widget build(BuildContext context) {
 
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -71,7 +80,14 @@ class _NsAppInfoWidgetState extends State<NsAppInfoWidget> {
                 onPressed: _refresh,
                 tooltip: 'Refresh Data',
                 child: const Icon(Icons.refresh),
-              ), // Thi,
+              ),
+              NsDivider(widget.settings),
+
+              const NsHyperLink(NsConsts.C_NsTermsUrl, "Terms & Conditions"),
+              const NsHyperLink(NsConsts.C_NsPrivacyUrl, "Privacy"),
+              const NsHyperLink(NsConsts.C_NsHelpUrl, "Help")
+            //  NsRecordItem("Platform OS Version", Platform.operatingSystemVersion),
+            //  NsRecordItem("Dart Version", Platform.version)
             ],
           ),
         )

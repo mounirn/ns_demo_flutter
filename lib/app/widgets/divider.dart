@@ -14,7 +14,7 @@ class NsDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     var client = data?.getSelectedClientDetails(); 
 
-    return Divider(color: NsColorUtils.getBorderColor(client), height: 10);
+    return Divider(color: NsColorUtils.getBorderColor(client), height: 3, thickness: 3);
     
   }
 }

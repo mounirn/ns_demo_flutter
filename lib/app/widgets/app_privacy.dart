@@ -1,6 +1,11 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:web_node/web_node.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+//import 'package:web_node/web_node.dart';
 
 
 /// Display a privacy policy web page 
@@ -11,8 +16,58 @@ class NsAppPrivacyWidget extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-   return SingleChildScrollView( child: 
-      Column( mainAxisAlignment: MainAxisAlignment.center,
+    bool _firstNavigate = true;
+    if (defaultTargetPlatform == TargetPlatform.android 
+        || defaultTargetPlatform == TargetPlatform.iOS ) {
+      return WebView(initialUrl: url,
+        javascriptMode: JavascriptMode.unrestricted,
+        navigationDelegate: (NavigationRequest request) async {
+          if (_firstNavigate) {
+            _firstNavigate = false;
+            return NavigationDecision.navigate;
+          }else {
+            await launch(request.url);
+            return NavigationDecision.prevent;
+          }
+        },
+      );
+    }
+    else {
+      return Center( 
+          child: 
+        ElevatedButton (
+         onPressed: () => launchURL(),
+         child: const Text("View")
+        )
+      );
+    }
+  }
+
+
+  onWebResourceError(WebResourceError error) {
+
+  }
+
+  getUrl() {
+    if (url == null) {
+      return "https://myOnlineObjects.com/home/privacy";
+    } else {
+      return url;
+    }
+  }
+
+  launchURL() async {
+    var _url = getUrl();
+    if (await canLaunch(_url)) {
+      await launch(_url);
+    } else {
+      // error handling 
+      throw 'Unable to launch $_url';
+    }
+  }
+
+  /*
+   Column( mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
         LimitedBox( maxHeight: 300, maxWidth: 600,
           child: Padding (
@@ -22,9 +77,8 @@ class NsAppPrivacyWidget extends StatelessWidget{
               )
             )
           )
-      ])
-    );
-  }
+      ]) 
+  */
   
   html.HtmlElement getHtmlElement() {
       final h1 = html.HeadingElement.h1();
