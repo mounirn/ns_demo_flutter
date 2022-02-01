@@ -11,10 +11,17 @@ import '../sample/counter_provider.dart';
 import '../app/home_tabs.dart';
 import '../account/logout.dart';
 import '../screens/error.dart';
+import '../screens/about.dart';
+
+// Defines the routes
+const String routeHome = '/home';
+const String routeError = '/error';
+const String routeAppAbout = '/app/about';
+const String routeAppInfo = '/app/info';
 
 getAppRoutes(BuildContext context) { 
  var ret = {
-        '/home': (context) => const NsHomeScreenWithBottomTabs(),
+        routeHome: (context) => const NsHomeScreenWithBottomTabs(),
         '/home/no/tabs': (context) => const HomeScreen(),
         '/sample/counter' : (context) => const CounterScreen(title:'Counter'),
         '/sample/counter/provider' : (context) => const CounterWithProviderScreen(),
@@ -25,8 +32,9 @@ getAppRoutes(BuildContext context) {
         '/catalog': (context) => const CatalogScreen(),
         '/cart': (context) => const CartScreen(),
         '/app/settings' : (context) => const SettingsScreen(),
-        '/error' : (context) => const NsAppErrorScreen(),
-        '/app/info' : (context) => const NsAppInfoScreen(),
+        routeError : (context) => const NsAppErrorScreen(),
+        routeAppAbout : (context) => const NsAppAboutScreen(),
+        routeAppInfo : (context) => const NsAppInfoScreen(),
   };
   return ret;
 }
