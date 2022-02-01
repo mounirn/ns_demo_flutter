@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'models/cart.dart';
 import 'models/catalog.dart';
+import 'providers/app_messages.dart';
 import 'providers/config_data.dart';
 import 'providers/settings_data.dart';
 import 'providers/user.dart';
@@ -54,22 +55,27 @@ class _AppStartupState extends State<MyAppStartup> {
   initState()  {
     super.initState();
     var settingsModel = context.read<NsAppSettingsData>();
+    var appMessages = context.read<NsAppMessages>();
     // load config file 
     DefaultAssetBundle.of(context).loadString(NsConsts.C_ConfigFile).then( (data) {
       var configModel = context.read<NsAppConfigData>();
       loadedConfig = configModel.setupWith(data);
       if (loadedConfig){    
+        appMessages.addSuccess("Loaded configuration");
         settingsModel.configData = configModel;
         settingsModel.load().then( (ok) { 
           if (ok) {
+            appMessages.addSuccess("Loaded Settings");
             // update the them
             Navigator.pushNamed(context, '/home');
           } else {
+            appMessages.addError("Failed to load settings");
             Navigator.pushNamed(context, '/error', 
               arguments: { "error": "Unable to load settings"});
           }
         });
       } else {
+        appMessages.addError("Failed to load config");
         Navigator.pushNamed(context, '/error');
       }
     }); 
@@ -99,6 +105,9 @@ class MyAppWithProviders extends StatelessWidget {
     // Using MultiProvider is convenient when providing multiple objects.
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (context) => NsAppMessages(),
+        ),
         ChangeNotifierProvider(
           create: (context) => NsAppConfigData(),
         ),

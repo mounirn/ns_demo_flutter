@@ -338,6 +338,12 @@ Tools & Devices
 Run "flutter help <command>" for more information about a command.
 Run "flutter help -v" for verbose help output, including less commonly used options.
 
+## Emulators 
+
+- flutter emulators (lists emulators defined)
+- flutter emulators --launch {emulator id} to start it
+- flutter devices 
+
 ## App Icons
 
 - Use <https://icon.kitchen>
