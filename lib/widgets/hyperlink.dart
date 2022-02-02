@@ -16,20 +16,10 @@ class NsHyperLink extends StatelessWidget {
     var hyperLinkStyle = NsConsts.C_HyperLinkStyle;
     
     return 
-      DefaultTextStyle(
-        style: hyperLinkStyle, 
-        child: Wrap(
-          spacing: 8.0, // gap between adjacent chips
-          runSpacing: 4.0,
-          children: [
-            GestureDetector(
-              child: Text(label, 
-                style: hyperLinkStyle
-              ),
-              onTap: _onClick
-            )
-          ],
-        )
+      TextButton( 
+        onPressed: _onClick, 
+        child: Text(label, style: hyperLinkStyle),
+      
       );
   }
 
