@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:ns_demo/app/widgets/divider.dart';
-
 
 import 'package:provider/provider.dart';
 
@@ -10,7 +9,7 @@ import '../../providers/config_data.dart';
 import '../../services/result.dart';
 import '../../services/app_service.dart';
 import '../../serializables/app_info.dart';
-import '../../widgets/record_item.dart';
+
 import '../../widgets/hyperlink.dart';
 import '../../utils/consts.dart';
 

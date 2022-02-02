@@ -52,7 +52,7 @@ class _NsClientsDropdownState extends State<NsClientsDropdown> {
       return [];
     }
    
-    var ret = widget.settings?.participatingClients.map<DropdownMenuItem<NsAppClient>>((NsAppClient value) {
+    var ret = widget.settings?.participatingClients?.map<DropdownMenuItem<NsAppClient>>((NsAppClient value) {
         return DropdownMenuItem<NsAppClient>(
           value: value,
           child: NsDropdownItem(value),

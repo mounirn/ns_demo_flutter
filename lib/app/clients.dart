@@ -72,13 +72,15 @@ class _MyListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var item = context.select<NsAppSettingsData, NsAppClient>(
+    var item = context.select<NsAppSettingsData, NsAppClient?>(
       // Here, we are only interested in the item at [index]. We don't care
       // about any other change.
-      (model) => model.getClientByIndex(index),
+      (model) => model.participatingClients?.elementAt(index),
     );
     var textTheme = Theme.of(context).textTheme.headline6;
-   
+    if (item == null) {
+      return Container();
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: LimitedBox(
