@@ -51,6 +51,6 @@ class NsAppClass extends NsAppObject {
   Map<String, dynamic> toJson() => _$NsAppClassToJson(this);
   
   @override toString() {
-    return '$id $clientId $name';
+    return "$clientId.$managerId.$id - $name - props: ${propertyDefinitions == null? 'none' : propertyDefinitions?.length} - collabs: ${collaborations == null? 'none' : collaborations?.length}";
   }
 }

@@ -5,7 +5,7 @@ import 'package:ns_demo/services/app_service.dart';
 
 void main() {
   test('check app Status', () async {
-    print("Testing /app/status:");
+    print("Testing api/app/status:");
     String rootUrl = "https://myOnlineObjects.com/api/";
     var service = NsAppService(rootUrl: rootUrl );
     var result = await service.getStatus();
@@ -22,7 +22,7 @@ void main() {
     
   });
   test('get app info', () async {
-    print("Testing /app/info:");
+    print("Testing api//app/info:");
     String rootUrl = "https://myOnlineObjects.com/api/";
     var service = NsAppService(rootUrl: rootUrl );
     var result = await service.getInfo();

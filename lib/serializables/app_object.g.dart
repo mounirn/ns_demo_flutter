@@ -116,6 +116,7 @@ NsAppObject _$NsAppObjectFromJson(Map<String, dynamic> json) => NsAppObject()
       : DateTime.parse(json['lastEditOn'] as String)
   ..lastEditFrom = json['lastEditFrom'] as String?
   ..displayOrder = json['displayOrder'] as int?
+  ..systemId = json['systemId'] as String?
   ..properties = (json['properties'] as List<dynamic>?)
       ?.map((e) => NsAppObjectProperty.fromJson(e as Map<String, dynamic>))
       .toList()
@@ -151,27 +152,9 @@ Map<String, dynamic> _$NsAppObjectToJson(NsAppObject instance) =>
       'lastEditOn': instance.lastEditOn?.toIso8601String(),
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
+      'systemId': instance.systemId,
       'properties': instance.properties?.map((e) => e.toJson()).toList(),
       'preferences': instance.preferences?.map((e) => e.toJson()).toList(),
       'colors': instance.colors?.toJson(),
       'address': instance.address?.toJson(),
-    };
-
-NsAppObjectsQuery _$NsAppObjectsQueryFromJson(Map<String, dynamic> json) =>
-    NsAppObjectsQuery()
-      ..ownerId = json['ownerId'] as int?
-      ..hasClassId = json['hasClassId'] as int?
-      ..hasBuiltInTypeId = json['hasBuiltInTypeId'] as int?
-      ..hasManagerId = json['hasManagerId'] as int?
-      ..hasCode = json['hasCode'] as String?
-      ..nameContains = json['nameContains'] as String?;
-
-Map<String, dynamic> _$NsAppObjectsQueryToJson(NsAppObjectsQuery instance) =>
-    <String, dynamic>{
-      'ownerId': instance.ownerId,
-      'hasClassId': instance.hasClassId,
-      'hasBuiltInTypeId': instance.hasBuiltInTypeId,
-      'hasManagerId': instance.hasManagerId,
-      'hasCode': instance.hasCode,
-      'nameContains': instance.nameContains,
     };

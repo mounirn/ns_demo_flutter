@@ -114,11 +114,18 @@ class NsAppObject {
   DateTime? lastEditOn;
   String? lastEditFrom;
   int? displayOrder;
+  String? systemId;
 
   List<NsAppObjectProperty>? properties;
   List<NsAppObjectPreference>? preferences;
   NsAppObjectColors? colors;
   NsAppObjectAddress? address;
+
+  @JsonKey(ignore: true)
+  Map<String, NsAppObjectPreference> prefsMap = <String, NsAppObjectPreference>{};
+  
+  @JsonKey(ignore: true)
+  Map<int, NsAppObjectProperty> propssMap = <int, NsAppObjectProperty>{};
 
   NsAppObject();
 
@@ -127,6 +134,7 @@ class NsAppObject {
 
   Map<String, dynamic> toJson() => _$NsAppObjectToJson(this);
   
+  NsAppObject.name(this.name);
 
   @override
   int get hashCode => id!;
@@ -135,24 +143,6 @@ class NsAppObject {
   bool operator ==(Object other) => other is NsAppObject && other.id == id;
 
   @override toString() {
-    return 'manager Id: $managerId $clientId.$id $name ($code) ${isActive == true? "Active": "Inactive"}';
+    return '$clientId.$managerId.$id.$systemId $name ($code) ${isActive == true? "Active": "Inactive"} ${isPublic == true? "Public": "Private"} prefs: ${preferences?.isNotEmpty == true? preferences?.length: 'none'} - props: ${properties?.isNotEmpty == true? properties?.length: 'none'}';
   }
-}
-
-@JsonSerializable(explicitToJson: true)
-class NsAppObjectsQuery {
-  
-  int? ownerId;
-  int? hasClassId;
-  int? hasBuiltInTypeId;
-  int? hasManagerId;
-  String? hasCode;
-  String? nameContains;
-
-  NsAppObjectsQuery();
-
-  factory NsAppObjectsQuery.fromJson(Map<String, dynamic> json) =>
-      _$NsAppObjectsQueryFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NsAppObjectsQueryToJson(this);
 }

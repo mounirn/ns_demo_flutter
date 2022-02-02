@@ -1,19 +1,14 @@
 import 'package:flutter/foundation.dart';
-import '../serializables/app_client.dart';
-import 'base_service.dart';
-import 'result.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../serializables/app_client.dart';
+import 'base_service.dart';
+import 'result.dart';
+import 'api.dart';
 
-abstract class IClientService{
-  Future<Result<List<NsAppClient>>> getClients();
 
-  Future<Result<NsAppClientDetails>> getDetails(int id);
-
-  Future<Result<NsAppClientDetails>> getMyTeam();
-}
-/// Provides functions checking the app status
+// rovides functions checking the app status
 class NsClientService extends NsBaseService implements IClientService{
 
   /// Constructor with the root server api
@@ -43,8 +38,9 @@ class NsClientService extends NsBaseService implements IClientService{
       }
     } catch (e) {
       super.lastError = e;
+      return Result(status: 1, excpetion: e);
     }
-    return Result(status: 1);
+    
   }
 
 
@@ -110,8 +106,9 @@ class NsClientService extends NsBaseService implements IClientService{
       }
     } catch (e) {
       super.lastError = e;
+      return Result(status: 1, excpetion: e);
     }
-    return Result(status: 1);
+    
   }
 
 @override
@@ -136,9 +133,9 @@ class NsClientService extends NsBaseService implements IClientService{
         return Result(status: response.statusCode, error: response.reasonPhrase );
       }
     } catch (e) {
-      super.lastError = e;
+       super.lastError = e;
+      return Result(status: 1, excpetion: e);
     }
-    return Result(status: 1);
   }
 
   // A function that converts a response body into a List<NsAppClient>.

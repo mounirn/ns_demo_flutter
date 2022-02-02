@@ -13,6 +13,7 @@ class NsConsts {
   static const String C_NsPrivacyUrl = "https://myonlineobjects.com/home/privacy";
   static const String C_NsHelpUrl = "https://myonlineobjects.com/home/help";
 
+  static const String C_NsRootApiTestingUrl = "https://myOnlineObjects.com/api/";
   static const TextStyle C_RedErrorStyle = 
     TextStyle(color: Colors.red, fontWeight: FontWeight.bold);
   static const TextStyle C_RecordLabelStyle = 

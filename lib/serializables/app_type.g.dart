@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_info.dart';
+part of 'app_type.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NsAppInfo _$NsAppInfoFromJson(Map<String, dynamic> json) => NsAppInfo()
+NsAppType _$NsAppTypeFromJson(Map<String, dynamic> json) => NsAppType()
   ..id = json['id'] as int?
   ..clientId = json['clientId'] as int?
   ..code = json['code'] as String?
@@ -44,10 +44,9 @@ NsAppInfo _$NsAppInfoFromJson(Map<String, dynamic> json) => NsAppInfo()
   ..address = json['address'] == null
       ? null
       : NsAppObjectAddress.fromJson(json['address'] as Map<String, dynamic>)
-  ..subDomain = json['subDomain'] as String?
-  ..url = json['url'] as String?;
+  ..desc = json['desc'] as String?;
 
-Map<String, dynamic> _$NsAppInfoToJson(NsAppInfo instance) => <String, dynamic>{
+Map<String, dynamic> _$NsAppTypeToJson(NsAppType instance) => <String, dynamic>{
       'id': instance.id,
       'clientId': instance.clientId,
       'code': instance.code,
@@ -73,6 +72,5 @@ Map<String, dynamic> _$NsAppInfoToJson(NsAppInfo instance) => <String, dynamic>{
       'preferences': instance.preferences?.map((e) => e.toJson()).toList(),
       'colors': instance.colors?.toJson(),
       'address': instance.address?.toJson(),
-      'subDomain': instance.subDomain,
-      'url': instance.url,
+      'desc': instance.desc,
     };

@@ -31,6 +31,7 @@ NsAppClient _$NsAppClientFromJson(Map<String, dynamic> json) => NsAppClient()
       : DateTime.parse(json['lastEditOn'] as String)
   ..lastEditFrom = json['lastEditFrom'] as String?
   ..displayOrder = json['displayOrder'] as int?
+  ..systemId = json['systemId'] as String?
   ..properties = (json['properties'] as List<dynamic>?)
       ?.map((e) => NsAppObjectProperty.fromJson(e as Map<String, dynamic>))
       .toList()
@@ -71,6 +72,7 @@ Map<String, dynamic> _$NsAppClientToJson(NsAppClient instance) =>
       'lastEditOn': instance.lastEditOn?.toIso8601String(),
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
+      'systemId': instance.systemId,
       'properties': instance.properties?.map((e) => e.toJson()).toList(),
       'preferences': instance.preferences?.map((e) => e.toJson()).toList(),
       'colors': instance.colors?.toJson(),
@@ -108,6 +110,7 @@ NsAppClientDetails _$NsAppClientDetailsFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['lastEditOn'] as String)
       ..lastEditFrom = json['lastEditFrom'] as String?
       ..displayOrder = json['displayOrder'] as int?
+      ..systemId = json['systemId'] as String?
       ..properties = (json['properties'] as List<dynamic>?)
           ?.map((e) => NsAppObjectProperty.fromJson(e as Map<String, dynamic>))
           .toList()
@@ -150,6 +153,7 @@ Map<String, dynamic> _$NsAppClientDetailsToJson(NsAppClientDetails instance) =>
       'lastEditOn': instance.lastEditOn?.toIso8601String(),
       'lastEditFrom': instance.lastEditFrom,
       'displayOrder': instance.displayOrder,
+      'systemId': instance.systemId,
       'properties': instance.properties?.map((e) => e.toJson()).toList(),
       'preferences': instance.preferences?.map((e) => e.toJson()).toList(),
       'colors': instance.colors?.toJson(),
