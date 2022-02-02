@@ -1,5 +1,16 @@
 # Release Notes
 
+## Feb 4, 2022
+
+- Class Information
+  - Selected Client
+
+- App Object Information
+  - Preferences
+
+- Client Information
+  - Notes
+
 ## Jan 28, 2022
 
 - App Server Information
@@ -10,17 +21,25 @@
   - Status
     - view app server version information
   - Privacy
+    - view in browser
   - Terms and Conditions
+    - view in browser
 
 - Home Page Tabs
-  - Clients Objects Search View
+  - Search View
+    - Selected Client Header
   - Client Info
-    - client header
+    - Logo
+    - Title: Code and Name
+    - Description (html view)
+
   - User Info
     - View logged in status
     - links to login and logout
+
   - Settings Info
-    - Ability to select from the app participating client business/organization
+    - Ability to select from the app participating client business/
+    organization
 
 - Objects Views
   - Title

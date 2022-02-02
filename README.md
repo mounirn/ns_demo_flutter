@@ -30,10 +30,23 @@ See <https://gallery.flutter.dev/#/>
 
 See <https://medium.com/flutter-community/11-things-to-remember-for-your-next-flutter-project-1c7c380895ca>
 
+## Building and running
+
+### Web (Chrome)
+
+- <!-- flutter run -d chrome --web-renderer html -->
+- flutter build web --web-renderer html --release
+
 ## Functions
 
 - Code the various flutter tutorials and samples for learning purpose
 - Basic app navigation: drawer, tab, and stack
+- Load app configuration and display in app about view
+- Load participating clients/teams info from server to use in settings
+- Setting screen to select from participating clients
+- Home page based on selected participating client/team
+- Search by selected client class, object code, name
+
 
 ## Components and Widgets Used
 
@@ -96,159 +109,7 @@ Right Drawer - https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html
 
 ## Issues
 
-### Deployment to simulator takes too long
-
-See QuickFix tool <https://docs.flutter.dev/development/tools/flutter-fix>
-
-### network images are not showing on the web
-
-- See <https://stackoverflow.com/questions/65653801/flutter-web-cant-load-network-image-from-another-domain>
-
-- flutter run -d chrome --web-renderer html // to run the app
-
-- flutter build web --web-renderer html --release // to generate a production build
-
-### Initializing providers on app startup
-
-- See <https://stackoverflow.com/questions/63520079/how-to-fetch-initial-data-using-provider-in-flutter-effectievly>
-
-- Use Service Locator: <https://pub.dev/packages/get_it>
-
-### A RenderFlex overflowed by 28 pixels on the right
-
-See <https://fluttercorner.com/flutter-how-to-fix-a-renderflex-overflowed-by-pixels-error>
-
-### Web Content 
-
-C:\NouriSolutions\trunk2022\flutter\ns_demo>flutter pub add web_node
-Resolving dependencies...
-  _fe_analyzer_shared 33.0.0 (34.0.0 available)
-  analyzer 3.1.0 (3.2.0 available)
-  built_value 8.1.3 (8.1.4 available)
-+ csslib 0.17.1
-+ html 0.15.0
-  js 0.6.3 (0.6.4 available)
-  path 1.8.0 (1.8.1 available)
-  source_span 1.8.1 (1.8.2 available)
-  test_api 0.4.3 (0.4.9 available)
-+ universal_html 2.0.8
-+ universal_io 2.0.4
-+ web_node 0.2.1
-+ webview_flutter 2.8.0 (3.0.0 available)
-+ webview_flutter_android 2.8.2
-+ webview_flutter_platform_interface 1.8.1
-+ webview_flutter_wkwebview 2.7.1
-  win32 2.3.5 (2.3.8 available)
-Downloading web_node 0.2.1...
-Downloading universal_html 2.0.8...
-Downloading universal_io 2.0.4...
-Downloading webview_flutter 2.8.0...
-Downloading webview_flutter_wkwebview 2.7.1...
-Downloading webview_flutter_platform_interface 1.8.1...
-Downloading webview_flutter_android 2.8.2...
-
-### Web View Android Build
-
-:\NouriSolutions\trunk2022\flutter\ns_demo>flutter run -d c7d8c7f807133535
-Launching lib\main.dart on SM T330NU in debug mode...
-E/FlutterFcmService( 9588): Fatal: failed to find callback
-C:\NouriSolutions\trunk2022\flutter\ns_demo\android\app\src\debug\AndroidManifest.xml Error:
-        uses-sdk:minSdkVersion 16 cannot be smaller than version 19 declared in library [:webview_flutter_android] C:\NouriSolutions\trunk2022\flutter\ns_demo\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml as the library might be using APIs not available in 16
-        Suggestion: use a compatible library with a minSdk of at most 16,
-                or increase this project's minSdk version to at least 19,
-                or use tools:overrideLibrary="io.flutter.plugins.webviewflutter" to 
-force usage (may lead to runtime failures)
-
-FAILURE: Build failed with an exception.
-
-- What went wrong:
-
-- Execution failed for task ':app:processDebugMainManifest'.
-
-> Manifest merger failed : uses-sdk:minSdkVersion 16 cannot be smaller than version 
-19 declared in library [:webview_flutter_android] C:\NouriSolutions\trunk2022\flutter\ns_demo\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml as the library might be using APIs not available in 16
-        Suggestion: use a compatible library with a minSdk of at most 16,
-                or increase this project's minSdk version to at least 19,
-                or use tools:overrideLibrary="io.flutter.plugins.webviewflutter" to 
-force usage (may lead to runtime failures)
-
-- Try:
-Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
-
-- Get more help at https://help.gradle.org
-
-BUILD FAILED in 6m 3s
-Running Gradle task 'assembleDebug'...                            392.7s
-
-The plugin webview_flutter_android requires a higher Android SDK version.
-Fix this issue by adding the following to the file
-C:\NouriSolutions\trunk2022\flutter\ns_demo\android\app\build.gradle:
-android {
-  defaultConfig {
-    minSdkVersion 19
-  }
-}
-
-### Android build errors
-
-Note: Some input files use or override a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-
-Running Gradle task 'assembleDebug'...                            139.3s
-√  Built build\app\outputs\flutter-apk\app-debug.apk.
-Installing build\app\outputs\flutter-apk\app.apk...                40.7s
-Syncing files to device SM T330NU...                               286ms
-
-Flutter run key commands.
-r Hot reload.
-R Hot restart.
-h List all available interactive commands.
-d Detach (terminate "flutter run" but leave application running).
-c Clear the screen
-q Quit (terminate the application on the device).
-
- Running with sound null safety
-
-### Loading assets error
-
-An Observatory debugger and profiler on SM T330NU is available at:
-http://127.0.0.1:29170/dyc36ZrNEps=/
-E/flutter (28978): [ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Unable to load asset: config.json
-E/flutter (28978): #0      PlatformAssetBundle.load (package:flutter/src/services/asset_bundle.dart:237:7)
-E/flutter (28978): <asynchronous suspension>
-E/flutter (28978): #1      AssetBundle.loadString (package:flutter/src/services/asset_bundle.dart:72:27)
-E/flutter (28978): <asynchronous suspension>
-E/flutter (28978): #2      NsAppConfigData.loadConfigAsync (package:ns_demo/providers/config_data.dart:24:23)
-E/flutter (28978): <asynchronous suspension>
-E/flutter (28978): #3      NsAppConfigData.load (package:ns_demo/providers/config_data.dart:40:5)
-E/flutter (28978): <asynchronous suspension>
-E/flutter (28978):
-The Flutter DevTools debugger and profiler on SM T330NU is available at:
-http://127.0.0.1:9102?uri=http://127.0.0.1:29170/dyc36ZrNEps=/
-I/Timeline(28978): Timeline: Activity_idle id: android.os.BinderProxy@167cab56 time:1484464199
-
-### Dart Error: error: import of dart:mirrors is not supported i import of dart:mirrors is not supported in the current Dart runtime
-
-Installing build\app\outputs\flutter-apk\app.apk...                48.2s
-E/flutter (32417): [ERROR:flutter/shell/common/shell.cc(94)] Dart Error: error: import of dart:mirrors is not supported i import of dart:mirrors is not supported in the current Dart runtime
-E/flutter (32417): [ERROR:flutter/runtime/dart_isolate.cc(177)] Could not prepare isolate.re isolate.                                                                     create root isolate.
-E/flutter (32417): [ERROR:flutter/runtime/runtime_controller.cc(384)] Could notengine with configuration. create root isolate.
-E/flutter (32417): [ERROR:flutter/shell/common/shell.cc(574)] Could not launch 
-engine with configuration.
-Error connecting to the service protocol: failed to connect to
-http://127.0.0.1:1500/EHjwNZzv2z4=/
-
-### Deprecated API error
-
-Running Gradle task 'assembleDebug'...       Note: Some input files use or override a deprecated API.
-Running Gradle task 'assembleDebug'...       Note: Recompile with -Xlint:deprecation for details.
-Running Gradle task 'assembleDebug'...                                 /
-
-Try flutter build ios/android --debug (or --profile or --release)
-
-### Font Manifest and assets error
-
-Font manifest does not exist at `assets/FontManifest.json` – ignoring.
+See Issues&Solutions.md file
 
 
 ## Flutter commands
@@ -343,20 +204,3 @@ Run "flutter help -v" for verbose help output, including less commonly used opti
 - flutter emulators (lists emulators defined)
 - flutter emulators --launch {emulator id} to start it
 - flutter devices 
-
-## App Icons
-
-- Use <https://icon.kitchen>
-
-## Getting Started with flutter
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
