@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:ns_demo/utils/color_utils.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/settings_data.dart';
-
+import '../providers/settings_data.dart';
+import '../providers/user.dart';
 import '../utils/endDrawer.dart';
 import '../utils/drawer.dart';
-//import './client/search.dart';
 import '../app/widgets/client_info.dart';
 import '../app/widgets/user_info.dart';
 import '../utils/app_bar.dart';
+import 'object/preferences.dart';
 import 'widgets/setting.dart';
 import 'widgets/welcome.dart';
 
@@ -22,6 +23,8 @@ class NsHomeScreenWithBottomTabs extends StatefulWidget {
 
 class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs> {
   NsAppSettingsData? settingData;
+  
+  UserModel? user;
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -40,13 +43,17 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
           widget = NsAppWelcome(settingData);
           break;
       case 1:
-          widget = NsClientInfoWidget(settingData);
+          widget = NsClientInfoWidget(settingData, user: user);
           break;
       case 2:
           widget = const NsUserInfoWidget();
           break;
       case 3: 
         widget = NsAppSettingWidget(settingData);
+        break;
+      case 4: 
+        widget = NsPrefencesWidget(
+            settingData?.getSelectedClientDetails(), settingData, user);
         break;
       default:
          widget = Text(
@@ -71,6 +78,8 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
   @override
   Widget build(BuildContext context) {
     settingData = context.watch<NsAppSettingsData> ();
+    user = context.watch<UserModel>();
+    _widgetsMap.clear(); // clear after each refresh
     var client = settingData?.getSelectedClientDetails();
     var footerColor = NsColorUtils.getFooterColor(client );
     var footerBackgroundColor = NsColorUtils.getFooterBackgroundColor(client );
@@ -97,6 +106,7 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
             label: 'Business',
             backgroundColor: footerBackgroundColor,
           ),
+      
           BottomNavigationBarItem(
             icon: const Icon(Icons.verified_user),
             label: 'User',
@@ -105,6 +115,11 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
             label: 'Settings',
+            backgroundColor: footerBackgroundColor,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.room_preferences),
+            label: 'Preferences',
             backgroundColor: footerBackgroundColor,
           ),
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'app/home_tabs.dart';
 import 'models/cart.dart';
 import 'models/catalog.dart';
 import 'providers/app_messages.dart';
@@ -8,6 +9,7 @@ import 'providers/config_data.dart';
 import 'providers/settings_data.dart';
 import 'providers/user.dart';
 
+import 'serializables/app_object.dart';
 import 'utils/routes.dart';
 import 'utils/consts.dart';
 import 'utils/theme.dart';
@@ -51,6 +53,7 @@ class MyAppStartup extends StatefulWidget {
 class _AppStartupState extends State<MyAppStartup> {
   bool loadingConfig = true;
   bool loadedConfig = false;
+  bool loadedSetting = false;
   @override
   initState()  {
     super.initState();
@@ -60,23 +63,26 @@ class _AppStartupState extends State<MyAppStartup> {
     DefaultAssetBundle.of(context).loadString(NsConsts.C_ConfigFile).then( (data) {
       var configModel = context.read<NsAppConfigData>();
       loadedConfig = configModel.setupWith(data);
+      loadingConfig = false;
       if (loadedConfig){    
         appMessages.addSuccess("Loaded configuration");
         settingsModel.configData = configModel;
         settingsModel.load().then( (ok) { 
-          if (ok) {
+          loadedSetting = ok;
+          if (ok == true) {
             appMessages.addSuccess("Loaded Settings");
             // update the them
             Navigator.pushNamed(context, '/home');
           } else {
             appMessages.addError("Failed to load settings");
             Navigator.pushNamed(context, '/error', 
-              arguments: { "error": "Unable to load settings"});
+              arguments: NsAppObject.name("Unable to load settings"));
           }
         });
       } else {
         appMessages.addError("Failed to load config");
-        Navigator.pushNamed(context, '/error');
+        Navigator.pushNamed(context, '/error', 
+          arguments: NsAppObject.name("Unable to load config"));
       }
     }); 
 
@@ -88,8 +94,11 @@ class _AppStartupState extends State<MyAppStartup> {
     if (loadingConfig == true) {
       return const NsAppLoadingScreen();
     } else {
-      if (loadedConfig == false) {
+      if (loadedConfig == false || loadedSetting == false) {
         return const NsAppErrorScreen();
+      }
+      if (loadedConfig == true && loadedSetting == true) {
+        return const NsHomeScreenWithBottomTabs();
       }
       return Container();
     }
