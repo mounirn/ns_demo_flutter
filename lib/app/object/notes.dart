@@ -6,19 +6,29 @@ import 'package:html/parser.dart' as parser;
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../providers/app_messages.dart';
+import '../../providers/settings_data.dart';
+
 import 'package:web_node/web_node.dart';
 import '../../serializables/app_object.dart';
+import '../../models/object_helper.dart';
 
-class NsDescription extends StatelessWidget{
+/// Diisplays any notes stored in preferences
+class NsNotes extends StatelessWidget{
+  final NsAppSettingsData? settings;
   final NsAppObject? object;
   final double maxHeight;
-  const NsDescription(this.object,  {Key? key, this.maxHeight = 300}) : super(key: key);
+  final String backgroundColor;
+  const NsNotes(this.object, {Key? key, 
+    this.settings,
+    this.maxHeight = 200, 
+    this.backgroundColor = 'lightyellow'}) 
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     
     return 
-      LimitedBox( maxHeight: maxHeight, maxWidth: 600,
+      LimitedBox( maxHeight: maxHeight,
         child: Padding (
           padding: const EdgeInsets.all(10), 
           child: getView(context),
@@ -61,10 +71,14 @@ class NsDescription extends StatelessWidget{
     );
   }
 
+  NsAppObjectPreference? getPref(String key) {
+    return object?.getPref(key);
+  }
 
   String getHtmlDocumentBody() {
-    if (object != null && object?.description != null  )  {
-      var p = parser.HtmlParser(object?.description);
+    var pref = getPref('Notes');
+    if (pref  != null  )  {
+      var p = parser.HtmlParser(pref.value);
       var doc = p.parse();
       var body = doc.body;
       var innerHtml = body?.innerHtml;
@@ -79,15 +93,14 @@ class NsDescription extends StatelessWidget{
     var body = getHtmlDocumentBody();
     return html.DivElement()
         ..innerHtml = body
-        ..style.backgroundColor = 'lightyellow'
+        ..style.backgroundColor = backgroundColor
         ..style.padding = '10px'
         ..style.color = 'black'
         ..style.textAlign = 'center'
         ..style.width = '100%'
         ..style.height = '100px'
-        ..style.overflowY = 'scroll'
-        // ..style.maxHeight = '300px'
-        ;
+        ..style.overflowY = 'scroll' 
+      ;
   }
 /*
   getHtmlElementSample() {

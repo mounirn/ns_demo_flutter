@@ -53,31 +53,3 @@ class NsHeader extends StatelessWidget{
     }
   }
 }
-
-/* Sample code: 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: LimitedBox(
-        maxHeight: 48,
-        child: Row(
-          children: [
-            AspectRatio(
-              aspectRatio: 1,
-              child: 
-                item.imageUrl == null || item.imageUrl!.isEmpty? 
-                  Container(
-                    color: Colors.blue,
-                  ) :
-                  Image.network(item.imageUrl!)
-            ),
-            const SizedBox(width: 24),
-            Expanded(
-              child: Text(item.name!, style: textTheme),
-            ),
-            const SizedBox(width: 24),
-            _SelectButton(item: item),
-          ],
-        ),
-      ),
-    );
-    */
