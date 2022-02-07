@@ -11,7 +11,7 @@ import 'divider.dart';
 
 class NsClientInfoWidget extends StatelessWidget {
   final NsAppSettingsData? settings; 
-  final UserModel? user;
+  final NsUserModel? user;
 
   const NsClientInfoWidget(this.settings, {Key? key, this.user}) : super(key: key);
 

@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     var settings = context.read<NsAppSettingsData>();
-    var userModel = context.read<UserModel>();
+    var userModel = context.read<NsUserModel>();
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             NsDivider(settings),
-            Consumer<UserModel>(
+            Consumer<NsUserModel>(
                 builder: (context, model, child) => Text(
                   model.invalidLoginInfo? "Please enter valid username and password": "",
                   style: NsConsts.C_RedErrorStyle,

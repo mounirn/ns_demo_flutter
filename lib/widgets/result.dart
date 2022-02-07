@@ -31,9 +31,9 @@ class NsResultWidget extends StatelessWidget {
   }
 
   getExceptionString() {
-    if (result == null || result?.execption == null){
+    if (result == null || result?.exception == null){
       return '';
     }
-    return result?.execption?.toString();
+    return result?.exception?.toString();
   }
 }

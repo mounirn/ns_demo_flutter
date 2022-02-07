@@ -1,8 +1,19 @@
-# ns_demo
+# NS Flutter Client - Demo
 
 A demo Flutter project using the My Online Objects system backend.
 
-## Requirements
+## Features
+
+- Select from the system participating teams
+- Browse team information by class/built-in type
+- Search by code, name, and status  
+- Browse system information/built-in types
+- View object details based on class/type definitions
+- Enforce security policies (view, edit, delete) at the object and field levels
+- Manage assigned objects
+- Edit object information depending on defined permissions
+
+## System Requirements
 
 Environment Setup:
 
@@ -47,6 +58,24 @@ See <https://medium.com/flutter-community/11-things-to-remember-for-your-next-fl
 - Home page based on selected participating client/team
 - Search by selected client class, object code, name
 
+## Flutter Architecture/Framework
+
+Learn about the followings:
+
+- Foundation: includes the core classes common to all UI designs
+  - ChangeNotifier
+
+Choose from the following options for the screen UI designs
+
+- Material: match your brand across platform
+- Cupertino: iOS look and feel
+- Fluent: MS Windows support (as of Flutter version 2.10)
+
+Understand the followings:
+
+- Widgets
+- Navigation
+- Rendering, Painting, Gestures
 
 ## Components and Widgets Used
 
@@ -74,7 +103,12 @@ See <https://docs.flutter.dev/development/data-and-backend/state-mgmt/simple>
 
 See <https://api.flutter.dev/flutter/material/FlatButton-class.html>
 
-### Material Module
+## Local Data Storage
+
+- realm
+- SQLite
+
+### Material Design
 
 This is the package flutter/material.dart
 
@@ -111,7 +145,6 @@ Right Drawer - https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html
 
 See Issues&Solutions.md file
 
-
 ## Flutter commands
 
 ### flutter devices output
@@ -137,7 +170,6 @@ Examples:
 - flutter run -d chrome (run on chrome)
     --> OK
 - flutter run -d chrome --web-renderer html
-
 
 ## flutter -h
 
@@ -199,8 +231,12 @@ Tools & Devices
 Run "flutter help <command>" for more information about a command.
 Run "flutter help -v" for verbose help output, including less commonly used options.
 
-## Emulators 
+## Emulators
 
 - flutter emulators (lists emulators defined)
 - flutter emulators --launch {emulator id} to start it
 - flutter devices 
+
+## Deployment
+
+- Code Magic <https://codemagic.io>

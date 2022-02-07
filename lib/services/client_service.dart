@@ -38,7 +38,7 @@ class NsClientService extends NsBaseService implements IClientService{
       }
     } catch (e) {
       super.lastError = e;
-      return Result(status: 1, excpetion: e);
+      return Result(status: 1, exception: e);
     }
     
   }
@@ -106,7 +106,7 @@ class NsClientService extends NsBaseService implements IClientService{
       }
     } catch (e) {
       super.lastError = e;
-      return Result(status: 1, excpetion: e);
+      return Result(status: 1, exception: e);
     }
     
   }
@@ -134,7 +134,7 @@ class NsClientService extends NsBaseService implements IClientService{
       }
     } catch (e) {
        super.lastError = e;
-      return Result(status: 1, excpetion: e);
+      return Result(status: 1, exception: e);
     }
   }
 

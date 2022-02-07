@@ -73,7 +73,7 @@ Drawer buildAppDrawer(BuildContext context)  {
           },
         ),
       
-        Consumer<UserModel>(
+        Consumer<NsUserModel>(
           builder: (context, model, child) => Container(
             child: model.isLoggedIn() ? ListTile(
               leading: Icon(Icons.lock),
@@ -106,11 +106,11 @@ Drawer buildAppDrawer(BuildContext context)  {
         ),
         ListTile(
           leading: Icon(Icons.info_outline),
-          title: Text('Server Info'),
+          title: Text('System Info'),
           onTap: () {
             Navigator.pushNamed(
               context,
-                routeAppInfo,
+                cRouteSystemInfo,
             );
           },
         )

@@ -21,7 +21,7 @@ class NsAppObjectInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var client = settings?.getSelectedClientDetails();
-    var user = context.watch<UserModel>();
+    var user = context.watch<NsUserModel>();
 
     if (data != null) {
       return Column(children: [ 

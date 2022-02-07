@@ -6,10 +6,10 @@ part 'app_object.g.dart';
 /// {"id":4,"appObjectId":2,"propertyId":11650,"value":"fa878ced-75f3-42a9-a53f-5e5ecfaa01df"}
 @JsonSerializable(explicitToJson: true)
 class NsAppObjectProperty {
-  int id;
-  int appObjectId;
-  int propertyId;
-  String value;
+  int? id;
+  int? appObjectId;
+  int? propertyId;
+  String? value;
   NsAppObjectProperty(this.id, this.appObjectId, this.propertyId, this.value);
  
  factory NsAppObjectProperty.fromJson(Map<String, dynamic> json) =>
@@ -23,12 +23,12 @@ class NsAppObjectProperty {
 /// {"id":2167,"appObjectId":1,"key":"IndustryId","baseType":10103,"htmlType":0,"value":"10302"}
 @JsonSerializable(explicitToJson: true)
 class NsAppObjectPreference {
-  int id;
-  int appObjectId;
-  String key;
-  String value;
-  int baseType;
-  int htmlType;
+  int? id;
+  int? appObjectId;
+  String? key;
+  String? value;
+  int? baseType;
+  int? htmlType;
 
   NsAppObjectPreference(this.id, this.appObjectId, this.key, this.value, this.baseType, this.htmlType);
  

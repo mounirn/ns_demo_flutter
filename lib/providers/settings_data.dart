@@ -103,8 +103,15 @@ class NsAppSettingsData with ChangeNotifier {
      var result = await service.getDetails(id);
      if (result.status == 0 && result.data != null) {
          _clientDetails[id] = result.data!;
+
+         // load classes
+
          return;
      } 
+  }
+
+  getTypeClass(int typeId) {
+    
   }
   
   /// sets the current selected client 
@@ -132,6 +139,16 @@ class NsAppSettingsData with ChangeNotifier {
   /// Fetches selected client details from map
   NsAppClientDetails? getSelectedClientDetails(){
     var id = selectedClient?.id!;
+    if (_clientDetails.containsKey(id)){
+      return _clientDetails[id];
+    } else {
+      return null;
+    }
+  }
+
+  /// Fetches main system client details
+  NsAppClientDetails? getMainSystemtClientDetails(){
+    var id = 1;
     if (_clientDetails.containsKey(id)){
       return _clientDetails[id];
     } else {

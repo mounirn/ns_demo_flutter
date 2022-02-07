@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:ns_demo/app/widgets/divider.dart';
 
 import 'package:provider/provider.dart';
 
@@ -9,6 +8,8 @@ import '../../providers/config_data.dart';
 import '../../services/result.dart';
 import '../../services/app_service.dart';
 import '../../serializables/app_info.dart';
+import '../../app/object/hyperlink_learn_more.dart';
+import '../../app/widgets/divider.dart';
 
 import '../../widgets/hyperlink.dart';
 import '../../utils/consts.dart';
@@ -81,7 +82,9 @@ class _NsAppInfoWidgetState extends State<NsAppInfoWidget> {
                 child: const Icon(Icons.refresh),
               ),
               NsDivider(widget.settings),
-
+              NsHyperLinkLearnMore(object),
+              NsDivider(widget.settings),
+        
               const NsHyperLink(NsConsts.C_NsTermsUrl, "Terms & Conditions"),
               const NsHyperLink(NsConsts.C_NsPrivacyUrl, "Privacy"),
               const NsHyperLink(NsConsts.C_NsHelpUrl, "Help")

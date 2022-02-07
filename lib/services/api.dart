@@ -40,6 +40,14 @@ abstract class IObjectService{
     /// fectches objects matching any team object by code
     Future<Result<NsAppObjectQueryResult>> getByCode(String code);
 
+    /// fetches object by the defined server built-in type ids for a given client
+    Future<Result<NsAppObjectQueryResult>> getByType(int typeId, int clientId);
+
+    /// fetches object by the defined class for a given client
+    Future<Result<NsAppObjectQueryResult>> getByClass(int classId, int clientId);
+
     /// Fetches object by a given query
     Future<Result<NsAppObjectQueryResult>> run(NsAppObjectsQuery query);
+
+    
 }

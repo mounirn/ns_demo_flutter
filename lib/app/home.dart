@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var userModel = context.watch<UserModel>();
+    var userModel = context.watch<NsUserModel>();
     var settingsModel = context.watch<NsAppSettingsData>();
 
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

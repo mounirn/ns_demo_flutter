@@ -8,6 +8,8 @@ class NsColorUtils {
   static const Color white = Color.fromARGB(255, 255, 255, 255);
   static const Color red = Color.fromARGB(255, 255, 0, 0);
   static const Color blue = Color.fromARGB(255, 0, 0, 255);
+  static const Color green = Color.fromARGB(255, 0, 255, 0);
+  static const Color yellow = Color.fromARGB(255, 255, 255, 0);
 
   static final RegExp hexExp = RegExp(
     r'^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$',

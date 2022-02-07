@@ -22,4 +22,9 @@ class NsConsts {
     TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 18);
   static const TextStyle C_HyperLinkStyle = 
     TextStyle(color: Colors.blue, fontSize: 18, decoration: TextDecoration.underline);
+
+  /// max int value -- dart int max depends on target platform
+  static const int maxIntLongValue = 0xFFFFFFFFFFF;
+  static const int maxIntValue = 0xFFFFFFFF; // unsigned
+    // https://stackoverflow.com/questions/57101451/how-to-get-the-maxium-value-of-an-integer-in-dart
 }

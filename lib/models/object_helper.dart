@@ -20,8 +20,18 @@ extension NsAppObjectExtensions on NsAppObject {
       return;
     }
     preferences?.forEach( (pref) {
-      prefsMap[pref.key] = pref;
+      if (pref.key != null){
+        prefsMap[pref.key!] = pref;
+      }
     });
     
+  }
+
+  bool get hasNoImage{
+    if (imageUrl == null || imageUrl?.isEmpty == true)
+    {
+      return true;
+    }
+    return false;
   }
 }

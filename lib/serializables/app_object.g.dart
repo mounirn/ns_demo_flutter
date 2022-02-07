@@ -8,10 +8,10 @@ part of 'app_object.dart';
 
 NsAppObjectProperty _$NsAppObjectPropertyFromJson(Map<String, dynamic> json) =>
     NsAppObjectProperty(
-      json['id'] as int,
-      json['appObjectId'] as int,
-      json['propertyId'] as int,
-      json['value'] as String,
+      json['id'] as int?,
+      json['appObjectId'] as int?,
+      json['propertyId'] as int?,
+      json['value'] as String?,
     );
 
 Map<String, dynamic> _$NsAppObjectPropertyToJson(
@@ -26,12 +26,12 @@ Map<String, dynamic> _$NsAppObjectPropertyToJson(
 NsAppObjectPreference _$NsAppObjectPreferenceFromJson(
         Map<String, dynamic> json) =>
     NsAppObjectPreference(
-      json['id'] as int,
-      json['appObjectId'] as int,
-      json['key'] as String,
-      json['value'] as String,
-      json['baseType'] as int,
-      json['htmlType'] as int,
+      json['id'] as int?,
+      json['appObjectId'] as int?,
+      json['key'] as String?,
+      json['value'] as String?,
+      json['baseType'] as int?,
+      json['htmlType'] as int?,
     );
 
 Map<String, dynamic> _$NsAppObjectPreferenceToJson(

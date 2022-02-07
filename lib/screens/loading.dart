@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 import '../providers/settings_data.dart';
 import '../widgets/card_check.dart';
 import '../widgets/result.dart';
-import '../app/home_tabs.dart';
+
+import 'home_tabs.dart';
 /// Displays a loading screen
 class NsAppLoadingScreen extends StatelessWidget {
   const NsAppLoadingScreen({Key? key}) : super(key: key);

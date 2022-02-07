@@ -41,7 +41,7 @@ class _LogoutScreenState extends State<LogoutScreen> {
                   child: const Text('NEXT'),
                   onPressed: () async {
                      // 
-                    var userModel = context.read<UserModel>();
+                    var userModel = context.read<NsUserModel>();
                     logoutSuccess = await userModel.logout();
 
                   },

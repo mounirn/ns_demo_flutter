@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:ns_demo/widgets/loading.dart';
 
+import '../../models/object_helper.dart';
 import 'package:provider/provider.dart';
-import '../providers/settings_data.dart';
-import '../serializables/app_client.dart';
-class ClientsList extends StatelessWidget {
-  const ClientsList({Key? key}) : super(key: key);
+import '../../providers/settings_data.dart';
+import '../../serializables/app_client.dart';
+class NsAppClients extends StatelessWidget {
+  const NsAppClients({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var model = context.read<NsAppSettingsData>();
+    if (model.participatingClients == null){
+      return const Center(
+        child: NsLoadingWidget("")
+      );
+    }
     return CustomScrollView(
         slivers: [
          // _MyAppBar(),
           const SliverToBoxAdapter(child: SizedBox(height: 12)),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                (context, index) => _MyListItem(index)),
+                (context, index) => _MyListItem(index),
+                childCount: model.participatingClients?.length
+            ),   
           ),
         ],
       );
@@ -90,7 +100,7 @@ class _MyListItem extends StatelessWidget {
             AspectRatio(
               aspectRatio: 1,
               child: 
-                item.imageUrl == null || item.imageUrl!.isEmpty? 
+                item.hasNoImage == true? 
                   Container(
                     color: Colors.blue,
                   ) :

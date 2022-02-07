@@ -616,3 +616,561 @@ W/.nouris.ns_dem(12112): Reducing the number of considered missed Gc histogram w
 I/Process (12112): Sending signal. PID: 12112 SIG: 9
 Lost connection to device.
 
+## lost connection to device
+
+An Observatory debugger and profiler on SM T330NU is available at:
+http://127.0.0.1:3045/KewP7-Jr1Tc=/
+I/Timeline(28518): Timeline: Activity_idle id: android.os.BinderProxy@247c18c4 time:1919382296
+The Flutter DevTools debugger and profiler on SM T330NU is available at:
+http://127.0.0.1:9102?uri=http://127.0.0.1:3045/KewP7-Jr1Tc=/
+I/art     (28518): Explicit concurrent mark sweep GC freed 8900(590KB) AllocSpace objects, 5(80KB) LOS objects, 53% free, 3MB/7MB, paused 1.149ms total 98.982ms
+Lost connection to device.
+
+## WebNode /WebView Disallowed attribute
+
+>> See <https://stackoverflow.com/questions/62840032>
+
+>flutter-web-htmlelementview-removing-disallowed-attribute
+Removing disallowed attribute <P style="text-align: center;">
+Removing disallowed attribute <P style="text-align: center;">
+Removing disallowed attribute <SPAN style="font-family: Frutiger, Futura, 'Gills Sans',
+Helvetica, Lucida, Optima, Palatino, 'Agfa Rotis', Arial, 'and Univers'; font-size: 13.6px;">   
+Removing disallowed attribute <P style="text-align: center;">
+Removing disallowed attribute <A href="http://company.nouris.net/#solutions">
+Removing disallowed attribute <SPAN style="font-family: Frutiger, Futura, 'Gills Sans',
+Helvetica, Lucida, Optima, Palatino, 'Agfa Rotis', Arial, 'and Univers'; font-size: 13.6px;">   
+Removing disallowed attribute <P style="text-align: center;">
+Removing disallowed attribute <A rel="noopener">
+Removing disallowed attribute <A href="https://myOnlineObjects.com/">
+Removing disallowed attribute <A rel="noopener">
+Removing disallowed attribute <A href="https://nouris.net/">
+Removing disallowed attribute <A rel="noopener">
+Removing disallowed attribute <A href="https://nouris.net/">
+Removing disallowed attribute <A href="https://nouris.net/#solutions">
+Removing disallowed attribute <P style="text-align: center;">
+Removing disallowed attribute <P style="text-align: center;">
+Removing disallowed attribute <SPAN style="font-family: Frutiger, Futura, 'Gills Sans',
+Helvetica, Lucida, Optima, Palatino, 'Agfa Rotis', Arial, 'and Univers'; font-size: 13.6px;">   
+Removing disallowed attribute <P style="text-align: center;">
+Removing disallowed attribute <A rel="noopener">
+Removing disallowed attribute <A href="https://myOnlineObjects.com/">
+Removing disallowed attribute <A rel="noopener">
+Removing disallowed attribute <A href="https://nouris.net/">
+Removing disallowed attribute <A rel="noopener">
+Removing disallowed attribute <A href="https://nouris.net/">
+Removing disallowed attribute <A href="https://nouris.net/#solutions">
+
+## AppBar render issue
+
+══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY
+╞═════════════════════════════════════════════════════════
+The following assertion was thrown during layout:
+A RenderFlex overflowed by 10.0 pixels on the right.
+
+The relevant error-causing widget was:
+  AppBar AppBar:file:///C:/NouriSolutions/trunk2022/flutter/ns_demo/lib/utils/app_bar.dart:9:10 
+
+To inspect this widget in Flutter DevTools, visit:
+http://127.0.0.1:9101/#/inspector?uri=http%3A%2F%2F127.0.0.1%3A2176%2F6ZIh4h57CuI%3D&inspectorRef=inspector-0
+
+The overflowing RenderFlex has an orientation of Axis.horizontal.
+The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow
+and
+black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
+Consider applying a flex factor (e.g. using an Expanded widget) to force the children of the
+RenderFlex to fit within the available space instead of being sized to their natural size.
+This is considered an error condition because it indicates that there is content that cannot be
+seen. If the content is legitimately bigger than the available space, consider clipping it with
+a
+ClipRect widget before putting it in the flex, or using a scrollable container rather than a
+Flex,
+like a ListView.
+The specific RenderFlex in question is: RenderFlex#163bd relayoutBoundary=up12 OVERFLOWING:
+  creator: Row ← IconTheme ← Builder ← LayoutId-[<_ToolbarSlot.trailing>] ←
+  CustomMultiChildLayout ←
+    NavigationToolbar ← DefaultTextStyle ← IconTheme ← Builder ← CustomSingleChildLayout ←
+    ClipRect ←
+    MediaQuery ← ⋯
+  parentData: offset=Offset(0.0, 0.0); id=_ToolbarSlot.trailing (can use size)
+  constraints: BoxConstraints(0.0<=w<=150.0, 0.0<=h<=56.0)
+  size: Size(150.0, 56.0)
+  direction: horizontal
+  mainAxisAlignment: start
+  mainAxisSize: min
+  crossAxisAlignment: stretch
+  textDirection: ltr
+  verticalDirection: down
+◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+## Using HtmlWebView
+
+>> still issue with disallowed links
+
+Restarted application in 493ms.
+Removing disallowed attribute <A href="https://en.wikipedia.org/wiki/Gab%C3%A8s">
+Removing disallowed attribute <A
+href="https://en.wikipedia.org/wiki/Gab%C3%A8s#cite_note-Gabesmun-1">
+Removing disallowed attribute <A href="https://en.wikipedia.org/wiki/Tunisia#Major_cities">     
+Removing disallowed attribute <A href="https://en.wikipedia.org/wiki/Gulf_of_Gab%C3%A8s">       
+Removing disallowed attribute <A href="https://en.wikipedia.org/wiki/Tunisia">
+Removing disallowed attribute <A href="https://en.wikipedia.org/wiki/Gab%C3%A8s_Governorate">   
+══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY
+╞═════════════════════════════════════════════════════════
+The following assertion was thrown during performLayout():
+RenderConstrainedBox object was given an infinite size during layout.
+This probably means that it is a render object that tries to be as big as possible, but it was  
+put
+inside another render object that allows its children to pick their own size.
+The nearest ancestor providing an unbounded height constraint is:
+_RenderSingleChildViewport#74c55 relayoutBoundary=up14 NEEDS-LAYOUT NEEDS-PAINT
+NEEDS-COMPOSITING-BITS-UPDATE:
+  needs compositing
+  creator: _SingleChildViewport ← IgnorePointer-[GlobalKey#f6dcd] ← Semantics ← Listener ←
+    _GestureSemantics ← RawGestureDetector-[LabeledGlobalKey<RawGestureDetectorState>#d347c] ←  
+    Listener ← _ScrollableScope ← _ScrollSemantics-[GlobalKey#6c13c] ←
+    NotificationListener<ScrollMetricsNotification> ← RepaintBoundary ←
+    CustomPaint-[GlobalKey#530aa]
+    ← ⋯
+  parentData: <none> (can use size)
+  constraints: BoxConstraints(0.0<=w<=500.0, 0.0<=h<=636.0)
+  size: MISSING
+The constraints that applied to the RenderConstrainedBox were:
+  BoxConstraints(0.0<=w<=480.0, 0.0<=h<=Infinity)
+The exact size it was given was:
+  Size(480.0, Infinity)
+See https://flutter.dev/docs/development/ui/layout/box-constraints for more information.        
+
+The relevant error-causing widget was:
+  HtmlElementView
+  HtmlElementView:file:///C:/Users/mounir/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/web_no  de-0.2.1/lib/src/web_node_impl_browser.dart:41:25
+
+When the exception was thrown, this was the stack:
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 251:49  throw_
+packages/flutter/src/rendering/box.dart 2203:9
+<fn>
+packages/flutter/src/rendering/box.dart 2296:14
+debugAssertDoesMeetConstraints
+packages/flutter/src/rendering/box.dart 1989:7
+<fn>
+packages/flutter/src/rendering/box.dart 1990:14
+set size
+packages/flutter/src/rendering/proxy_box.dart 280:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/shifted_box.dart 233:5
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/layout_helper.dart 56:10
+layoutChild
+packages/flutter/src/rendering/flex.dart 829:43
+[_computeSizes]
+packages/flutter/src/rendering/flex.dart 931:32
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/shifted_box.dart 437:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/widgets/single_child_scroll_view.dart 504:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/custom_paint.dart 545:11
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/shifted_box.dart 437:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/custom_layout.dart 171:10
+layoutChild
+packages/flutter/src/material/scaffold.dart 1005:7
+performLayout
+packages/flutter/src/rendering/custom_layout.dart 240:7
+[_callPerformLayout]
+packages/flutter/src/rendering/custom_layout.dart 403:14
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/proxy_box.dart 1376:11
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1707:7
+[_layoutWithoutResize]
+packages/flutter/src/rendering/object.dart 879:17
+flushLayout
+packages/flutter/src/rendering/binding.dart 497:19
+drawFrame
+packages/flutter/src/widgets/binding.dart 883:13
+drawFrame
+packages/flutter/src/rendering/binding.dart 363:5
+[_handlePersistentFrameCallback]
+packages/flutter/src/scheduler/binding.dart 1145:15
+[_invokeFrameCallback]
+packages/flutter/src/scheduler/binding.dart 1082:9
+handleDrawFrame
+packages/flutter/src/scheduler/binding.dart 996:5
+[_handleDrawFrame]
+C:/b/s/w/ir/cache/builder/src/out/host_debug/flutter_web_sdk/lib/_engine/engine/platform_dispatcher.dart 1005:13           invoke
+C:/b/s/w/ir/cache/builder/src/out/host_debug/flutter_web_sdk/lib/_engine/engine/platform_dispatcher.dart 159:5             invokeOnDrawFrame
+C:/b/s/w/ir/cache/builder/src/out/host_debug/flutter_web_sdk/lib/_engine/engine.dart 455:45     
+<fn>
+
+The following RenderObject was being processed when the exception was fired:
+RenderConstrainedBox#63134 relayoutBoundary=up18 NEEDS-LAYOUT NEEDS-PAINT:
+  creator: SizedBox.expand ← PlatformViewLink ← HtmlElementView ← WebNode ← Padding ←
+  NsDescription ←
+    Column ← Center ← _SingleChildViewport ← IgnorePointer-[GlobalKey#f6dcd] ← Semantics ←      
+    Listener ←
+    ⋯
+  parentData: offset=Offset(0.0, 0.0) (can use size)
+  constraints: BoxConstraints(0.0<=w<=480.0, 0.0<=h<=Infinity)
+  size: Size(480.0, Infinity)
+  additionalConstraints: BoxConstraints(biggest)
+This RenderObject has no descendants.
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Another exception was thrown: RenderPadding object was given an infinite size during layout.    
+Another exception was thrown: RenderFlex object was given an infinite size during layout.       
+Another exception was thrown: RenderPositionedBox object was given an infinite size during      
+layout.
+Another exception was thrown: PlatformViewRenderBox object was given an infinite size during
+layout.
+Another exception was thrown: PlatformViewRenderBox object was given an infinite size during
+layout.
+Another exception was thrown: RenderSemanticsAnnotations object was given an infinite size
+during layout.
+Another exception was thrown: RenderPadding object was given an infinite size during layout.
+Another exception was thrown: RenderFlex object was given an infinite size during layout.
+Another exception was thrown: RenderPositionedBox object was given an infinite size during
+layout.
+Another exception was thrown: PlatformViewRenderBox object was given an infinite size during
+layout.
+Another exception was thrown: PlatformViewRenderBox object was given an infinite size during
+layout.
+Another exception was thrown: RenderSemanticsAnnotations object was given an infinite size
+during layout.
+Another exception was thrown: RenderPadding object was given an infinite size during layout.
+Another exception was thrown: RenderFlex object was given an infinite size during layout.
+Another exception was thrown: RenderPositionedBox object was given an infinite size during
+layout.
+
+## List Tile layout issue
+
+══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY
+╞═════════════════════════════════════════════════════════
+The following assertion was thrown during performLayout():
+Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/material/list_tile.dart:1777:7
+tileWidth != trailingSize.width || tileWidth == 0.0
+"Trailing widget consumes entire tile width. Please use a sized widget, or consider   
+replacing
+ListTile with a custom widget (see
+https://api.flutter.dev/flutter/material/ListTile-class.html#material.ListTile.4)"    
+
+The relevant error-causing widget was:
+  ListTile
+  ListTile:file:///C:/NouriSolutions/trunk2022/flutter/ns_demo/lib/app/object/preferen  ces.dart:45:20
+
+When the exception was thrown, this was the stack:
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 251:49  throw_
+C:/b/s/w/ir/cache/builder/src/out/host_debug/dart-sdk/lib/_internal/js_dev_runtime/private/ddc_runtime/errors.dart 29:3    assertFailed
+packages/flutter/src/material/list_tile.dart 1777:55
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/shifted_box.dart 233:5
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/shifted_box.dart 233:5
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/custom_paint.dart 545:11
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/proxy_box.dart 1376:11
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/shifted_box.dart 233:5
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/sliver_multi_box_adaptor.dart 487:12
+insertAndLayoutChild
+packages/flutter/src/rendering/sliver_list.dart 239:19
+advance
+packages/flutter/src/rendering/sliver_list.dart 281:12
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/sliver_padding.dart 137:5
+performLayout
+packages/flutter/src/rendering/sliver_padding.dart 371:11
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/viewport.dart 510:12
+layoutChildSequence
+packages/flutter/src/rendering/viewport.dart 1580:12
+[_attemptLayout]
+packages/flutter/src/rendering/viewport.dart 1489:20
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/custom_paint.dart 545:11
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/shifted_box.dart 437:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/custom_layout.dart 171:10
+layoutChild
+packages/flutter/src/material/scaffold.dart 1005:7
+performLayout
+packages/flutter/src/rendering/custom_layout.dart 240:7
+[_callPerformLayout]
+packages/flutter/src/rendering/custom_layout.dart 403:14
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/proxy_box.dart 1376:11
+performLayout
+packages/flutter/src/rendering/object.dart 1852:7
+layout
+packages/flutter/src/rendering/proxy_box.dart 116:7
+performLayout
+packages/flutter/src/rendering/object.dart 1707:7
+[_layoutWithoutResize]
+packages/flutter/src/rendering/object.dart 879:17
+flushLayout
+packages/flutter/src/rendering/binding.dart 497:19
+drawFrame
+packages/flutter/src/widgets/binding.dart 883:13
+drawFrame
+packages/flutter/src/rendering/binding.dart 363:5
+[_handlePersistentFrameCallback]
+packages/flutter/src/scheduler/binding.dart 1145:15
+[_invokeFrameCallback]
+packages/flutter/src/scheduler/binding.dart 1082:9
+handleDrawFrame
+packages/flutter/src/scheduler/binding.dart 996:5
+[_handleDrawFrame]
+C:/b/s/w/ir/cache/builder/src/out/host_debug/flutter_web_sdk/lib/_engine/engine/platform_dispatcher.dart 1005:13           invoke
+C:/b/s/w/ir/cache/builder/src/out/host_debug/flutter_web_sdk/lib/_engine/engine/platform_dispatcher.dart 159:5             invokeOnDrawFrame
+C:/b/s/w/ir/cache/builder/src/out/host_debug/flutter_web_sdk/lib/_engine/engine.dart  
+455:45                                <fn>
+
+The following RenderObject was being processed when the exception was fired:
+_RenderListTile#24ad3 relayoutBoundary=up18 NEEDS-LAYOUT NEEDS-PAINT
+NEEDS-COMPOSITING-BITS-UPDATE:
+  creator: _ListTile ← MediaQuery ← Padding ← SafeArea ← Builder ←
+  Padding-[GlobalKey#c5520] ← Ink ←
+    Semantics ← Listener ← RawGestureDetector ← GestureDetector ← Semantics ← ⋯       
+  parentData: offset=Offset(0.0, 0.0) (can use size)
+  constraints: BoxConstraints(w=460.0, 0.0<=h<=Infinity)
+  size: MISSING
+This RenderObject had the following descendants (showing up to depth 5):
+    leading: RenderParagraph#f6393 relayoutBoundary=up19 NEEDS-PAINT
+      text: TextSpan
+    title: RenderParagraph#ea1e3 NEEDS-LAYOUT NEEDS-PAINT
+      text: TextSpan
+    trailing: RenderParagraph#d8b92 relayoutBoundary=up19 NEEDS-PAINT
+      text: TextSpan
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/box.dart:1927:12
+Another exception was thrown: Assertion failed:
+file:///C:/NouriSolutions/Tools/flutter/packages/flutter/lib/src/rendering/sliver_multi_box_adaptor.dart:544:12
+Another exception was thrown: Unexpected null value.
+Another exception was thrown: Unexpected null value.
+Another exception was thrown: Unexpected null value.
+

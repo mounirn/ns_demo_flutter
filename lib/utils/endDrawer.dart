@@ -14,7 +14,7 @@ Drawer buildAppEndDrawer(BuildContext context)  {
           decoration: BoxDecoration(
             color: Colors.blue,
           ),
-          child: Consumer<UserModel>(
+          child: Consumer<NsUserModel>(
             builder: (context, model, child) =>
             Column(
               children: [
@@ -52,7 +52,7 @@ Drawer buildAppEndDrawer(BuildContext context)  {
             );
           },
         ),
-        Consumer<UserModel>(
+        Consumer<NsUserModel>(
           builder: (context, model, child) => Container(
             child: model.isLoggedIn() ? ListTile(
               leading: Icon(Icons.lock),

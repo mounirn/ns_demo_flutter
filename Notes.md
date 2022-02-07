@@ -1,13 +1,24 @@
 # Release Notes
 
-## Feb 4, 2022
+## Feb 11, 2022
+
+- Type Information
+  - Class for selected client
+  - Browse Objects
 
 - Class Information
   - Selected Client
 
-- App Object Information
-  - Preferences
+## Feb 4, 2022
 
+- Server Information
+  - Built-int Types List
+  
+- App Object Information
+  - Header
+  - Description
+  - Learn More HyperLink
+  
 - Client Information
   - Notes
 

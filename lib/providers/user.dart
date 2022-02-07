@@ -2,14 +2,25 @@ import 'package:flutter/foundation.dart';
 
 import '../serializables/user_session.dart';
 import '../services/user_service.dart';
-import '../utils/app_data.dart'; 
+import '../utils/app_data.dart';
+import 'config_data.dart'; 
 
-class UserModel extends ChangeNotifier {
+/// Provides user data and supports the following functions:
+/// - login, logout
+/// - maintains the current user session information and notifies parts of the applications with related changes
+class NsUserModel extends ChangeNotifier {
+  final NsAppConfigData config;
   NsUserSession? session;
   bool invalidLoginInfo = false;
   bool unableToProcessRequest = false;
-  final NsUserService _service = NsUserService(rootUrl: "https://myOnlineObjects.com/api/");
+  late NsUserService _service;
 
+  NsUserModel(this.config);
+
+  setup() {
+     _service = NsUserService(rootUrl: config.getApiRootUrl());
+  }
+   
   Future login(String loginId, String password) async {
     
     unableToProcessRequest = false;

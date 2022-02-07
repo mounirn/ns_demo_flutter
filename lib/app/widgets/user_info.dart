@@ -8,7 +8,7 @@ class NsUserInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var userModel = context.watch<UserModel>();
+    var userModel = context.watch<NsUserModel>();
      
     return Column(children: [ 
         NsSessionView(userModel.session),

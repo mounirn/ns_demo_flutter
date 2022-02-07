@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 // import '../providers/settings_data.dart';
-import 'clients.dart';
+import 'client/app_clients.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class SettingsScreen extends StatelessWidget {
             const Expanded(
               child: Padding(
                 padding: EdgeInsets.all(32),
-                child: ClientsList(),
+                child: NsAppClients(),
               ),
             ),
             const Divider(height: 4, color: Colors.black),

@@ -13,8 +13,8 @@ void main() {
     assert(result == true);
     
   });
-  test('save settings / user preferences data', () async {
-    print("Testing /app/status:");
+  test('load app data', () async {
+    print("Testing /app/settings:");
     var model = NsAppSettingsData();
     const lastSessionId = "last-session-id"; 
     const selectedClientId = 123;

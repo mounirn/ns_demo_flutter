@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
-import 'app/home_tabs.dart';
+import 'screens/home_tabs.dart';
 import 'models/cart.dart';
 import 'models/catalog.dart';
 import 'providers/app_messages.dart';
+import 'providers/classes_data.dart';
 import 'providers/config_data.dart';
 import 'providers/settings_data.dart';
 import 'providers/user.dart';
+import 'providers/built_in_types.dart';
 
 import 'serializables/app_object.dart';
 import 'utils/routes.dart';
@@ -18,8 +21,18 @@ import 'screens/loading.dart';
 import 'screens/error.dart';
 
 void main() {
- 
-  runApp(const MyAppWithProviders());
+  try {
+    // Try to do something!
+    runApp(const MyAppWithProviders());
+  } catch (error) {
+    // Catch & report error.
+    FlutterError.reportError(FlutterErrorDetails(
+      exception: error,
+      library: 'Flutter test framework',
+      context: ErrorSummary('while running async test code'),
+    ));
+  }
+  
 }
 
 //final ThemeData _appTheme = buildAppTheme();
@@ -33,7 +46,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var model = context.watch<NsAppSettingsData>();
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       routes: getAppRoutes(context),
+      onUnknownRoute: (_) {
+        Navigator.pushNamed(context, '/error', arguments: NsAppObject.name(_.name));
+      },
       title: NsConsts.C_AppName,
       theme: buildAppThemeForClient(model.getSelectedClientDetails()),
       home: const MyAppStartup()
@@ -121,7 +138,21 @@ class MyAppWithProviders extends StatelessWidget {
           create: (context) => NsAppConfigData(),
         ),
         ChangeNotifierProvider(
+          create: (context) {
+            return NsAppBuiltInTypes(
+                Provider.of<NsAppConfigData>(context, listen: false),
+            );
+          },
+        ),
+        ChangeNotifierProvider(
           create: (context) => NsAppSettingsData(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return NsClassesData(
+                Provider.of<NsAppConfigData>(context, listen: false),
+            );
+          },
         ),
         // In this sample app, CatalogModel never changes, so a simple Provider
         // is sufficient.
@@ -144,7 +175,11 @@ class MyAppWithProviders extends StatelessWidget {
           create: (context) => Counter(),
         ),
         ChangeNotifierProvider(
-          create: (context) => UserModel(),
+          create: (context) {
+            return NsUserModel(
+                Provider.of<NsAppConfigData>(context, listen: false),
+            );
+          },
         ),
       ],
       child: const MyApp()

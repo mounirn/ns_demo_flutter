@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ns_demo/app/object/html_view.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:html/parser.dart' as parser;
@@ -19,10 +20,11 @@ class NsDescription extends StatelessWidget{
     
     return 
       LimitedBox( maxHeight: maxHeight, maxWidth: 600,
-        child: Padding (
+        child: 
+        Padding (
           padding: const EdgeInsets.all(10), 
           child: getView(context),
-        ),
+        )
       )
     ;
   }
@@ -31,11 +33,16 @@ class NsDescription extends StatelessWidget{
   /// or Web node
   getView(BuildContext context) {
     if (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS){
-      return getWebView(context);
+      // return getWebView(context);
+      getWebHtmlView(context);
     } else {
       return getWebNode(context);
     }
   }
+
+  getWebHtmlView(BuildContext context) {
+    return NsHtmlContentView(getHtmlDocumentBody());
+  } 
 
   getWebNode(BuildContext context) {
     return WebNode(

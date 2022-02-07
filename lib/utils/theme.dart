@@ -35,14 +35,18 @@ ThemeData buildAppTheme() {
 /// Build the theme based on selected client
 ThemeData buildAppThemeForClient(NsAppClientDetails? client) {
   final ThemeData base = ThemeData.light();
+  // final base = ThemeData( primarySwatch: Colors.indigo);
   if (client!= null) {
-    return base.copyWith(
+    return base.copyWith( 
+      // accentColor: Colors.deepPurple,
+      // hoverColor: NsColorUtils.getFooterColor(client),
       colorScheme: base.colorScheme.copyWith(
         primaryVariant: NsColorUtils.getBorderColor(client),
         primary: NsColorUtils.getHeaderColor(client),
         onPrimary: NsColorUtils.getTextColor(client),
         secondary: NsColorUtils.getFooterColor(client),
         error: NsColorUtils.getTitleColor(client),
+       
        
       ),
       // TODO: Add the text themes (103)

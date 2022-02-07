@@ -2,9 +2,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-
+import '../utils/consts.dart';
 import '../serializables/app_query_result.dart';
-import '../serializables/app_object.dart';
 import '../serializables/app_query.dart';
 import 'base_service.dart';
 import 'result.dart';
@@ -37,8 +36,32 @@ class NsObjectService extends NsBaseService implements IObjectService{
       }
     } catch(e) {
       lastError =e;
-      return Result(status: 1, excpetion: e);
+      return Result(status: 1, exception: e);
     }
+  }
+
+  /// use to load lookup tables such as countries, languages, etc.
+  @override
+  Future<Result<NsAppObjectQueryResult>> getByType(int typeId, int clientId) async {
+
+    var query = NsAppObjectsQuery();
+    query.ownerId = clientId;
+    query.hasBuiltInTypeId = typeId;
+    query.pageSize = 500; // retrieve all defined objects for type
+    return run(query);
+  }
+
+  /// use to load datasets that are known to be small in size and limited to the root team
+  /// 
+  @override
+  Future<Result<NsAppObjectQueryResult>> getByClass(int classId, int clientId) async {
+
+    var query = NsAppObjectsQuery();
+    query.ownerId = clientId;
+    query.hasClassId = classId;
+    query.hasManagerId = clientId; // limit to be owned by the high level team
+    query.pageSize = NsConsts.maxIntValue; // retrieve all defined objects for the class
+    return run(query);
   }
 
   /// Runs the given query and resturs a result 
@@ -49,7 +72,7 @@ class NsObjectService extends NsBaseService implements IObjectService{
     try {
         var response  = await http.post(Uri.parse(url), 
         headers: super.getHeaders(),
-        body: jsonEncode(query.toJson())
+        body: jsonEncode(query)
       ,);
       lastResponse = response;
       lastError = null;
@@ -60,11 +83,12 @@ class NsObjectService extends NsBaseService implements IObjectService{
         return Result(status: 0, data: data);
       } else {
 
-        return Result(status: response.statusCode, error: response.reasonPhrase );
+        return Result(status: response.statusCode, error: response.reasonPhrase, 
+          exception: response.body );
       }
     } catch(e) {
       lastError =e;
-      return Result(status: 1, excpetion: e);
+      return Result(status: 1, exception: e);
     }
   }
   
