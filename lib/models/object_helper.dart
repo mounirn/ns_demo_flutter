@@ -1,4 +1,6 @@
+// import 'package:html/parser.dart' as parser;
 import '../serializables/app_object.dart';
+
 
 extension NsAppObjectExtensions on NsAppObject {
 
@@ -33,5 +35,19 @@ extension NsAppObjectExtensions on NsAppObject {
       return true;
     }
     return false;
+  }
+
+  String get htmlContent {
+    var ret = '';
+    if (description != null  )  {
+ /*     var p = parser.HtmlParser(description);
+      var doc = p.parse();
+      var body = doc.body;
+      var innerHtml = body?.innerHtml;
+      return innerHtml ?? '';
+    */
+      ret =  description ?? '';
+    } 
+    return ret;
   }
 }

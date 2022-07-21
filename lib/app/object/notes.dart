@@ -1,18 +1,20 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:universal_html/html.dart' as html;
-import 'package:html/parser.dart' as parser;
 import 'package:webview_flutter/webview_flutter.dart';
+// import 'package:universal_html/html.dart' as html;
 
+// import 'package:web_node/web_node.dart';
+
+import '../../app/object/html_view.dart';
 import '../../providers/app_messages.dart';
 import '../../providers/settings_data.dart';
 
-import 'package:web_node/web_node.dart';
 import '../../serializables/app_object.dart';
 import '../../models/object_helper.dart';
 
-/// Diisplays any notes stored in preferences
+/// Displays any notes stored in preferences
+/// 
 class NsNotes extends StatelessWidget{
   final NsAppSettingsData? settings;
   final NsAppObject? object;
@@ -43,15 +45,21 @@ class NsNotes extends StatelessWidget{
     if (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS){
       return getWebView(context);
     } else {
-      return getWebNode(context);
+      return getWebHtmlView(context);
     }
   }
 
+  getWebHtmlView(BuildContext context) {
+    return NsHtmlContentView(getHtmlDocumentBody());
+  } 
+
+/* 
   getWebNode(BuildContext context) {
     return WebNode(
       backgroundColor: Colors.lightGreen,   
       node: getHtmlElement() );
   }
+*/
 
   getWebView(BuildContext context) {
     var messages = context.read<NsAppMessages>();
@@ -78,41 +86,17 @@ class NsNotes extends StatelessWidget{
   String getHtmlDocumentBody() {
     var pref = getPref('Notes');
     if (pref  != null  )  {
-      var p = parser.HtmlParser(pref.value);
+  /*    var p = parser.HtmlParser(pref.value);
       var doc = p.parse();
       var body = doc.body;
       var innerHtml = body?.innerHtml;
       return innerHtml ?? '';
+    */
+      return pref.value ?? '';
     } 
     else {
       return '';
     }
   }
 
-  getHtmlElement() {
-    var body = getHtmlDocumentBody();
-    return html.DivElement()
-        ..innerHtml = body
-        ..style.backgroundColor = backgroundColor
-        ..style.padding = '10px'
-        ..style.color = 'black'
-        ..style.textAlign = 'center'
-        ..style.width = '100%'
-        ..style.height = '100px'
-        ..style.overflowY = 'scroll' 
-      ;
-  }
-/*
-  getHtmlElementSample() {
-    return html.DivElement()
-        ..style.textAlign = 'center'
-        ..append(
-          html.HeadingElement.h1()..appendText('Hello world!'),
-        )
-        ..append(html.AnchorElement()
-          ..href = 'https://dart.dev/'
-          ..appendText('A link to dart.dev'));
-          
-  }
-  */
 }

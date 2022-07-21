@@ -1,15 +1,20 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:ns_demo/app/object/html_view.dart';
-import 'package:provider/provider.dart';
-import 'package:universal_html/html.dart' as html;
-import 'package:html/parser.dart' as parser;
+import 'package:ns_demo/widgets/warning.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:provider/provider.dart';
+//import 'package:html/parser.dart' as parser;
+// import 'package:universal_html/html.dart' as html;
 
+import 'package:ns_demo/app/object/html_view.dart';
 import '../../providers/app_messages.dart';
-import 'package:web_node/web_node.dart';
+// import 'package:web_node/web_node.dart';
 import '../../serializables/app_object.dart';
+import '../../models/object_helper.dart';
 
+/// Displays the object description content:
+/// - Uses HtmlView for Web target
+/// - Uses WebView for Android or IOS
 class NsDescription extends StatelessWidget{
   final NsAppObject? object;
   final double maxHeight;
@@ -17,7 +22,9 @@ class NsDescription extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    
+    if (object == null) {
+      return const NsWarning("NsDescription: Invalid Object");
+    }
     return 
       LimitedBox( maxHeight: maxHeight, maxWidth: 600,
         child: 
@@ -34,21 +41,19 @@ class NsDescription extends StatelessWidget{
   getView(BuildContext context) {
     if (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS){
       // return getWebView(context);
-      getWebHtmlView(context);
+      getWebView(context);
     } else {
-      return getWebNode(context);
+      return getWebHtmlView(context);
     }
   }
 
-  getWebHtmlView(BuildContext context) {
-    return NsHtmlContentView(getHtmlDocumentBody());
-  } 
-
+  /*
   getWebNode(BuildContext context) {
     return WebNode(
       backgroundColor: Colors.lightGreen,   
       node: getHtmlElement() );
   }
+ */
 
   getWebView(BuildContext context) {
     var messages = context.read<NsAppMessages>();
@@ -68,23 +73,21 @@ class NsDescription extends StatelessWidget{
     );
   }
 
+  getWebHtmlView(BuildContext context) {
+    return NsHtmlContentView(getHtmlDocumentBody());
+  } 
 
   String getHtmlDocumentBody() {
-    if (object != null && object?.description != null  )  {
-      var p = parser.HtmlParser(object?.description);
-      var doc = p.parse();
-      var body = doc.body;
-      var innerHtml = body?.innerHtml;
-      return innerHtml ?? '';
-    } 
-    else {
-      return '';
+    var ret = '';
+    if (object != null) {
+      ret = object?.htmlContent ?? '';
     }
+    return ret;
   }
-
+ /*
   getHtmlElement() {
     var body = getHtmlDocumentBody();
-    return html.DivElement()
+   return html.DivElement()
         ..innerHtml = body
         ..style.backgroundColor = 'lightyellow'
         ..style.padding = '10px'
@@ -96,7 +99,7 @@ class NsDescription extends StatelessWidget{
         // ..style.maxHeight = '300px'
         ;
   }
-/*
+
   getHtmlElementSample() {
     return html.DivElement()
         ..style.textAlign = 'center'

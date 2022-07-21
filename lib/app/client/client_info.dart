@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:ns_demo/widgets/hyperlink.dart';
+import 'package:provider/provider.dart';
 
-import '../../providers/user.dart';
+import '../../widgets/hyperlink.dart';
 import '../../providers/settings_data.dart';
-import '../../app/object/logo.dart';
-import '../../app/object/title.dart';
-import '../../app/object/desc.dart';
-import '../../app/object/notes.dart';
-import 'divider.dart';
+import '../object/logo.dart';
+import '../object/title.dart';
+import '../object/desc.dart';
+import '../object/notes.dart';
+import '../widgets/divider.dart';
 
 class NsClientInfoWidget extends StatelessWidget {
-  final NsAppSettingsData? settings; 
-  final NsUserModel? user;
 
-  const NsClientInfoWidget(this.settings, {Key? key, this.user}) : super(key: key);
+  const NsClientInfoWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var client = settings?.getSelectedClientDetails();
+    var settings = context.watch<NsAppSettingsData>();
+
+    var client = settings.getSelectedClientDetails();
     
     if (client != null) {
       return SingleChildScrollView (

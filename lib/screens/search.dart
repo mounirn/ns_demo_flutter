@@ -14,7 +14,7 @@ import '../providers/settings_data.dart';
 import '../providers/user.dart';
 import '../utils/endDrawer.dart';
 import '../utils/drawer.dart';
-import '../app/widgets/client_info.dart';
+import '../app/client/client_info.dart';
 import '../utils/app_bar.dart';
 import 'home_tabs.dart';
 

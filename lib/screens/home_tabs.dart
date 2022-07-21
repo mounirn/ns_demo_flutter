@@ -7,9 +7,10 @@ import '../providers/settings_data.dart';
 import '../providers/user.dart';
 import '../utils/endDrawer.dart';
 import '../utils/drawer.dart';
-import '../app/widgets/client_info.dart';
-// import '../app/widgets/user_info.dart';
 import '../utils/app_bar.dart';
+import '../app/client/client_info.dart';
+// import '../app/widgets/user_info.dart';
+
 import '../../app/client/classes.dart';
 import '../../app/object/preferences.dart';
 import '../../app/widgets/setting.dart';
@@ -44,7 +45,7 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
           widget = NsAppWelcome(settingData);
           break;
       case 1:
-          widget = NsClientInfoWidget(settingData, user: user);
+          widget = const NsClientInfoWidget();
           break;
       case 2:
           // widget = const NsUserInfoWidget();
@@ -53,10 +54,7 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
       case 3: 
         widget = NsAppSettingWidget(settingData);
         break;
-      case 4: 
-        widget = NsPrefencesWidget(
-            settingData?.getSelectedClientDetails(), settingData, user);
-        break;
+   
       default:
          widget = Text(
             'Index $index: Info',
@@ -118,12 +116,7 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
             icon: const Icon(Icons.settings),
             label: 'Settings',
             backgroundColor: footerBackgroundColor,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.room_preferences),
-            label: 'Preferences',
-            backgroundColor: footerBackgroundColor,
-          ),
+          )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: footerColor,

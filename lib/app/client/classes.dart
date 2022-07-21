@@ -38,9 +38,11 @@ class _NsClientClassesWidgetState extends State<NsClientClassesWidget> {
       lookup = model?.getLookup(client?.id ?? 0);
       if (lookup == null) {
         model?.loadLookup(client?.id ?? 0).then( (result) { 
-          setState(() {
-            lookup = result;
-          });
+          if (mounted) {
+            setState(() {
+              lookup = result;
+            });
+          }
         });
       }
     }

@@ -1,7 +1,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:universal_html/html.dart' as html;
+// import 'package:universal_html/html.dart' as html;
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:web_node/web_node.dart';
@@ -77,7 +77,7 @@ class NsAppPrivacyWidget extends StatelessWidget{
             )
           )
       ]) 
-  */
+ 
   
   html.HtmlElement getHtmlElement() {
       final h1 = html.HeadingElement.h1();
@@ -95,4 +95,5 @@ class NsAppPrivacyWidget extends StatelessWidget{
 
       return div;
   }
+  */
 }

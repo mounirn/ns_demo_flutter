@@ -45,7 +45,7 @@ See <https://medium.com/flutter-community/11-things-to-remember-for-your-next-fl
 
 ### Web (Chrome)
 
-- <!-- flutter run -d chrome --web-renderer html -->
+- flutter run -d chrome --web-renderer html
 - flutter build web --web-renderer html --release
 
 ## Functions
@@ -146,6 +146,13 @@ Right Drawer - https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html
 See Issues&Solutions.md file
 
 ## Flutter commands
+
+### upgrading from 2.8 to 2.10 SDK
+
+- flutter upgrade
+- flutter pub outdated (view outdated packages)
+- flutter doctor -v
+- flutter pub upgrade (upgrade outdated packages)
 
 ### flutter devices output
 
