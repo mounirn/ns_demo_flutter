@@ -40,7 +40,7 @@ getAppRoutes(BuildContext context) {
         '/type' : (context) => const NsTypeInfoScreen(),
         '/class' : (context) => const NsClassInfoScreen(),
   //      '/object' : (context) => const NsObjectInfoScreen(),
-        '/search' : (context) => const NsSearchScreen(),
+  //      '/search' : (context) => const NsSearchScreen(),
    //     '/edit' : (context) => const NsEditScreen(),
         '/create' : (context) => const NsCreateScreen(),
         routeError : (context) => const NsAppErrorScreen(),

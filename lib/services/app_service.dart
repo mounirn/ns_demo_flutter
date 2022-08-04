@@ -6,7 +6,7 @@ import '../serializables/app_status.dart';
 import '../serializables/app_info.dart';
 
 
-/// Defines an abstrac app service checker
+/// Defines an abstract app service checker
 abstract class IAppService{
   Future<Result<NsAppStatus>> getStatus();
   Future<Result<NsAppInfo>> getInfo();

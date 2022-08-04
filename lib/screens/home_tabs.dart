@@ -10,12 +10,12 @@ import '../utils/drawer.dart';
 import '../utils/app_bar.dart';
 import '../app/client/client_info.dart';
 // import '../app/widgets/user_info.dart';
-
+/*
 import '../../app/client/classes.dart';
 import '../../app/object/preferences.dart';
 import '../../app/widgets/setting.dart';
 import '../../app/widgets/welcome.dart';
-
+*/
 class NsHomeScreenWithBottomTabs extends StatefulWidget {
   const NsHomeScreenWithBottomTabs({Key? key}) : super(key: key);
 

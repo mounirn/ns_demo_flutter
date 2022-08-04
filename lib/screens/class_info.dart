@@ -18,8 +18,8 @@ import 'home_tabs.dart';
 
 /// Class Information Screen including the following tabs:
 /// - Properties Definitions
-/// - Collraborations
-/// - Responsibilties
+/// - Collaborations
+/// - Responsibilities
 /// - Documentation Objects
 class NsClassInfoScreen extends StatefulWidget {
   const NsClassInfoScreen({Key? key}) : super(key: key);

@@ -207,7 +207,7 @@ class NsAppSettingsData with ChangeNotifier {
   }
 
   /// Identifies the current selected client and returns its background color if defined
-  /// if not found, returns the app default backround color defined in configuration
+  /// if not found, returns the app default background color defined in configuration
   Color getHeaderBackgroundColor() {
     return NsColorUtils.getHeaderBackgroundColor(getSelectedClientDetails());
   }
