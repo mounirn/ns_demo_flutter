@@ -41,19 +41,19 @@ class _NsHomeScreenWithBottomTabsState extends State<NsHomeScreenWithBottomTabs>
     
       Widget widget;
       switch(index) {
-        case 0:
-          widget = NsAppWelcome(settingData);
-          break;
+   //     case 0:
+   //       widget = NsAppWelcome(settingData);
+   //       break;
       case 1:
           widget = const NsClientInfoWidget();
           break;
-      case 2:
-          // widget = const NsUserInfoWidget();
-          widget = const NsClientClassesWidget();
-          break;
-      case 3: 
-        widget = NsAppSettingWidget(settingData);
-        break;
+  //    case 2:
+  //        // widget = const NsUserInfoWidget();
+  //        widget = const NsClientClassesWidget();
+  //        break;
+  //    case 3: 
+  //      widget = NsAppSettingWidget(settingData);
+ //       break;
    
       default:
          widget = Text(

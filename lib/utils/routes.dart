@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:ns_demo/screens/create.dart';
-import 'package:ns_demo/screens/search.dart';
+// import 'package:ns_demo/screens/search.dart';
 import 'package:ns_demo/screens/type_info.dart';
 
 import '../account/login.dart';
